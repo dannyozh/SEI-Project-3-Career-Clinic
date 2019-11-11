@@ -13,3 +13,92 @@
  *= require_tree .
  *= require_self
  */
+body {
+font-family: 'Montserrat', sans-serif;
+}
+
+.landing-left {
+	width: 50%;
+}
+
+.landing-right {
+	width: 50%;
+}
+.landingpage-title {
+	padding-top: 100px;
+	color: #CC46E0;
+	font-size: 78px;
+	font-weight: 900;
+	letter-spacing: -2px;
+	line-height: 1;
+}
+
+.jumbotron {
+	height: 700px;
+	padding: 0;
+	background-color: #ffffff;
+
+}
+.landingpage-paragraph {
+	display: block;
+	width: 100%;
+	color: #007AFF;
+	font-size: 26px;
+	font-weight: regular !important;
+	clear: both;
+	line-height: 1;
+	padding: 40px 0 20px 0;
+}
+
+
+.join-us{
+	display: block;
+	width: 300px;
+	color: #007AFF;
+	font-size: 32px;
+	font-weight: 600;
+
+	line-height: 1;
+	padding: 40px 0 20px 0;
+}
+
+
+.future-work {
+	width: auto;
+    height: 400px;
+    margin-top: 85px;
+    margin-left: 15px;
+}
+
+.register-right {
+	padding-left: 80px;
+	padding-top: 100px;
+}
+.register {
+	width: auto;
+    height: 400px;
+
+    margin-left: 15px;
+}
+
+.register-field{
+	width: 450px;
+	height: 250px;
+	border-radius: 35px;
+	margin-left: 60px;
+
+
+}
+.row-fluid {
+	clear: both;
+}
+.reg-row {
+	padding-top: 50px;
+}
+.reg-emp {
+	border: 1px solid #007AFF;
+}
+
+.reg-exp {
+	border: 1px solid #CC46E0;
+}
