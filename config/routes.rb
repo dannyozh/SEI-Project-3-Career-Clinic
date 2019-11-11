@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :traits
   resources :employers
   resources :listings
-  root "explorers#index"
   devise_for :explorers
+  root "landings#landing"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
