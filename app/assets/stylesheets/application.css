@@ -34,9 +34,10 @@ font-family: 'Montserrat', sans-serif;
 }
 
 .jumbotron {
-	height: 700px;
+	height: 100%;
 	padding: 0;
 	background-color: #ffffff;
+	margin-bottom: 60px;
 
 }
 .landingpage-paragraph {
@@ -93,12 +94,41 @@ font-family: 'Montserrat', sans-serif;
 	clear: both;
 }
 .reg-row {
-	padding-top: 50px;
+	padding-top: 70px;
+	margin-bottom: 80px;
 }
 .reg-emp {
 	border: 1px solid #007AFF;
+	margin-bottom: 70px;
 }
+
 
 .reg-exp {
 	border: 1px solid #CC46E0;
+	margin-bottom: 70px;
+}
+.reg-emp-title {
+	color: #007AFF;
+	font-weight: 600;
+
+}
+.reg-exp-title {
+	color: #CC46E0;
+	font-weight: 600;
+}
+
+.reg-btn {
+	text-transform: uppercase;
+	padding: 8px 20px;
+}
+
+.blue {
+		border: 1px solid #007AFF;
+		background-color: #EDF3FF;
+		color:#007AFF;
+}
+.purple {
+	border: 1px solid #CC46E0;
+	background-color: #FEF2FF;
+	color: #CC46E0;
 }
