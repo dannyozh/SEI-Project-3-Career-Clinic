@@ -4,7 +4,6 @@ class CreateEnvironments < ActiveRecord::Migration[5.2]
       t.text :work_space
       t.text :hours
       t.text :team_size
-      t.string :photo_url
       t.timestamps
     end
   end

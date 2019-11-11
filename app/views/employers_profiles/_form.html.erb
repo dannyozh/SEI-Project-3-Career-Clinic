@@ -1,0 +1,17 @@
+<%= form_with(model: employers_profile, local: true) do |form| %>
+  <% if employers_profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(employers_profile.errors.count, "error") %> prohibited this employers_profile from being saved:</h2>
+
+      <ul>
+      <% employers_profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

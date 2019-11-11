@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :employers
+  # devise_for :explorers, controllers: { explorers: "explorers" }
+  # devise_for :employers
+  devise_for :explorers, controllers: { registrations: "explorers/registrations" }
+  devise_for :employers, controllers: { registrations: "employers/registrations" }
+  resources :explorers_profiles
+  resources :employers_profiles
   resources :environments
   resources :traits
-  resources :employers
   resources :listings
-  devise_for :explorers
   root "landings#landing"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

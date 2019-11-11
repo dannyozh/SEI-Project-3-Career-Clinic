@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Employers Profiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employers_profiles.each do |employers_profile| %>
+      <tr>
+        <td><%= link_to 'Show', employers_profile %></td>
+        <td><%= link_to 'Edit', edit_employers_profile_path(employers_profile) %></td>
+        <td><%= link_to 'Destroy', employers_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Employers Profile', new_employers_profile_path %>

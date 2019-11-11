@@ -4,8 +4,6 @@ class DeviseCreateExplorers < ActiveRecord::Migration[5.2]
   def change
     create_table :explorers do |t|
       ## Database authenticatable
-      t.string :name
-      t.integer :age
       t.string :email, null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 

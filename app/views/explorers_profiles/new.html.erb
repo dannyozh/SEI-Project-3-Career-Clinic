@@ -1,0 +1,23 @@
+<h1>Welcome on board Explorer, Create your profile below!</h1>
+
+
+<%= form_with scope: :explorers_profile, url: explorers_profiles_path, local: true do |form| %>
+  
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :age %><br>
+    <%= form.text_field :age %>
+  </p>
+  <p>
+    <%= form.label :ProfilePic %><br>
+    <%= form.text_field :photo_url %>
+  </p>
+  <%= form.submit %>
+</p>
+<% end %>
+
+<%= link_to 'Back', explorers_profiles_path %>
+
