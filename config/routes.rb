@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :employers
   resources :environments
   resources :traits
   resources :employers
