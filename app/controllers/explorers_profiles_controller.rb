@@ -29,7 +29,7 @@ class ExplorersProfilesController < ApplicationController
     @explorers_profile.explorer_id = current_explorer.id
     respond_to do |format|
       if @explorers_profile.save
-        format.html { redirect_to @explorers_profile, notice: "Explorers profile was successfully created." }
+        format.html { redirect_to "/welcome", notice: "Explorers profile was successfully created." }
         format.json { render :show, status: :created, location: @explorers_profile }
       else
         format.html { render :new }
