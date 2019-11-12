@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(version: 2019_11_12_060746) do
     t.index ["reset_password_token"], name: "index_explorers_on_reset_password_token", unique: true
   end
 
+  create_table "explorers_profile_listings", force: :cascade do |t|
+    t.bigint "explorer_profile_id"
+    t.bigint "listing_id"
+    t.boolean "connect", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["explorer_profile_id"], name: "index_explorers_profile_listings_on_explorer_profile_id"
+    t.index ["listing_id"], name: "index_explorers_profile_listings_on_listing_id"
+  end
+
   create_table "explorers_profiles", force: :cascade do |t|
     t.string "name"
     t.integer "age"
@@ -124,5 +134,4 @@ ActiveRecord::Schema.define(version: 2019_11_12_060746) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
 end
