@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   resources :traits
   resources :listings
   root "landings#landing"
+  get '/welcome' => "landings#welcome"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
