@@ -1,4 +1,8 @@
 <p id="notice"><%= notice %></p>
 <h1>Hello <%= @employers_profile.company_name %>!</h1>
+<% @listing.each do |k| %>
+  <p><%= k.job_title%></p>
+  <p><%= k.photo_url%></p>
+<%end%>
 <%= link_to 'Edit', edit_employers_profile_path(@employers_profile) %> |
 <%= link_to 'Back', employers_profiles_path %>
