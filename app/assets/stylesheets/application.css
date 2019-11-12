@@ -168,8 +168,9 @@ body {
 }
 
 .welcome-right {
-		width: 65%;
-		margin: 20px 0;
+		width: 60%;
+		margin: 20px 0 50px 0;
+
 }
 
 .welcome-paragraph {
