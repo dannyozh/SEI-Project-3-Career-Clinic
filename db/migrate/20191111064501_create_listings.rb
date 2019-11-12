@@ -7,8 +7,6 @@ class CreateListings < ActiveRecord::Migration[5.2]
       t.text :duration
       t.text :location
       t.text :description
-      t.references :trait
-      t.references :environment
       t.timestamps
     end
   end

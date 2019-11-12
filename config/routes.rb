@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :industries
   # devise_for :explorers, controllers: { explorers: "explorers" }
   # devise_for :employers
   devise_for :explorers, controllers: { registrations: "explorers/registrations" }

@@ -1,3 +1,3 @@
 class Environment < ApplicationRecord
-  belongs_to :listing
+  has_and_belongs_to_many :listings
 end
