@@ -27,10 +27,10 @@ class ListingsController < ApplicationController
   # POST /listings.json
   def create
     @listing = Listing.new(listing_params)
+    @listing.employer_profile_id = current_employer.id
     @listing.save
 
     redirect_to @listing
-
   end
 
   # PATCH/PUT /listings/1
@@ -40,7 +40,6 @@ class ListingsController < ApplicationController
     @listing.update(listing_params)
 
     redirect_to @listing
-
   end
 
   # DELETE /listings/1
@@ -52,9 +51,9 @@ class ListingsController < ApplicationController
     redirect_to @listing
   end
 
- private
-    def listing_params
+  private
+
+  def listing_params
     params.require(:listing).permit(:job_title, :contact, :industry, :duration, :location, :photo_url, :description)
   end
-
 end
