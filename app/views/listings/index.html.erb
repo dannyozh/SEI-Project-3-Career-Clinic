@@ -1,25 +1,32 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listings</h1>
+<p>Employer Dashboard<p>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<table class="table">
+	<tr>
+		<th>Job Title</th>
+		<th>Duration</th>
+		<th>Location</th>
+		<th>Description</th>
+		<th>Photo</th>
+	</tr>
 
-  <tbody>
-    <% @listings.each do |listing| %>
-      <tr>
-        <td><%= link_to 'Show', listing %></td>
-        <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-        <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+	<% @listings.each do |listing| %>
+	<tr>
+			<td><%= listing.job_title %></td>
+			<td><%= listing.duration %></td>
+			<td><%= listing.location %></td>
+			<td><%= listing.description %></td>
+
+      <td><img src="<%= listing.photo_url %>"/></td>
+			<td><%= link_to 'Show',listing_path(listing) %></td>
+			<td><%= link_to 'Edit', edit_listing_path(listing) %></td>
+			<td><%= link_to 'Destroy', listing_path(listing),
+				method: :delete,
+				data: { confirm: 'Are you sure?' } %></td>
+	</tr>
+
+<% end %>
+
 </table>
-
-<br>
-
-<%= link_to 'New Listing', new_listing_path %>

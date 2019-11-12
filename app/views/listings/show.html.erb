@@ -1,4 +1,30 @@
-<p id="notice"><%= notice %></p>
+<h2>Show Listings:</h2>
+
+<p>
+  <strong>Job Title:</strong>
+  <%= @listing.job_title %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @listing.duration %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @listing.location %>
+</p>
+
+<p>
+  <strong>Job Description:</strong>
+  <%= @listing.description %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @listing.photo_url,size: "100 x 100"%>
+</p>
+
 
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
 <%= link_to 'Back', listings_path %>
