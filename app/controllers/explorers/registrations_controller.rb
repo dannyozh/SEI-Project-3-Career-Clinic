@@ -55,6 +55,11 @@ class Explorers::RegistrationsController < Devise::RegistrationsController
     "/explorers_profiles/new"
   end
 
+  def after_sign_in_path_for(resource)
+    input = current_explorer.id
+    explorers_profile_path(id: input)
+  end
+
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)

@@ -10,6 +10,7 @@ class ExplorersProfilesController < ApplicationController
   # GET /explorers_profiles/1
   # GET /explorers_profiles/1.json
   def show
+    @explorers_profile = ExplorersProfile.find(params[:id])
   end
 
   # GET /explorers_profiles/new
