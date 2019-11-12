@@ -110,14 +110,9 @@ ActiveRecord::Schema.define(version: 2019_11_12_060746) do
     t.index ["employer_profile_id"], name: "index_listings_on_employer_profile_id"
   end
 
-<<<<<<< HEAD
-  create_table "traits", force: :cascade do |t|
-    t.string "personality"
-=======
   create_table "listings_traits", force: :cascade do |t|
     t.bigint "listing_id"
     t.bigint "trait_id"
->>>>>>> 9e0582869a80633110e640b59bd69c0fdd6ee85d
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["listing_id"], name: "index_listings_traits_on_listing_id"
