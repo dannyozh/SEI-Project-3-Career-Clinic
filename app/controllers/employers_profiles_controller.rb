@@ -10,6 +10,7 @@ class EmployersProfilesController < ApplicationController
   # GET /employers_profiles/1
   # GET /employers_profiles/1.json
   def show
+    @employers_profile = EmployersProfile.find(params[:id])
   end
 
   # GET /employers_profiles/new
