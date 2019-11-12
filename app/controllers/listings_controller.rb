@@ -17,6 +17,7 @@ class ListingsController < ApplicationController
   def new
     @listing = Listing.new
     @traits = Trait.all
+    @industries = Industry.all
     @environments = Environment.all
   end
 
@@ -55,12 +56,10 @@ class ListingsController < ApplicationController
 
     redirect_to @listing
   end
-
-
 end
 
 private
 
-  def listing_params
-    params.require(:listing).permit(:job_title, :contact, :industry, :duration, :location, :photo_url, :description, :personality, :choice, :trait_ids => [], :environment_ids => [])
-  end
+def listing_params
+  params.require(:listing).permit(:job_title, :contact, :industry, :duration, :location, :photo_url, :description, :personality, :choice, :trait_ids => [], :environment_ids => [], :industry_ids => [])
+end
