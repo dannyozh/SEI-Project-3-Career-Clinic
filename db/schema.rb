@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_060746) do
 
   create_table "employers_profiles", force: :cascade do |t|
     t.string "company_name"
+    t.string "industry"
     t.string "company_logo"
     t.bigint "employer_id"
     t.datetime "created_at", null: false
@@ -37,7 +38,9 @@ ActiveRecord::Schema.define(version: 2019_11_12_060746) do
   end
 
   create_table "environments", force: :cascade do |t|
-    t.string "choice"
+    t.text "work_space"
+    t.text "hours"
+    t.text "team_size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -73,16 +76,6 @@ ActiveRecord::Schema.define(version: 2019_11_12_060746) do
     t.index ["explorer_id"], name: "index_explorers_profiles_on_explorer_id"
   end
 
-  create_table "explorers_profiles_listings", force: :cascade do |t|
-    t.bigint "explorer_profile_id"
-    t.bigint "listing_id"
-    t.boolean "connect", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["explorer_profile_id"], name: "index_explorers_profiles_listings_on_explorer_profile_id"
-    t.index ["listing_id"], name: "index_explorers_profiles_listings_on_listing_id"
-  end
-
   create_table "industries", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -105,9 +98,13 @@ ActiveRecord::Schema.define(version: 2019_11_12_060746) do
     t.text "duration"
     t.text "location"
     t.text "description"
+    t.bigint "trait_id"
+    t.bigint "environment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["employer_profile_id"], name: "index_listings_on_employer_profile_id"
+    t.index ["environment_id"], name: "index_listings_on_environment_id"
+    t.index ["trait_id"], name: "index_listings_on_trait_id"
   end
 
   create_table "listings_traits", force: :cascade do |t|
