@@ -1,8 +1,28 @@
 <p id="notice"><%= notice %></p>
 <h1>Hello <%= @employers_profile.company_name %>!</h1>
-<% @listing.each do |k| %>
-  <p><%= k.job_title%></p>
-  <p><%= k.photo_url%></p>
-<%end%>
 <%= link_to 'Edit', edit_employers_profile_path(@employers_profile) %> |
 <%= link_to 'Back', employers_profiles_path %>
+<table class="table">
+  <tr>
+    <th>Job Title</th>
+    <th>Duration</th>
+    <th>Location</th>
+    <th>Description</th>
+    <th>Photo</th>
+  </tr>
+  <% @listing.each do |listing| %>
+    <tr>
+      <td><%= listing.job_title %></td>
+      <td><%= listing.duration %></td>
+      <td><%= listing.location %></td>
+      <td><%= listing.description %></td>
+      <td><img src="<%= listing.photo_url %>"/></td>
+      <td>
+        <td><%= link_to 'Show',listing_path(listing) %></td>
+        <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
+        <td><%= link_to 'Destroy', listing_path(listing),
+				method: :delete,
+				data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </table>
