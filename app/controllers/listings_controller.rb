@@ -16,6 +16,8 @@ class ListingsController < ApplicationController
   # GET /listings/new
   def new
     @listing = Listing.new
+    @traits = Trait.all
+    @environments = Environment.all
   end
 
   # GET /listings/1/edit
@@ -26,6 +28,7 @@ class ListingsController < ApplicationController
   # POST /listings
   # POST /listings.json
   def create
+    puts params
     @listing = Listing.new(listing_params)
     @listing.employer_profile_id = current_employer.id
     @listing.save
@@ -53,9 +56,11 @@ class ListingsController < ApplicationController
     redirect_to @listing
   end
 
-  private
+
+end
+
+private
 
   def listing_params
-    params.require(:listing).permit(:job_title, :contact, :industry, :duration, :location, :photo_url, :description)
+    params.require(:listing).permit(:job_title, :contact, :industry, :duration, :location, :photo_url, :description, :personality, :choice, :trait_ids => [], :environment_ids => [])
   end
-end
