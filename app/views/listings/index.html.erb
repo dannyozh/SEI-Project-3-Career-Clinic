@@ -20,6 +20,8 @@
 			<td><%= listing.description %></td>
 
       <td><img src="<%= listing.photo_url %>"/></td>
+
+      <td>
 			<td><%= link_to 'Show',listing_path(listing) %></td>
 			<td><%= link_to 'Edit', edit_listing_path(listing) %></td>
 			<td><%= link_to 'Destroy', listing_path(listing),
