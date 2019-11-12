@@ -1,6 +1,36 @@
 <h1>Editing Listing</h1>
 
-<%= render 'form', listing: @listing %>
+<%= form_with scope: :listing, model: @listing, local: true do |form| %>
+
+	<p>
+		<%= form.label :job_title %><br>
+		<%= form.text_field :job_title %>
+	</p>
+
+	<p>
+		<%= form.label :duration %><br>
+		<%= form.text_field :duration %>
+	</p>
+
+	<p>
+		<%= form.label :location %><br>
+		<%= form.text_area :location %>
+	</p>
+
+	<p>
+		<%= form.label :description %><br>
+		<%= form.text_area :description %>
+	</p>
+
+	<p>
+		<%= form.label :photo_url %><br>
+		<%= form.text_area :photo_url %>
+	</p>
+
+	<p>
+		<%= form.submit %>
+	</p>
+<% end %>
 
 <%= link_to 'Show', @listing %> |
 <%= link_to 'Back', listings_path %>
