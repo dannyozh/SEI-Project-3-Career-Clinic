@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Trait.create!(personality: "Realistic")
+Trait.create!(personality: "Artistic")
+Trait.create!(personality: "Investigative")
+Trait.create!(personality: "Social")
+Trait.create!(personality: "Enterprising")
+Trait.create!(personality: "Conventional")
