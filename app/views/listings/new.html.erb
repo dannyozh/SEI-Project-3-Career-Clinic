@@ -1,5 +1,37 @@
 <h1>New Listing</h1>
 
-<%= render 'form', listing: @listing %>
+<%= form_with scope: :listing, url: listings_path, local: true do |form| %>
+
+	<p>
+		<%= form.label :job_title %><br>
+		<%= form.text_field :job_title %>
+	</p>
+
+	<p>
+		<%= form.label :duration %><br>
+		<%= form.text_field :duration %>
+	</p>
+
+	<p>
+		<%= form.label :location %><br>
+		<%= form.text_area :location %>
+	</p>
+
+	<p>
+		<%= form.label :description %><br>
+		<%= form.text_area :description, placeholder: "Specify description that will appear in the Job Post. Describe the perfect candidate for the role and what the candidate would be doing" %>
+	</p>
+
+	<p>
+		<%= form.label :photo_url %><br>
+		<%= form.text_area :photo_url %>
+	</p>
+
+	<p>
+		<%= form.submit %>
+	</p>
+
+<% end %>
+
 
 <%= link_to 'Back', listings_path %>
