@@ -1,0 +1,17 @@
+<%= form_with(model: explorers_profile, local: true) do |form| %>
+  <% if explorers_profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(explorers_profile.errors.count, "error") %> prohibited this explorers_profile from being saved:</h2>
+
+      <ul>
+      <% explorers_profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
