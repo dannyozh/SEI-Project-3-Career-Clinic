@@ -10,6 +10,10 @@ class EmployersProfilesController < ApplicationController
   # GET /employers_profiles/1
   # GET /employers_profiles/1.json
   def show
+    @employers_profile = EmployersProfile.find(params[:id])
+    employerid = @employers_profile.id
+    # p "@@@@@@@@@", employerid
+    @listing = Listing.where(employer_profile_id: employerid)
   end
 
   # GET /employers_profiles/new
@@ -29,7 +33,7 @@ class EmployersProfilesController < ApplicationController
 
     respond_to do |format|
       if @employers_profile.save
-        format.html { redirect_to @employers_profile, notice: "Employers profile was successfully created." }
+        format.html { redirect_to "/listings/new", notice: "Employers profile was successfully created." }
         format.json { render :show, status: :created, location: @employers_profile }
       else
         format.html { render :new }

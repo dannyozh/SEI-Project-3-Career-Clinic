@@ -32,8 +32,10 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
     @listing.employer_profile_id = current_employer.id
     @listing.save
+    id = current_employer.id
+    @employers_profile = EmployersProfile.find(id)
 
-    redirect_to @listing
+    redirect_to @employers_profile
   end
 
   # PATCH/PUT /listings/1
