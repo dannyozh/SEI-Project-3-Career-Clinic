@@ -1,6 +1,16 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 <h1>Listings Index</h1>
+
+	<%= form_tag listings_path, :method => 'get' do %>
+	<%= text_field_tag :search, params[:search] %>
+	<%= submit_tag "Search" %>
+	<% end %>
+
+	<%= link_to "Advanced Search", new_search_path %>
+
+
 <table class="table">
+
   <tr>
     <th>Job Title</th>
     <th>Duration</th>

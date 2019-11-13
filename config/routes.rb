@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resources :employers_profiles
   resources :environments
   resources :traits
+  resources :searches
   resources :listings
+
   root "landings#landing"
   get '/welcome' => "landings#welcome"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
