@@ -2,12 +2,77 @@
 		<%= notice %>
 </p>
 <%#---------------------------------------- %>
-<h1>Listings Index</h1>
+<div class="container-fluid">
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Search By
+  </button>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  	<!-- <form>
+	  	<input type="textarea"/>
+	  	<input type="textarea"/>
+	  	<input type="submit"/>
+	  </form> -->
+    <a class="dropdown-item" href="?q=industry-search">Industry</a>
+    <a class="dropdown-item" href="?q=personality-search">Career Personality Type</a>
+    <a class="dropdown-item" href="?q=environment-search">Working Environment</a>
+  </div>
+</div>
+</div>
 <div class="container ">
+<% if @form === "industry-search" %>
+	<%= form_with scope: :listing, url: listings_path, method: "get", :html => {:id => "industry-search"}, local: true do |form| %>
+	  <%= form.collection_check_boxes :industry_ids, @industries, :id, :name do |cb| %>
+	    <label class="checkbox-inline">
+	      <%= cb.check_box %>
+	      <%= cb.label %>
+	    </label>
+	  <% end %>
+	  <p>
+	    <%= form.submit "Submit" %>
+	  </p>
+	<%end%>
+
+
+<% elsif @form === "personality-search" %>
+	<%= form_with scope: :listing, url: listings_path, method: "get", :html => {:id => "personality-search"}, local: true do |form| %>
+	  <%= form.collection_check_boxes :trait_ids, @traits, :id, :personality do |cb| %>
+	    <label class="checkbox-inline">
+	      <%= cb.check_box %>
+	      <%= cb.label %>
+	    </label>
+	  <% end %>
+	  <p>
+	    <%= form.submit "Submit" %>
+	  </p>
+	<%end%>
+
+
+<% elsif @form === "environment-search" %>
+	<%= form_with scope: :listing, url: listings_path, method: "get", :html => {:id => "environment-search"}, local: true do |form| %>
+	  <%= form.collection_check_boxes :environment_ids, @environments, :id, :choice do |cb| %>
+	    <label class="checkbox-inline">
+	      <%= cb.check_box %>
+	      <%= cb.label %>
+	    </label>
+	  <% end %>
+	  <p>
+	    <%= form.submit "Submit" %>
+	  </p>
+	<%end%>
+
+	<%else%>
+
+
+<%end%>
+
 		<% @listings.each_slice(3) do |listing| %>
 		<div class="card-row d-flex justify-content-around my-5">
 				<% listing.each do |card| %>
-				<div class="card float-left justify-content-around" style="width: 22rem;">
+				<div class="card float-left justify-content-around"  style="width: 22rem;">
+
+					<%#---	<%= link_to 'Show',listing_path(card) %>
 						<div class="row my-4 px-4">
 								<div class="col-md-5  float-left">
 										<img src="<%= card.photo_url %>" class="card-img-top listing-small-img" style="width: 120px; height:100px;" alt="..." />
@@ -22,23 +87,14 @@
 								</div>
 						</div>
 						<div class="card-body">
-								<h5 class="card-title">
+								<a href="/listings/<%= card.id%>"><h5 class="card-title">
 										<%= card.job_title %>
-								</h5>
+								</h5></a>
 								<p class="listing-small-description">
 										<%= card.description %>
 								</p>
 						</div>
-						<div class="card-body">
-								<a class="card-link">
-										<%= link_to 'Show',listing_path(card) %></a>
-								<a class="card-link">
-										<%= link_to 'Edit', edit_listing_path(card) %></a>
-								<a class="card-link">
-										<%= link_to 'Destroy', listing_path(card),
-				method: :delete,
-				data: { confirm: 'Are you sure?' } %></a>
-						</div>
+
 				</div>
 				<%end%>
 		</div>

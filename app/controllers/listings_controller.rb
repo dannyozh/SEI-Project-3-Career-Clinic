@@ -4,7 +4,15 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
+    p '@@@@@@@@@@@@@@@@@@@@@@@'
+    @form = params[:q]
+    p '@@@@@@@@@@@@@@@@@@@@@@@'
+
     @listings = Listing.all
+    @industries = Industry.all
+    @environments = Environment.all
+    @traits = Trait.all
+    # id = @listing.id
   end
 
   # GET /listings/1
