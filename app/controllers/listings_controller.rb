@@ -48,6 +48,7 @@ class ListingsController < ApplicationController
       @traits = Trait.all
       @environments = Environment.all
       @industries = Industry.all
+      @form = params[:q]
   end
 
   # GET /listings/1
