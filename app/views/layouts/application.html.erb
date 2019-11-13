@@ -2,41 +2,64 @@
 <html>
   <head>
     <title>Project3</title>
-    	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
-
   <body style="margin: 0;">
+    <% if current_employer %>
       <nav class="navbar navbar-expand-lg navbar-white border-bottom">
         <a class="navbar-brand" href="/">Career Clinic</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="container">
-            <div class="row navbar-nav">
-                <a class="nav-item nav-link active" href="/listings">Explore Roles</a>
-               <%-# <% if user_signed_in? %>
-                <a class="nav-item nav-link" href="/listings/new">Post a job</a>
-               <%-# <% end %>
-
-            </div>
-
-
+          <div class="row navbar-nav">
+            <a class="nav-item nav-link active" href="<%= edit_employers_profile_path(@employers_profile)%>"><%= @employers_profile.company_name %></a>
+            <a class="nav-item nav-link" href="/listings/new">Post a job</a>
+            <%= link_to 'Sign out', destroy_employer_session_path, method: :delete %>
+          </div>
         </div>
-    </nav>
-
+      </nav>
+    <%elsif current_explorer%>
+      <nav class="navbar navbar-expand-lg navbar-white border-bottom">
+        <a class="navbar-brand" href="/">Career Clinic</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="container">
+          <div class="row navbar-nav">
+            <a class="nav-item nav-link" href="/listings">Listings</a>
+            <a class="nav-item nav-link active" href="<%= edit_explorers_profile_path(@explorers_profile)%>"><%= @explorers_profile.name %></a>
+            <%= link_to 'Sign out', destroy_explorer_session_path, method: :delete %>
+          </div>
+        </div>
+      </nav>
+    <% else %>
+      <nav class="navbar navbar-expand-lg navbar-white border-bottom">
+        <a class="navbar-brand" href="/">Career Clinic</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="container">
+          <div class="row navbar-nav">
+            <a class="nav-item nav-link active" href="/listings">Explore Roles</a>
+            <%-# <% if user_signed_in? %>
+            <%-# <% end %>
+            <a class="nav-item nav-link" href="/explorers/sign_in">Explorer Login</a>
+            <a class="nav-item nav-link" href="/employers/sign_in">Employer Login</a>
+          </div>
+        </div>
+      </nav>
+    <% end %>
     <div class="jumbotron">
-        <%= yield %>
+      <%= yield %>
     </div>
   </body>
 </html>
