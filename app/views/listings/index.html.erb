@@ -1,36 +1,107 @@
-<!-- <p id="notice"><%= notice %></p> -->
-<h1>Listings Index</h1>
 
-	<%= form_tag listings_path, :method => 'get' do %>
+<div class="container-fluid">
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Search By
+  </button>
+
+  <%= form_tag listings_path, :method => 'get' do %>
 	<%= text_field_tag :search, params[:search] %>
 	<%= submit_tag "Search" %>
 	<% end %>
 
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  	<!-- <form>
+	  	<input type="textarea"/>
+	  	<input type="textarea"/>
+	  	<input type="submit"/>
+	  </form> -->
+    <a class="dropdown-item" href="?q=industry-search">Industry</a>
+    <a class="dropdown-item" href="?q=personality-search">Career Personality Type</a>
+    <a class="dropdown-item" href="?q=environment-search">Working Environment</a>
+  </div>
+</div>
+</div>
+<div class="container ">
+<% if @form === "industry-search" %>
+	<%= form_with scope: :listing, url: listings_path, method: "get", :html => {:id => "industry-search"}, local: true do |form| %>
+	  <%= form.collection_check_boxes :industry_ids, @industries, :id, :name do |cb| %>
+	    <label class="checkbox-inline">
+	      <%= cb.check_box %>
+	      <%= cb.label %>
+	    </label>
+	  <% end %>
+	  <p>
+	    <%= form.submit "Submit" %>
+	  </p>
+	<%end%>
+
+
+<% elsif @form === "personality-search" %>
+	<%= form_with scope: :listing, url: listings_path, method: "get", :html => {:id => "personality-search"}, local: true do |form| %>
+	  <%= form.collection_check_boxes :trait_ids, @traits, :id, :personality do |cb| %>
+	    <label class="checkbox-inline">
+	      <%= cb.check_box %>
+	      <%= cb.label %>
+	    </label>
+	  <% end %>
+	  <p>
+	    <%= form.submit "Submit" %>
+	  </p>
+	<%end%>
+
+
+<% elsif @form === "environment-search" %>
+	<%= form_with scope: :listing, url: listings_path, method: "get", :html => {:id => "environment-search"}, local: true do |form| %>
+	  <%= form.collection_check_boxes :environment_ids, @environments, :id, :choice do |cb| %>
+	    <label class="checkbox-inline">
+	      <%= cb.check_box %>
+	      <%= cb.label %>
+	    </label>
+	  <% end %>
+	  <p>
+	    <%= form.submit "Submit" %>
+	  </p>
+	<%end%>
+
+	<%else%>
+
+
+<%end%>
+
+
 	<%= link_to "Advanced Search", new_search_path %>
 
+		<% @listings.each_slice(3) do |listing| %>
+		<div class="card-row d-flex justify-content-around my-5">
+				<% listing.each do |card| %>
+				<div class="card float-left justify-content-around"  style="width: 22rem;">
 
-<table class="table">
+					<%#---	<%= link_to 'Show',listing_path(card) %>
+						<div class="row my-4 px-4">
+								<div class="col-md-5  float-left">
+										<img src="<%= card.photo_url %>" class="card-img-top listing-small-img" style="width: 120px; height:100px;" alt="..." />
+								</div>
+								<div class="col-md-7 py-2 float-right">
+										<p class="card-text com-md-7 listing-small-duration px-3"><span class="icon-duration mr-2"><img width="15px" src="<%= image_url 'duration-icon.png' %>" /></span>
+												<%= card.duration %>
+										</p>
+										<p class="card-text com-md-7 listing-small-location px-3"><span class="icon-duration mr-2 "><img width="15px" src="<%= image_url 'location-icon.png' %>" /></span>
+												<%= card.location%>
+										</p>
+								</div>
+						</div>
+						<div class="card-body">
+								<a href="/listings/<%= card.id%>"><h5 class="card-title">
+										<%= card.job_title %>
+								</h5></a>
+								<p class="listing-small-description">
+										<%= card.description %>
+								</p>
+						</div>
 
-  <tr>
-    <th>Job Title</th>
-    <th>Duration</th>
-    <th>Location</th>
-    <th>Description</th>
-    <th>Photo</th>
-  </tr>
-  <% @listings.each do |listing| %>
-    <tr>
-      <td><%= listing.job_title %></td>
-      <td><%= listing.duration %></td>
-      <td><%= listing.location %></td>
-      <td><%= listing.description %></td>
-      <td><img src="<%= listing.photo_url %>"/></td>
-      <td>
-        <td><%= link_to 'Show',listing_path(listing) %></td>
-        <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-        <td><%= link_to 'Destroy', listing_path(listing),
-				method: :delete,
-				data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </table>
+				</div>
+				<%end%>
+		</div>
+		<%end%>
+</div>

@@ -1,47 +1,63 @@
-<h1>New Listing</h1>
+<div class="container ">
+	<div class="col-md-10 my-auto">
+<h3>Let's talk about the job!</h3>
+
 <%= form_with scope: :listing, url: listings_path, local: true do |form| %>
-  <p>
-    <%= form.label :job_title %><br>
-    <%= form.text_field :job_title, placeholder: "Ex. Interior Designer" %>
-  </p>
-  <p>
-    <%= form.label :duration %><br>
-    <%= form.text_field :duration, placeholder:"Ex. 4 months" %>
-  </p>
-  <p>
-    <%= form.label :location %><br>
-    <%= form.text_area :location, placeholder:"List Location" %>
-  </p>
-  <p>
-    <%= form.label :photo_url %><br>
-    <%= form.text_area :photo_url, placeholder:"Add image to your job post" %>
-  </p>
-  <p> What industry are you in? </p>
+
+	<p class="col-md-10">
+		<%= form.label :job_title, class: "job-title" %>
+		<%= form.text_field :job_title, placeholder: "Ex. Interior Designer" %>
+	</p>
+<div cladd="row">
+	<div class="col-md-3 d-inline-block float-left ">
+		<%= form.label :duration, class: "duration" %>
+		<%= form.text_field :duration, placeholder:"Ex. 4 months" %>
+	</div>
+
+	<div class="col-md-7 d-inline-block">
+		<%= form.label :location, class: "location" %>
+		<%= form.text_field :location, placeholder:"List Location" %>
+	</div>
+</div>
+	<p class="col-md-10">
+		<%= form.label :image_upload, class: "listing-image-upload" %>
+		<%= form.text_field :photo_url, placeholder:"Add image to your job post" %>
+	</p>
+
+	<p> What industry are you in? </p>
   <%= form.collection_check_boxes :industry_ids, @industries, :id, :name do |cb| %>
     <label class="checkbox-inline">
       <%= cb.check_box %>
       <%= cb.label %>
     </label>
   <% end %>
-  <p> Work Type and Environment </p>
-  <%= form.collection_check_boxes :environment_ids, @environments, :id, :choice do |cb| %>
+
+	<p> Work Type and Environment </p>
+		<%= form.collection_check_boxes :environment_ids, @environments, :id, :choice do |cb| %>
     <label class="checkbox-inline">
-      <%= cb.check_box %>
-      <%= cb.label %>
+        <%= cb.check_box %>
+        <%= cb.label %>
     </label>
-  <% end %>
-  <p>
-    <%= form.label :description %><br>
-    <%= form.text_area :description, placeholder: "Specify job description that will appear in the Job Post. Describe the perfect candidate for the role and what the candidate would be doing" %>
-  </p>
-  <p> Which personality type candidate you prefer to find for this role? </p>
-  <%= form.collection_check_boxes :trait_ids, @traits, :id, :personality do |cb| %>
-    <label class="checkbox-inline">
-      <%= cb.check_box %>
-      <%= cb.label %>
-    </label>
-  <% end %>
-  <p>
-    <%= form.submit %>
-  </p>
 <% end %>
+
+	<p>
+		<%= form.label :description %><br>
+		<%= form.text_area :description, placeholder: "Specify job description that will appear in the Job Post. Describe the perfect candidate for the role and what the candidate would be doing" %>
+	</p>
+
+	<p> Which personality type candidate you prefer to find for this role? </p>
+		<%= form.collection_check_boxes :trait_ids, @traits, :id, :personality do |cb| %>
+    <label class="checkbox-inline">
+        <%= cb.check_box %>
+        <%= cb.label %>
+    </label>
+<% end %>
+
+
+	<p>
+		<%= form.submit %>
+	</p>
+
+<% end %>
+</div>
+</div>
