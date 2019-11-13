@@ -4,15 +4,51 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    p '@@@@@@@@@@@@@@@@@@@@@@@'
-    @form = params[:q]
-    p '@@@@@@@@@@@@@@@@@@@@@@@'
-
-    @listings = Listing.all
-    @industries = Industry.all
-    @environments = Environment.all
-    @traits = Trait.all
-    # id = @listing.id
+    p "this is params"
+    p params
+    p "this is params"
+    if params[:listing]
+      if
+        x = params[:listing][:trait_ids]
+        # finding the array for trait
+        x = x.map { |s| s.to_i}
+        #convert element from string to integer
+        x.shift()
+        #pop out empty first element
+        @listings_ids = ListingsTrait.where("trait_id IN (?)",x).map{|x|x.listing_id}
+        #look inside inner table. find trait id
+        #SELECT* FROM LISTINGSTRAIT WHERE (trait_id IN $1)
+        #x takes the place of the question mark
+        #x is mapped so you can locate listing id
+        @listings = Listing.where("id IN (?)",@listings_ids)
+        p @listings
+        p "################"
+      elsif
+        x = params[:listing][:environment_ids]
+        # finding the array for trait
+        x = x.map { |s| s.to_i}
+        x.shift()
+        @listings_ids = EnvironmentsListing.where("environment_id IN (?)",x).map{|x|x.listing_id}
+        @listings = Listing.where("id IN (?)",@listings_ids)
+        p @listings
+      elsif
+        x = params[:listing][:industry_ids]
+        # finding the array for trait
+        x = x.map { |s| s.to_i}
+        x.shift()
+        @listings_ids = IndustriesListing.where("industry_id IN (?)",x).map{|x|x.listing_id}
+        @listings = Listing.where("id IN (?)",@listings_ids)
+        p @listings
+      end
+    else 
+      # @traits = Trait.all
+      @listings = Listing.all
+    end
+    p "@@@@@@@@@@"
+      @traits = Trait.all
+      @environments = Environment.all
+      @industries = Industry.all
+      @form = params[:q]
   end
 
   # GET /listings/1
@@ -40,6 +76,7 @@ class ListingsController < ApplicationController
     puts params
     @listing = Listing.new(listing_params)
     @listing.employer_profile_id = current_employer.id
+    p "$$$$$$$$$$$$", @listing
     @listing.save
     id = current_employer.id
     @employers_profile = EmployersProfile.find(id)
