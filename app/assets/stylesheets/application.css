@@ -300,3 +300,31 @@ display: block;
 #listing_job_title {
 	width: 100%;
 }
+
+.listing-small-img {
+display: block;
+float: left;
+
+}
+
+.listing-small-duration {
+	display: block;
+	float: right;
+	width: 100%;
+
+}
+
+.listing-small-location {
+	display: block;
+		float: right;
+		width: 100%;
+
+}
+
+.listing-small-description {
+	font-size: 14px;
+}
+
+.listing-outer {
+	max-width: 30%;
+}
