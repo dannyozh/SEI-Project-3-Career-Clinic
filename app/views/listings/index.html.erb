@@ -1,12 +1,14 @@
-<p id="notice">
-		<%= notice %>
-</p>
-<%#---------------------------------------- %>
+
 <div class="container-fluid">
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Search By
   </button>
+
+  <%= form_tag listings_path, :method => 'get' do %>
+	<%= text_field_tag :search, params[:search] %>
+	<%= submit_tag "Search" %>
+	<% end %>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
   	<!-- <form>
@@ -66,6 +68,9 @@
 
 
 <%end%>
+
+
+	<%= link_to "Advanced Search", new_search_path %>
 
 		<% @listings.each_slice(3) do |listing| %>
 		<div class="card-row d-flex justify-content-around my-5">

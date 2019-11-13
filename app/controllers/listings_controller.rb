@@ -4,6 +4,7 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
+
     p "this is params"
     p params
     p "this is params"
@@ -40,15 +41,17 @@ class ListingsController < ApplicationController
         @listings = Listing.where("id IN (?)",@listings_ids)
         p @listings
       end
-    else 
+    else
       # @traits = Trait.all
       @listings = Listing.all
+      @listings = Listing.search(params[:search])
     end
     p "@@@@@@@@@@"
       @traits = Trait.all
       @environments = Environment.all
       @industries = Industry.all
       @form = params[:q]
+
   end
 
   # GET /listings/1
