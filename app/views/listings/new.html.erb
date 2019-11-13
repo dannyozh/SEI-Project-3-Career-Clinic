@@ -1,14 +1,14 @@
 <div class="container ">
-	<div class="col-md-10 my-auto">
-<h3>Let's talk about the job!</h3>
+	<div class="col-md-10 listing-form-outer mx-auto">
+<h3 class="col-md-10 pb-3">Let's talk about the job!</h3>
 
 <%= form_with scope: :listing, url: listings_path, local: true do |form| %>
 
-	<p class="col-md-10">
+	<p class="col-md-10 pb-1">
 		<%= form.label :job_title, class: "job-title" %>
 		<%= form.text_field :job_title, placeholder: "Ex. Interior Designer" %>
 	</p>
-<div cladd="row">
+<div class="columns pb-3">
 	<div class="col-md-3 d-inline-block float-left ">
 		<%= form.label :duration, class: "duration" %>
 		<%= form.text_field :duration, placeholder:"Ex. 4 months" %>
@@ -19,44 +19,51 @@
 		<%= form.text_field :location, placeholder:"List Location" %>
 	</div>
 </div>
-	<p class="col-md-10">
+	<p class="col-md-10 pt-1 pb-2">
 		<%= form.label :image_upload, class: "listing-image-upload" %>
 		<%= form.text_field :photo_url, placeholder:"Add image to your job post" %>
 	</p>
 
-	<p> What industry are you in? </p>
+	<p class="col-md-10 font-weight-bold"> What industry are you in? </p>
+	<div class="col-md-10 pb-3">
   <%= form.collection_check_boxes :industry_ids, @industries, :id, :name do |cb| %>
     <label class="checkbox-inline">
       <%= cb.check_box %>
       <%= cb.label %>
     </label>
   <% end %>
+</div>
 
-	<p> Work Type and Environment </p>
+	<p class="col-md-10 font-weight-bold"> Work Type and Environment </p>
+	<div class="col-md-10 pb-3">
 		<%= form.collection_check_boxes :environment_ids, @environments, :id, :choice do |cb| %>
     <label class="checkbox-inline">
         <%= cb.check_box %>
         <%= cb.label %>
     </label>
 <% end %>
+</div>
 
-	<p>
+	<p class="col-md-10 font-weight-bold">
 		<%= form.label :description %><br>
 		<%= form.text_area :description, placeholder: "Specify job description that will appear in the Job Post. Describe the perfect candidate for the role and what the candidate would be doing" %>
 	</p>
 
-	<p> Which personality type candidate you prefer to find for this role? </p>
+	<p class="col-md-10 pt-2 font-weight-bold"> Which personality type candidate you prefer to find for this role? </p>
+	<div class="col-md-10">
 		<%= form.collection_check_boxes :trait_ids, @traits, :id, :personality do |cb| %>
     <label class="checkbox-inline">
         <%= cb.check_box %>
         <%= cb.label %>
     </label>
 <% end %>
+</div>
 
-
+<div class="col-md-10">
 	<p>
 		<%= form.submit %>
 	</p>
+</div>
 
 <% end %>
 </div>

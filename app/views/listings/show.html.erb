@@ -1,30 +1,20 @@
-<h2>Show Listings:</h2>
-
-<p>
-  <strong>Job Title:</strong>
-  <%= @listing.job_title %>
-</p>
-
-<p>
-  <strong>Duration:</strong>
-  <%= @listing.duration %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @listing.location %>
-</p>
-
-<p>
-  <strong>Job Description:</strong>
-  <%= @listing.description %>
-</p>
-
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @listing.photo_url,size: "100 x 100"%>
-</p>
-
-
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
-<%= link_to 'Back', listings_path %>
+<%= image_tag @listing.photo_url, class: "single_post_img"%>
+<div class="container single-p-container">
+		<h3 class="pb-3">
+				<%= @listing.job_title %>
+		</h3>
+		<h6>
+				<span class="icon-duration mr-2"><img width="15px" src="<%= image_url 'duration-icon.png' %>" /></span><strong>Duration:</strong>
+				<%= @listing.duration %>
+		</h6>
+		<h6  class="pb-3">
+				<span class="icon-duration mr-2 "><img width="15px" src="<%= image_url 'location-icon.png' %>" /></span><strong>Location:</strong>
+				<%= @listing.location %>
+		</h6>
+		<p>
+				<strong>What you’ll be doing</strong><br/>
+				<%= @listing.description %>
+		</p>
+		<%#---<%= link_to 'Edit', edit_listing_path(@listing) %>
+		<%= link_to 'Back', listings_path %>
+</div>
