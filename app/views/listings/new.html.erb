@@ -24,6 +24,14 @@
 		<%= form.text_field :photo_url, placeholder:"Add image to your job post" %>
 	</p>
 
+	<p> What industry are you in? </p>
+  <%= form.collection_check_boxes :industry_ids, @industries, :id, :name do |cb| %>
+    <label class="checkbox-inline">
+      <%= cb.check_box %>
+      <%= cb.label %>
+    </label>
+  <% end %>
+
 	<p> Work Type and Environment </p>
 		<%= form.collection_check_boxes :environment_ids, @environments, :id, :choice do |cb| %>
     <label class="checkbox-inline">
