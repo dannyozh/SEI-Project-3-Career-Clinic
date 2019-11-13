@@ -304,6 +304,7 @@ body {
 .job-title {
 	display: block;
 	width: 100%;
+	font-weight: bold;
 
 }
 
@@ -311,14 +312,23 @@ body {
 #listing_location {
 	display: block;
 	width: 100%;
+	font-weight: bold;
 }
 
-.duration,
+.duration {
+	display: block;
+	font-weight: bold;
+}
+
 .location {
 	display: block;
+	font-weight: bold;
+}
+.listing-image-upload {
+	font-weight: bold;
 }
 
-#listing_job_title {
+#listing_job_title, #listing_description {
 	width: 100%;
 }
 
@@ -359,4 +369,18 @@ body {
 .landing-btn:hover {
 	text-decoration: none;
 	color: inherit;
+}
+.listing-form-outer {
+	padding-top: 60px;
+}
+.single_post_img {
+	width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+.single-p-container {
+	padding-top: 60px;
+}
+.sign-up-title {
+	font-size: 30px;
 }
