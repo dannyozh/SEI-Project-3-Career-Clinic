@@ -44,6 +44,31 @@ class ExplorersProfilesController < ApplicationController
   def create
     @explorers_profile = ExplorersProfile.new(explorers_profile_params)
     @explorers_profile.explorer_id = current_explorer.id
+
+    if (params[:explorers_profile][:photo_url_cloud])
+      p "@@@@@@@"
+      p Cloudinary.config.api_key
+      p "@@@@@@@"
+
+      uploaded_file = params[:explorers_profile][:photo_url_cloud].path
+      auth = {
+        cloud_name: "dqauki0af",
+        api_key: "159256751141427",
+        api_secret: "dOTllEBLPTArwbYTvr0D55t6xsE",
+      }
+
+      cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, auth)
+      #store this public_id value to the database
+      #cloudnary_file[‘public_id’]
+      # render json: cloudnary_file
+      # p cloudnary_file
+      # s1 = cloudnary_file['public_id']
+      s2 = cloudnary_file["url"]
+      # @employers_profile.cloud_key = s1
+      @explorers_profile.photo_url = s2
+    else
+      @explorers_profile.photo_url = params[:explorers_profile][:photo_url]
+    end
     respond_to do |format|
       if @explorers_profile.save
         format.html { redirect_to "/welcome", notice: "Explorers profile was successfully created." }
@@ -88,6 +113,6 @@ class ExplorersProfilesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def explorers_profile_params
-    params.require(:explorers_profile).permit(:name, :age, :photo_url)
+    params.require(:explorers_profile).permit(:name, :age)
   end
 end
