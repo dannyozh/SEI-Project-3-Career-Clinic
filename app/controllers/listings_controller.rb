@@ -51,6 +51,7 @@ class ListingsController < ApplicationController
       @environments = Environment.all
       @industries = Industry.all
       @form = params[:q]
+      @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
 
   end
 
@@ -83,8 +84,7 @@ class ListingsController < ApplicationController
     p "$$$$$$$$$$$$", @listing
     @listing.save
     id = current_employer.id
-    @employers_profile = EmployersProfile.find(id)
-
+    @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
     redirect_to @employers_profile
   end
 
