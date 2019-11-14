@@ -19,7 +19,9 @@
 		 <%= link_to 'Edit Listing', edit_listing_path %> |
 		   <%= link_to 'Remove Listing', listing_path,
 				method: :delete,
-				data: { confirm: 'Are you sure?' } %>
+				data: { confirm: 'Are you sure?' } %> |
+		<%= link_to 'See Applicants', "/connect/#{current_employer.id}" %> |
+
 
 		<br/>
 		<% if current_explorer %>
