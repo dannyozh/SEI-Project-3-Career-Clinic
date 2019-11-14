@@ -55,6 +55,7 @@ class ListingsController < ApplicationController
       @industries = Industry.all
       @form = params[:q]
 
+
   end
 
   # GET /listings/1
@@ -84,11 +85,11 @@ class ListingsController < ApplicationController
     puts params
     @listing = Listing.new(listing_params)
 
-    # format description string before placing into column
-    # d1 = params[:listing][:description_num] # number eg.5
-    # d2 = params[:listing][:description_type] #day month year
-    # e = d1 + d2
-    # @listing.description = e
+    # format duration string before placing into column
+    d1 = params[:listing][:duration] # number eg.5
+    d2 = params[:listing][:select_attribute] #day month year
+    e = d1 + " " + d2
+    @listing.duration = e
 
     # placing employer id
     @listing.employer_profile_id = current_employer.id

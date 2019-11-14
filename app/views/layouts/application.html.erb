@@ -21,7 +21,7 @@
         </button>
         <div class="container">
           <div class="row navbar-nav">
-            <% if @employers_profile.employer_id%>
+            <% if @employers_profile.employer_id %>
               <a class="nav-item nav-link active" href="<%= edit_employers_profile_path(@employers_profile)%>"><%= @employers_profile.company_name %></a>
             <% end %>
             <a class="nav-item nav-link" href="/listings/new">Post a job</a>
