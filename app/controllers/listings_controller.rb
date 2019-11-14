@@ -8,6 +8,9 @@ class ListingsController < ApplicationController
     p "this is params"
     p params
     p "this is params"
+
+
+
     if params[:listing]
       if
         x = params[:listing][:trait_ids]
@@ -62,6 +65,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/new
   def new
+
     @listing = Listing.new
     @traits = Trait.all
     @industries = Industry.all
@@ -78,8 +82,17 @@ class ListingsController < ApplicationController
   def create
     puts params
     @listing = Listing.new(listing_params)
+
+    # format description string before placing into column
+    # d1 = params[:listing][:description_num] # number eg.5
+    # d2 = params[:listing][:description_type] #day month year
+    # e = d1 + d2
+    # @listing.description = e
+
+    # placing employer id
     @listing.employer_profile_id = current_employer.id
     p "$$$$$$$$$$$$", @listing
+
     @listing.save
     id = current_employer.id
     @employers_profile = EmployersProfile.find(id)
@@ -109,5 +122,6 @@ end
 private
 
 def listing_params
+  # params.require(:listing).permit(:job_title, :contact, :industry, :location, :photo_url, :description, :personality, :choice, :trait_ids => [], :environment_ids => [], :industry_ids => [])
   params.require(:listing).permit(:job_title, :contact, :industry, :duration, :location, :photo_url, :description, :personality, :choice, :trait_ids => [], :environment_ids => [], :industry_ids => [])
 end
