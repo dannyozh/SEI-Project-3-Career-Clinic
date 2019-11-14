@@ -442,3 +442,13 @@ body {
     padding: 10px;
     float: right;
 }
+.nav-profile {
+	position: absolute;
+    right: 150px;
+    padding: 10px;
+    float: right;
+}
+
+.navbar {
+	padding-left: 70px;
+}
