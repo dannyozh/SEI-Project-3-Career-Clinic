@@ -5,6 +5,9 @@ class EmployersProfilesController < ApplicationController
   # GET /employers_profiles.json
   def index
     @employers_profiles = EmployersProfile.all
+    @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
+
+
   end
 
   # GET /employers_profiles/1
