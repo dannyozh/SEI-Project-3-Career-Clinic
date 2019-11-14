@@ -66,6 +66,7 @@ class ListingsController < ApplicationController
     @traits = Trait.all
     @industries = Industry.all
     @environments = Environment.all
+    @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
   end
 
   # GET /listings/1/edit
