@@ -545,3 +545,14 @@ body {
 #search::-webkit-input-placeholder {
 		color: #007AFF;
 }
+.listing-search-dashboard {
+	min-height: 100px;
+}
+#industry-search {
+/*	width: 80%;
+	float: right;*/
+}
+
+.detailed-forms {
+	margin-left: 12%;
+}
