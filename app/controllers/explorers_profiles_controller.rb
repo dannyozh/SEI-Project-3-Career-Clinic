@@ -19,6 +19,7 @@ class ExplorersProfilesController < ApplicationController
     @somethingelse = Listing.where(:id => @something)
     if current_employer
       @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
+      # p "@@@@@@@", @explorer.name
     elsif current_explorer
       @explorers_profile = ExplorersProfile.find_by(:explorer_id => current_explorer.id)
     end
