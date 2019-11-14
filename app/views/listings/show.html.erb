@@ -20,7 +20,9 @@
 		   <%= link_to 'Remove Listing', listing_path,
 				method: :delete,
 				data: { confirm: 'Are you sure?' } %> |
-		<%= link_to 'See Applicants', "/connect/#{current_employer.id}" %> |
+		<% if current_employer%>
+		<%= link_to 'See Applicants', "/connect/#{current_employer.id}" %>
+		<% end %>
 
 
 		<br/>
