@@ -6,7 +6,7 @@ class Listing < ApplicationRecord
       all
     end
   end
-
+  has_and_belongs_to_many :explorers_profiles
   has_many :employer_profile
   has_and_belongs_to_many :industries
   has_and_belongs_to_many :traits
