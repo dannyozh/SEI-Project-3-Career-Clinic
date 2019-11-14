@@ -436,3 +436,9 @@ body {
 		background-color: #F4F4F4;
 
 }
+.sign-out {
+	position: absolute;
+    right: 60px;
+    padding: 10px;
+    float: right;
+}
