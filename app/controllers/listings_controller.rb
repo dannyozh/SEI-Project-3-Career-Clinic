@@ -50,7 +50,7 @@ class ListingsController < ApplicationController
     @form = params[:q]
     if current_employer
       @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
-    else
+    elsif current_explorer
       @explorers_profile = ExplorersProfile.find_by(:explorer_id => current_explorer.id)
     end
   end
@@ -84,7 +84,7 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     if current_employer
       @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
-    else
+    elsif current_explorer
       @explorers_profile = ExplorersProfile.find_by(:explorer_id => current_explorer.id)
     end
   end
