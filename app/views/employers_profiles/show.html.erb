@@ -18,23 +18,15 @@
             </div>
           </div>
           <div class="card-body">
-            <h5 class="card-title">
-              <%= card.job_title %>
-            </h5>
+
+            <a href="/listings/<%= card.id%>"><h5 class="card-title">
+										<%= card.job_title %>
+								</h5></a>
             <p class="listing-small-description">
               <%= card.description %>
             </p>
           </div>
-          <div class="card-body">
-            <a class="card-link">
-              <%= link_to 'Show',listing_path(card) %></a>
-            <a class="card-link">
-              <%= link_to 'Edit', edit_listing_path(card) %></a>
-            <a class="card-link">
-              <%= link_to 'Destroy', listing_path(card),
-				method: :delete,
-				data: { confirm: 'Are you sure?' } %></a>
-          </div>
+
         </div>
       <%end%>
     </div>
