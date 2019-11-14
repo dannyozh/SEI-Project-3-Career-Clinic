@@ -1,23 +1,25 @@
-<h1>Welcome on board Explorer, Create your profile below!</h1>
-
-
-<%= form_with scope: :explorers_profile, url: explorers_profiles_path, local: true do |form| %>
-  
-  <p>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>
-  <p>
-    <%= form.label :age %><br>
-    <%= form.text_field :age %>
-  </p>
-  <p>
-    <%= form.label :ProfilePic %><br>
-    <%= form.text_field :photo_url %>
-  </p>
-  <%= form.submit %>
-</p>
-<% end %>
-
-<%= link_to 'Back', explorers_profiles_path %>
-
+<div class="container d-flex my-5">
+  <div class="float-left my-5 col-md-7">
+    <h3 class="text-left blue-text mx-auto col-md-9 sign-up-title">Hello Employer! Complete your company profile!</h3>
+  </div>
+  <div class="form-group emp-form profile-form blue my-auto rounded col-md-5 float-right">
+    <div class="inner-form col-md-9 mx-auto my-5">
+      <%= form_with scope: :explorers_profile, url: explorers_profiles_path, local: true do |form| %>
+        <div class="field">
+          <%= form.text_field :name, class: "input", placeholder: "Your name" %>
+        </div>
+        <div class="field">
+          <%= form.text_field :age, class: "input", placeholder: "Your age" %>
+        </div>
+        <div class="field ">
+          <%#=	  <%= form.label :logo %>
+          <%= form.text_field :photo_url, class: "input", placeholder: "Upload Profile Picture" %>
+          <%= form.file_field :photo_url_cloud %>
+        </div>
+        <div class="actions text-center">
+          <%= form.submit class: "create-profile-btn" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
