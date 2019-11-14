@@ -5,12 +5,22 @@ class ExplorersProfilesController < ApplicationController
   # GET /explorers_profiles.json
   def index
     @explorers_profiles = ExplorersProfile.all
+    if current_employer
+      @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
+    elsif current_explorer
+      @explorers_profile = ExplorersProfile.find_by(:explorer_id => current_explorer.id)
+    end
   end
 
   # GET /explorers_profiles/1
   # GET /explorers_profiles/1.json
   def show
     @explorers_profile = ExplorersProfile.find(params[:id])
+    if current_employer
+      @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
+    elsif current_explorer
+      @explorers_profile = ExplorersProfile.find_by(:explorer_id => current_explorer.id)
+    end
   end
 
   # GET /explorers_profiles/new
@@ -20,6 +30,11 @@ class ExplorersProfilesController < ApplicationController
 
   # GET /explorers_profiles/1/edit
   def edit
+    if current_employer
+      @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
+    elsif current_explorer
+      @explorers_profile = ExplorersProfile.find_by(:explorer_id => current_explorer.id)
+    end
   end
 
   # POST /explorers_profiles
