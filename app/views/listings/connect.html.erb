@@ -1,11 +1,20 @@
+<div class="header border-bottom employers-dashboard">
 
+		<h4 class="py-5 d-inline ">Here's the list of all interested applicants for the role!</h4>
+
+
+
+
+			<p id="notice"><%= notice %></p>
+
+	</div>
 
 <main class="applicants-main">
 	<div class="container ">
-<h4 class="pt-5">List of interested applicants</h4>
+
 
   <% @profiles.each_slice(3) do |applicant| %>
-    <div class="card-row d-flex justify-content-around my-5">
+    <div class="card-row d-flex justify-content-around py-5">
       <% applicant.each do |card| %>
      <div class="card float-left justify-content-around" style="width: 22rem;">
           <div class="row my-4 px-4">
