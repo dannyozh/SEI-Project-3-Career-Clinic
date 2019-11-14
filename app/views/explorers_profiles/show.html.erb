@@ -1,8 +1,14 @@
 <p id="notice"><%= notice %></p>
-<h1> HELLO EXPLORER PROFILE </h1>
-<% @somethingelse.each do |listing| %>
-  <p><%= listing.job_title%></p>
-  <p><%= listing.duration%></p>
-<% end %>
-<%= link_to 'Edit', edit_explorers_profile_path(@explorers_profile) %> |
-<%= link_to 'Back', explorers_profiles_path %>
+<% if current_explorer%>
+  <h1> HELLO EXPLORER PROFILE </h1>
+  <% @somethingelse.each do |listing| %>
+    <p><%= listing.job_title%></p>
+    <p><%= listing.duration%></p>
+  <%end%>
+  <%= link_to 'Edit', edit_explorers_profile_path(@explorers_profile) %> |
+  <%= link_to 'Back', explorers_profiles_path %>
+<% elsif current_employer %>
+  <p><%= @explorer.name%></p>
+  <p><%= @explorer.age%></p>
+  <p><%= @explorer.photo_url%></p>
+<%end%>

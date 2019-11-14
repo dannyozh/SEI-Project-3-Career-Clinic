@@ -155,7 +155,6 @@ class ListingsController < ApplicationController
     #go to listing table and find listing which belongs to this employer and find the explorer that has interest in this listing in the inner join table
     @profiles = ExplorersProfile.where("id IN (?)", @explorer_profile_ids)
     #find the explorer's profile
-    p @listings
     if current_employer
       @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
     elsif current_explorer
