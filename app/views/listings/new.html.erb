@@ -13,7 +13,7 @@
 		<%= form.label :duration, class: "duration" %>
 
 		<%= form.number_field :duration, max:31, min:1, placeholder: "No." %>
-		<%= form.select :desired_attribute, options_for_select(([['Day(s)'],['Week(s)'],['Month(s)'],['Year(s)']])), placeholder: "No." %>
+		<%= form.select :select_attribute, options_for_select(([['Day(s)'],['Week(s)'],['Month(s)'],['Year(s)']])) %>
 	</div>
 
 	<div class="col-md-7 d-inline-block">
