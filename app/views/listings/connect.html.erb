@@ -1,4 +1,6 @@
-<h1>Connected</h1>
+<h1>List of interested applicants</h1>
 <% @profiles.each do |applicant| %>
-  <p><%= applicant.name %></p>
+  <p>Photo: <%= applicant.photo_url %></p>
+  <p>Name: <%= applicant.name %></p>
+  <p>Contact: <%= applicant.explorer.email%></p>
 <%end%>
