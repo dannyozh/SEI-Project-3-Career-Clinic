@@ -4,44 +4,38 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-
     p "this is params"
     p params
     p "this is params"
 
-
-
     if params[:listing]
-      if
-        x = params[:listing][:trait_ids]
+      if x = params[:listing][:trait_ids]
         # finding the array for trait
-        x = x.map { |s| s.to_i}
+        x = x.map { |s| s.to_i }
         #convert element from string to integer
         x.shift()
         #pop out empty first element
-        @listings_ids = ListingsTrait.where("trait_id IN (?)",x).map{|x|x.listing_id}
+        @listings_ids = ListingsTrait.where("trait_id IN (?)", x).map { |x| x.listing_id }
         #look inside inner table. find trait id
         #SELECT* FROM LISTINGSTRAIT WHERE (trait_id IN $1)
         #x takes the place of the question mark
         #x is mapped so you can locate listing id
-        @listings = Listing.where("id IN (?)",@listings_ids)
+        @listings = Listing.where("id IN (?)", @listings_ids)
         p @listings
         p "################"
-      elsif
-        x = params[:listing][:environment_ids]
+      elsif x = params[:listing][:environment_ids]
         # finding the array for trait
-        x = x.map { |s| s.to_i}
+        x = x.map { |s| s.to_i }
         x.shift()
-        @listings_ids = EnvironmentsListing.where("environment_id IN (?)",x).map{|x|x.listing_id}
-        @listings = Listing.where("id IN (?)",@listings_ids)
+        @listings_ids = EnvironmentsListing.where("environment_id IN (?)", x).map { |x| x.listing_id }
+        @listings = Listing.where("id IN (?)", @listings_ids)
         p @listings
-      elsif
-        x = params[:listing][:industry_ids]
+      elsif x = params[:listing][:industry_ids]
         # finding the array for trait
-        x = x.map { |s| s.to_i}
+        x = x.map { |s| s.to_i }
         x.shift()
-        @listings_ids = IndustriesListing.where("industry_id IN (?)",x).map{|x|x.listing_id}
-        @listings = Listing.where("id IN (?)",@listings_ids)
+        @listings_ids = IndustriesListing.where("industry_id IN (?)", x).map { |x| x.listing_id }
+        @listings = Listing.where("id IN (?)", @listings_ids)
         p @listings
       end
     else
@@ -50,37 +44,49 @@ class ListingsController < ApplicationController
       @listings = Listing.search(params[:search])
     end
     p "@@@@@@@@@@"
-      @traits = Trait.all
-      @environments = Environment.all
-      @industries = Industry.all
-      @form = params[:q]
+    @traits = Trait.all
+    @environments = Environment.all
+    @industries = Industry.all
+    @form = params[:q]
+    if current_employer
       @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
-
-
+    else
+      @explorers_profile = ExplorersProfile.find_by(:explorer_id => current_explorer.id)
+    end
   end
 
   # GET /listings/1
   # GET /listings/1.json
   def show
     @listing = Listing.find(params[:id])
-    @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
+    if current_employer
+      @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
+    else
+      @explorers_profile = ExplorersProfile.find_by(:explorer_id => current_explorer.id)
+    end
   end
 
   # GET /listings/new
   def new
-
     @listing = Listing.new
     @traits = Trait.all
     @industries = Industry.all
     @environments = Environment.all
-    @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
+    if current_employer
+      @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
+    else
+      @explorers_profile = ExplorersProfile.find_by(:explorer_id => current_explorer.id)
+    end
   end
 
   # GET /listings/1/edit
   def edit
     @listing = Listing.find(params[:id])
-    @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
-
+    if current_employer
+      @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
+    else
+      @explorers_profile = ExplorersProfile.find_by(:explorer_id => current_explorer.id)
+    end
   end
 
   # POST /listings
@@ -109,7 +115,6 @@ class ListingsController < ApplicationController
   def update
     @listing = Listing.find(params[:id])
 
-
     # format duration string before placing into column
     d1 = params[:listing][:duration] # number eg.5
     d2 = params[:listing][:select_attribute] #day month year
@@ -131,11 +136,20 @@ class ListingsController < ApplicationController
     @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
     redirect_to @employers_profile
   end
+
+  def interest
+    @listing = Listing.find(params[:listid])
+    p "@@@@@@@@@@@@@@@@@@@", @listing
+    @explorers_profile = ExplorersProfile.find(params[:exid])
+    p "###########", @explorers_profile
+    @interestListing = ExplorersProfilesListing.new(:explorer_profile_id => @explorers_profile.id, :listing_id => @listing.id)
+    @interestListing.save
+    redirect_to @explorers_profile
+  end
 end
 
 private
 
 def listing_params
-  # params.require(:listing).permit(:job_title, :contact, :industry, :location, :photo_url, :description, :personality, :choice, :trait_ids => [], :environment_ids => [], :industry_ids => [])
   params.require(:listing).permit(:job_title, :contact, :industry, :location, :photo_url, :description, :personality, :choice, :trait_ids => [], :environment_ids => [], :industry_ids => [])
 end

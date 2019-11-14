@@ -15,6 +15,7 @@
 				<strong>What you’ll be doing</strong><br/>
 				<%= @listing.description %>
 		</p>
-		<%#---<%= link_to 'Edit', edit_listing_path(@listing) %>
-		<%= link_to 'Back', listings_path %>
+		<%= link_to 'Back To Dashboard', listings_path %>
+		<br/>
+		<a href="/interest/<%=@listing.id%>/<%=@explorers_profile.id%>">Register Interest</a>
 </div>

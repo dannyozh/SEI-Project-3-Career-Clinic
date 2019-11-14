@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   resources :listings
 
   root "landings#landing"
-  get '/welcome' => "landings#welcome"
+  get "/welcome" => "landings#welcome"
+  get "/interest/:listid/:exid" => "listings#interest"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
