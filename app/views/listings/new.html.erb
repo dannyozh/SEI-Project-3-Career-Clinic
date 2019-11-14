@@ -11,7 +11,9 @@
 <div class="columns pb-3">
 	<div class="col-md-3 d-inline-block float-left ">
 		<%= form.label :duration, class: "duration" %>
-		<%= form.text_field :duration, placeholder:"Ex. 4 months" %>
+
+		<%= form.number_field :duration, max:31, min:1, placeholder: "No." %>
+		<%= form.select :desired_attribute, options_for_select(([['Day(s)'],['Week(s)'],['Month(s)'],['Year(s)']])), placeholder: "No." %>
 	</div>
 
 	<div class="col-md-7 d-inline-block">
