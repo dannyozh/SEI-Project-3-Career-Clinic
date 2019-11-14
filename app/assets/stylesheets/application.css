@@ -242,6 +242,7 @@ body {
 
 .emp-form {
 	height: 400px;
+
 }
 
 .new_employer,
@@ -383,4 +384,28 @@ body {
 }
 .sign-up-title {
 	font-size: 30px;
+}
+
+.input {
+	width: 100%;
+	border-radius: 5px;
+    padding: 8px;
+    border: none;
+    margin: 8px 0;
+}
+.input::-webkit-input-placeholder {
+	color: #007AFF
+}
+
+.create-profile-btn {
+ display: block;
+	margin: 8px auto;
+	background-color: #007AFF;
+	color: #ffffff;
+	border-radius: 5px;
+	width: 100%;
+	padding: 8px 0;
+}
+.profile-form {
+	padding-top: 6%;
 }
