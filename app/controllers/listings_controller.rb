@@ -63,6 +63,7 @@ class ListingsController < ApplicationController
   # GET /listings/1.json
   def show
     @listing = Listing.find(params[:id])
+    @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
   end
 
   # GET /listings/new
@@ -78,6 +79,9 @@ class ListingsController < ApplicationController
   # GET /listings/1/edit
   def edit
     @listing = Listing.find(params[:id])
+    @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
+
+
   end
 
   # POST /listings
@@ -94,7 +98,6 @@ class ListingsController < ApplicationController
 
     # placing employer id
     @listing.employer_profile_id = current_employer.id
-    p "$$$$$$$$$$$$", @listing
 
     @listing.save
     id = current_employer.id
@@ -106,6 +109,15 @@ class ListingsController < ApplicationController
   # PATCH/PUT /listings/1.json
   def update
     @listing = Listing.find(params[:id])
+
+
+    # format duration string before placing into column
+    d1 = params[:listing][:duration] # number eg.5
+    d2 = params[:listing][:select_attribute] #day month year
+    e = d1 + " " + d2
+
+    @listing.duration = e
+
     @listing.update(listing_params)
 
     redirect_to @listing
@@ -125,5 +137,5 @@ private
 
 def listing_params
   # params.require(:listing).permit(:job_title, :contact, :industry, :location, :photo_url, :description, :personality, :choice, :trait_ids => [], :environment_ids => [], :industry_ids => [])
-  params.require(:listing).permit(:job_title, :contact, :industry, :duration, :location, :photo_url, :description, :personality, :choice, :trait_ids => [], :environment_ids => [], :industry_ids => [])
+  params.require(:listing).permit(:job_title, :contact, :industry, :location, :photo_url, :description, :personality, :choice, :trait_ids => [], :environment_ids => [], :industry_ids => [])
 end
