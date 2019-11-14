@@ -15,7 +15,8 @@ class ExplorersProfilesController < ApplicationController
   # GET /explorers_profiles/1
   # GET /explorers_profiles/1.json
   def show
-    @explorers_profile = ExplorersProfile.find(params[:id])
+    @something = ExplorersProfilesListing.where(:explorer_profile_id => params[:id]).map { |x| x.listing_id }
+    @somethingelse = Listing.where(:id => @something)
     if current_employer
       @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
     elsif current_explorer
