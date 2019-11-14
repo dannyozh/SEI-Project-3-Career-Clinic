@@ -1,3 +1,4 @@
+require 'yaml'
 class EmployersProfilesController < ApplicationController
   # before_action :set_employers_profile, only: [:show, :edit, :update, :destroy]
 
@@ -34,26 +35,23 @@ class EmployersProfilesController < ApplicationController
   # POST /employers_profiles
   # POST /employers_profiles.json
   def create
-
-    if (employers_profile_params[:company_logo].is_a?(String))
-
     @employers_profile = EmployersProfile.new(employers_profile_params)
     @employers_profile.employer_id = current_employer.id
-    @employers_profile.save
+    if (params[:employers_profile][:company_logo_cloud])
 
-    else
       p "@@@@@@@"
       p Cloudinary.config.api_key
       p "@@@@@@@"
 
-    uploaded_file = employers_profile_params[:company_logo].path
+    uploaded_file = params[:employers_profile][:company_logo_cloud].path
     auth = {
         cloud_name: "dqauki0af",
         api_key: "159256751141427",
         api_secret: "dOTllEBLPTArwbYTvr0D55t6xsE"
     }
 
-    cloudnary_file = Cloudinary::Uploader.upload(uploaded_file)
+
+    cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, auth)
      #store this public_id value to the database
      #cloudnary_file[‘public_id’]
      # render json: cloudnary_file
@@ -62,7 +60,8 @@ class EmployersProfilesController < ApplicationController
      s2 = cloudnary_file['url']
        # @employers_profile.cloud_key = s1
        @employers_profile.company_logo = s2
-       @employers_profile.save
+else
+  @employers_profile.company_logo = params[:employers_profile][:company_logo]
 end
 
     respond_to do |format|
@@ -112,6 +111,6 @@ end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def employers_profile_params
-    params.require(:employers_profile).permit(:company_name, :industry, :company_logo)
+    params.require(:employers_profile).permit(:company_name, :industry)
   end
 end
