@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 <div class="container ">
+	<h1> HELLO EXPLORER PROFILE </h1>
+<%= link_to 'Edit', edit_employers_profile_path(@employers_profile) %>
   <% @listing.each_slice(3) do |listing| %>
     <div class="card-row d-flex justify-content-around my-5">
       <% listing.each do |card| %>
