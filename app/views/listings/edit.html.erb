@@ -9,7 +9,8 @@
 
 	<p>
 		<%= form.label :duration %><br>
-		<%= form.text_field :duration %>
+		<%= form.number_field :duration, max:31, min:1, placeholder: "No." %>
+		<%= form.select :select_attribute, options_for_select(([['Day(s)'],['Week(s)'],['Month(s)'],['Year(s)']])) %>
 	</p>
 
 	<p>

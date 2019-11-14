@@ -19,6 +19,7 @@ class EmployersProfilesController < ApplicationController
   # GET /employers_profiles/new
   def new
     @employers_profile = EmployersProfile.new
+
   end
 
   # GET /employers_profiles/1/edit
