@@ -8,6 +8,9 @@ class ListingsController < ApplicationController
     p "this is params"
     p params
     p "this is params"
+
+
+
     if params[:listing]
       if
         x = params[:listing][:trait_ids]
@@ -53,16 +56,19 @@ class ListingsController < ApplicationController
       @form = params[:q]
       @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
 
+
   end
 
   # GET /listings/1
   # GET /listings/1.json
   def show
     @listing = Listing.find(params[:id])
+    @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
   end
 
   # GET /listings/new
   def new
+
     @listing = Listing.new
     @traits = Trait.all
     @industries = Industry.all
@@ -73,6 +79,8 @@ class ListingsController < ApplicationController
   # GET /listings/1/edit
   def edit
     @listing = Listing.find(params[:id])
+    @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
+
   end
 
   # POST /listings
@@ -80,8 +88,16 @@ class ListingsController < ApplicationController
   def create
     puts params
     @listing = Listing.new(listing_params)
+
+    # format duration string before placing into column
+    d1 = params[:listing][:duration] # number eg.5
+    d2 = params[:listing][:select_attribute] #day month year
+    e = d1 + " " + d2
+    @listing.duration = e
+
+    # placing employer id
     @listing.employer_profile_id = current_employer.id
-    p "$$$$$$$$$$$$", @listing
+
     @listing.save
     id = current_employer.id
     @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
@@ -92,9 +108,19 @@ class ListingsController < ApplicationController
   # PATCH/PUT /listings/1.json
   def update
     @listing = Listing.find(params[:id])
-    @listing.update(listing_params)
 
-    redirect_to @listing
+
+    # format duration string before placing into column
+    d1 = params[:listing][:duration] # number eg.5
+    d2 = params[:listing][:select_attribute] #day month year
+    e = d1 + " " + d2
+
+    @listing.duration = e
+
+    @listing.update(listing_params)
+    @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
+
+    redirect_to @employers_profile
   end
 
   # DELETE /listings/1
@@ -102,13 +128,14 @@ class ListingsController < ApplicationController
   def destroy
     @listing = Listing.find(params[:id])
     @listing.destroy
-
-    redirect_to @listing
+    @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
+    redirect_to @employers_profile
   end
 end
 
 private
 
 def listing_params
-  params.require(:listing).permit(:job_title, :contact, :industry, :duration, :location, :photo_url, :description, :personality, :choice, :trait_ids => [], :environment_ids => [], :industry_ids => [])
+  # params.require(:listing).permit(:job_title, :contact, :industry, :location, :photo_url, :description, :personality, :choice, :trait_ids => [], :environment_ids => [], :industry_ids => [])
+  params.require(:listing).permit(:job_title, :contact, :industry, :location, :photo_url, :description, :personality, :choice, :trait_ids => [], :environment_ids => [], :industry_ids => [])
 end
