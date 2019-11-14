@@ -1,4 +1,4 @@
 class ExplorersProfilesListing < ApplicationRecord
-  has_many :listing
-  has_many :explorer
+  belongs_to :listing
+  belongs_to :explorers_profile
 end
