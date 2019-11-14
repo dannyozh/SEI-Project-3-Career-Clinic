@@ -1,6 +1,22 @@
 <h1>Editing Explorers Profile</h1>
 
-<%= render 'form', explorers_profile: @explorers_profile %>
+<%= form_with scope: :explorers_profile, model: @explorers_profile, local: true do |form| %>
+
+	<p>
+		<%= form.label :company_name %><br>
+		<%= form.text_field :company_name %>
+	</p>
+
+	<p>
+		<%= form.label :company_logo %><br>
+		<%= form.text_field :company_logo %>
+	</p>
+
+
+	<p>
+		<%= form.submit %>
+	</p>
+<% end %>
 
 <%= link_to 'Show', @explorers_profile %> |
 <%= link_to 'Back', explorers_profiles_path %>
