@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_12_060746) do
+ActiveRecord::Schema.define(version: 2019_11_13_063816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,16 +63,6 @@ ActiveRecord::Schema.define(version: 2019_11_12_060746) do
     t.index ["reset_password_token"], name: "index_explorers_on_reset_password_token", unique: true
   end
 
-  create_table "explorers_profile_listings", force: :cascade do |t|
-    t.bigint "explorer_profile_id"
-    t.bigint "listing_id"
-    t.boolean "connect", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["explorer_profile_id"], name: "index_explorers_profile_listings_on_explorer_profile_id"
-    t.index ["listing_id"], name: "index_explorers_profile_listings_on_listing_id"
-  end
-
   create_table "explorers_profiles", force: :cascade do |t|
     t.string "name"
     t.integer "age"
@@ -84,12 +74,12 @@ ActiveRecord::Schema.define(version: 2019_11_12_060746) do
   end
 
   create_table "explorers_profiles_listings", force: :cascade do |t|
-    t.bigint "explorer_profile_id"
+    t.bigint "explorers_profile_id"
     t.bigint "listing_id"
     t.boolean "connect", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["explorer_profile_id"], name: "index_explorers_profiles_listings_on_explorer_profile_id"
+    t.index ["explorers_profile_id"], name: "index_explorers_profiles_listings_on_explorers_profile_id"
     t.index ["listing_id"], name: "index_explorers_profiles_listings_on_listing_id"
   end
 
@@ -101,11 +91,11 @@ ActiveRecord::Schema.define(version: 2019_11_12_060746) do
 
   create_table "industries_listings", force: :cascade do |t|
     t.bigint "listing_id"
-    t.bigint "trait_id"
+    t.bigint "industry_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["industry_id"], name: "index_industries_listings_on_industry_id"
     t.index ["listing_id"], name: "index_industries_listings_on_listing_id"
-    t.index ["trait_id"], name: "index_industries_listings_on_trait_id"
   end
 
   create_table "listings", force: :cascade do |t|
@@ -120,9 +110,6 @@ ActiveRecord::Schema.define(version: 2019_11_12_060746) do
     t.index ["employer_profile_id"], name: "index_listings_on_employer_profile_id"
   end
 
-  create_table "traits", force: :cascade do |t|
-    t.string "personality"
-
   create_table "listings_traits", force: :cascade do |t|
     t.bigint "listing_id"
     t.bigint "trait_id"
@@ -132,9 +119,21 @@ ActiveRecord::Schema.define(version: 2019_11_12_060746) do
     t.index ["trait_id"], name: "index_listings_traits_on_trait_id"
   end
 
+  create_table "searches", force: :cascade do |t|
+    t.string "keywords"
+    t.string "duration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shops", id: :serial, force: :cascade do |t|
+    t.text "name"
+  end
+
   create_table "traits", force: :cascade do |t|
     t.string "personality"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
 end
