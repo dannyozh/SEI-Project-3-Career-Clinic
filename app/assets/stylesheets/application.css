@@ -241,7 +241,7 @@ body {
 }
 
 .emp-form {
-	height: 400px;
+	min-height: 400px;
 
 }
 
@@ -408,4 +408,13 @@ body {
 }
 .profile-form {
 	padding-top: 6%;
+}
+
+.not-a-member {
+	color: #0056b3;
+
+}
+.not-a-member:hover {
+	text-decoration: none;
+	font-weight: bolder;
 }
