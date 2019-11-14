@@ -16,6 +16,9 @@
 * {
 	outline: none;
 }
+a {
+	text-decoration: none !important;
+}
 
 button {
 	outline: none !important;
@@ -412,6 +415,10 @@ body {
 
 .not-a-member {
 	color: #0056b3;
+
+}
+.card-title:hover {
+	text-decoration: none !important;
 
 }
 .not-a-member:hover {
