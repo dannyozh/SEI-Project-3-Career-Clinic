@@ -13,7 +13,7 @@
     <%= javascript_include_tag 'application' %>
   </head>
   <body style="margin: 0;">
-    <% if current_employer %>
+      <% if current_employer %>
       <nav class="navbar navbar-expand-lg navbar-white border-bottom">
         <a class="navbar-brand" href="/">Career Clinic</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,13 +21,15 @@
         </button>
         <div class="container">
           <div class="row navbar-nav">
-            <a class="nav-item nav-link active" href="<%= edit_employers_profile_path(@employers_profile)%>"><%= @employers_profile.company_name %></a>
+            <% if @employers_profile.employer_id%>
+              <a class="nav-item nav-link active" href="<%= edit_employers_profile_path(@employers_profile)%>"><%= @employers_profile.company_name %></a>
+            <% end %>
             <a class="nav-item nav-link" href="/listings/new">Post a job</a>
             <%= link_to 'Sign out', destroy_employer_session_path, method: :delete %>
           </div>
         </div>
       </nav>
-    <%elsif current_explorer%>
+      <%elsif current_explorer%>
       <nav class="navbar navbar-expand-lg navbar-white border-bottom">
         <a class="navbar-brand" href="/">Career Clinic</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,12 +38,14 @@
         <div class="container">
           <div class="row navbar-nav">
             <a class="nav-item nav-link" href="/listings">Listings</a>
+            <% if @explorers_profile.explorer_id%>
             <a class="nav-item nav-link active" href="<%= edit_explorers_profile_path(@explorers_profile)%>"><%= @explorers_profile.name %></a>
+            <%end%>
             <%= link_to 'Sign out', destroy_explorer_session_path, method: :delete %>
           </div>
         </div>
       </nav>
-    <% else %>
+      <%else%>
       <nav class="navbar navbar-expand-lg navbar-white border-bottom">
         <a class="navbar-brand" href="/">Career Clinic</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,7 +61,7 @@
           </div>
         </div>
       </nav>
-    <% end %>
+      <%end%>
     <div class="jumbotron">
       <%= yield %>
     </div>

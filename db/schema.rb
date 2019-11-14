@@ -126,6 +126,10 @@ ActiveRecord::Schema.define(version: 2019_11_13_063816) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "shops", id: :serial, force: :cascade do |t|
+    t.text "name"
+  end
+
   create_table "traits", force: :cascade do |t|
     t.string "personality"
     t.datetime "created_at", null: false
