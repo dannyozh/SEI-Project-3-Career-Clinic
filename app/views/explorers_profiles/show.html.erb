@@ -1,9 +1,8 @@
 <p id="notice"><%= notice %></p>
-<% if current_explorer%>
-  <h1> HELLO EXPLORER PROFILE </h1>
-  <% @somethingelse.each do |listing| %>
-    <p><%= listing.job_title%></p>
-    <p><%= listing.duration%></p>
-  <%end%>
+<h1> HELLO EXPLORER PROFILE </h1>
+<% @somethingelse.each do |listing| %>
+  <p><%= listing.job_title%></p>
+  <p><%= listing.duration%></p>
   <%= link_to 'Edit', edit_explorers_profile_path(@explorers_profile) %> |
   <%= link_to 'Back', explorers_profiles_path %>
+<%end%>
