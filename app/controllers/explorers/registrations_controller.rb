@@ -52,7 +52,7 @@ class Explorers::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    "/listings"
+    "/explorers_profiles/new"
   end
 
   def after_sign_in_path_for(resource)
