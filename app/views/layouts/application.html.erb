@@ -41,6 +41,12 @@
           <div class="row navbar-nav">
             <a class="nav-item nav-link" href="/listings">Explore Roles</a>
             <% if @explorers_profile.explorer_id%>
+            <span class="float-right ">
+<%= form_tag listings_path, :method => 'get' do %>
+	<%= text_field_tag :search,  params[:search], placeholder: "Search" %>
+<!-- 	<%= submit_tag "Search" %> -->
+	<% end %>
+</span>
             <a class="nav-item nav-link blue-text nav-profile active" href="<%=explorers_profile_path(@explorers_profile)%>"><%= @explorers_profile.name%></a>
             <% end %>
            <a class="nav-item nav-link"> <%= link_to 'Sign out', destroy_explorer_session_path, method: :delete, class: "sign-out"  %></a>
