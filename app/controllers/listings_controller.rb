@@ -59,6 +59,7 @@ class ListingsController < ApplicationController
   # GET /listings/1.json
   def show
     @listing = Listing.find(params[:id])
+    @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
   end
 
   # GET /listings/new
@@ -73,6 +74,7 @@ class ListingsController < ApplicationController
   # GET /listings/1/edit
   def edit
     @listing = Listing.find(params[:id])
+    @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
   end
 
   # POST /listings
@@ -93,8 +95,9 @@ class ListingsController < ApplicationController
   def update
     @listing = Listing.find(params[:id])
     @listing.update(listing_params)
+    @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
 
-    redirect_to @listing
+    redirect_to @employers_profile
   end
 
   # DELETE /listings/1
@@ -102,8 +105,8 @@ class ListingsController < ApplicationController
   def destroy
     @listing = Listing.find(params[:id])
     @listing.destroy
-
-    redirect_to @listing
+    @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
+    redirect_to @employers_profile
   end
 end
 
