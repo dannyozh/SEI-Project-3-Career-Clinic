@@ -1,9 +1,10 @@
+<main class="applicants-main">
 
+	<div class="header border-bottom employers-dashboard">
 
-	<div class="header employers-dashboard">
+		<h5 class="py-5 d-inline blue-text"><span><img class="small-profile-photo" size="width: 60px" src =" <%= @explorers_profile.photo_url %>"/></span> Welcome back <%= @explorers_profile.name %>! Here's the archive of roles you have applied to!</h5>
+		<h6 class="blue-text d-inline float-right"><%= link_to 'Edit Profile', edit_explorers_profile_path(@explorers_profile) %></h6>
 
-		<h4 class="py-5 d-inline blue-text"> Welcome back Explorer! </h4>
-		<h5 class="blue-text d-inline float-right"><%= link_to 'Edit Profile', edit_explorers_profile_path(@explorers_profile) %><h5>
 
 			<p id="notice"><%= notice %></p>
 
@@ -44,3 +45,4 @@
   <% end %>
 </div>
 <% end %>
+</main>

@@ -1,6 +1,6 @@
 
 
-
+<main class="applicants-main">
 	<div class="container ">
 <h4 class="pt-5">List of interested applicants</h4>
 
@@ -13,8 +13,8 @@
           </div>
           <div class="card-body">
 
-            <h5 class="applicant-name" ><%= card.name %></h5>
-            <p><span class="mail-icon mr-1"><img width="30px" src="<%= image_url 'mail.png' %>" /></span> <%= card.explorer.email%></p>
+            <h5 class="applicant-name text-center" ><%= card.name %></h5>
+            <p class="text-center"><span class="mail-icon mr-1"><img width="30px" src="<%= image_url 'mail.png' %>" /></span> <%= card.explorer.email%></p>
           </div>
 
         </div>
@@ -22,3 +22,4 @@
     </div>
   <% end %>
 </div>
+</main>
