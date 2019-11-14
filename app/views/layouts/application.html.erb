@@ -22,10 +22,11 @@
         <div class="container">
           <div class="row navbar-nav">
             <% if @employers_profile.employer_id %>
+              <a class="nav-item nav-link" href="/listings">Homepage</a>
               <a class="nav-item nav-link active" href="<%= employers_profile_path(@employers_profile)%>"><%= @employers_profile.company_name %></a>
             <% end %>
             <a class="nav-item nav-link" href="/listings/new">Post a job</a>
-            <%= link_to 'Sign out', destroy_employer_session_path, method: :delete %>
+            <a class="nav-item nav-link"><%= link_to 'Sign out', destroy_employer_session_path, method: :delete %></a>
           </div>
         </div>
       </nav>
@@ -41,7 +42,7 @@
             <% if @explorers_profile.explorer_id%>
             <a class="nav-item nav-link active" href="<%=explorers_profile_path(@explorers_profile)%>"><%= @explorers_profile.name %></a>
             <% end %>
-            <%= link_to 'Sign out', destroy_explorer_session_path, method: :delete %>
+           <a class="nav-item nav-link"> <%= link_to 'Sign out', destroy_explorer_session_path, method: :delete %></a>
           </div>
         </div>
       </nav>

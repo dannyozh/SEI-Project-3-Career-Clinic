@@ -1,7 +1,12 @@
+
+	<div class="header employers-dashboard">
+
+		<h4 class="py-5 d-inline blue-text"> Welcome back Employer! </h4>
+		<h5 class="blue-text d-inline float-right"><%= link_to 'Edit Profile', edit_employers_profile_path(@employers_profile) %><h5>
+
+	</div>
+	<div class="container ">
 <p id="notice"><%= notice %></p>
-<div class="container ">
-	<h1> HELLO EXPLORER PROFILE </h1>
-<%= link_to 'Edit', edit_employers_profile_path(@employers_profile) %>
   <% @listing.each_slice(3) do |listing| %>
     <div class="card-row d-flex justify-content-around my-5">
       <% listing.each do |card| %>
