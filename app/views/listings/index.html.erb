@@ -34,7 +34,7 @@
 	  <p>
 	    <%= form.submit "Submit" %>
 	  </p>
-	<%end%>
+	<% end %>
 
 
 <% elsif @form === "personality-search" %>
@@ -48,7 +48,7 @@
 	  <p>
 	    <%= form.submit "Submit" %>
 	  </p>
-	<%end%>
+	<% end %>
 
 
 <% elsif @form === "environment-search" %>
@@ -62,12 +62,12 @@
 	  <p>
 	    <%= form.submit "Submit" %>
 	  </p>
-	<%end%>
+	<% end %>
 
-	<%else%>
+	<% else %>
 
 
-<%end%>
+<% end %>
 
 
 	<%= link_to "Advanced Search", new_search_path %>
@@ -96,12 +96,13 @@
 										<%= card.job_title %>
 								</h5></a>
 								<p class="listing-small-description">
+									<strong>What you’ll be doing</strong><br/>
 										<%= card.description %>
 								</p>
 						</div>
 
 				</div>
-				<%end%>
+				<% end %>
 		</div>
-		<%end%>
+		<% end %>
 </div>
