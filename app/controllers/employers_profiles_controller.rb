@@ -1,5 +1,5 @@
 class EmployersProfilesController < ApplicationController
-  before_action :set_employers_profile, only: [:show, :edit, :update, :destroy]
+  # before_action :set_employers_profile, only: [:show, :edit, :update, :destroy]
 
   # GET /employers_profiles
   # GET /employers_profiles.json
@@ -23,6 +23,7 @@ class EmployersProfilesController < ApplicationController
   def new
     @employers_profile = EmployersProfile.new
 
+
   end
 
   # GET /employers_profiles/1/edit
@@ -33,8 +34,36 @@ class EmployersProfilesController < ApplicationController
   # POST /employers_profiles
   # POST /employers_profiles.json
   def create
+
+    if (employers_profile_params[:company_logo].is_a?(String))
+
     @employers_profile = EmployersProfile.new(employers_profile_params)
     @employers_profile.employer_id = current_employer.id
+    @employers_profile.save
+
+    else
+      p "@@@@@@@"
+      p Cloudinary.config.api_key
+      p "@@@@@@@"
+
+    uploaded_file = employers_profile_params[:company_logo].path
+    auth = {
+        cloud_name: "dqauki0af",
+        api_key: "159256751141427",
+        api_secret: "dOTllEBLPTArwbYTvr0D55t6xsE"
+    }
+
+    cloudnary_file = Cloudinary::Uploader.upload(uploaded_file)
+     #store this public_id value to the database
+     #cloudnary_file[‘public_id’]
+     # render json: cloudnary_file
+     # p cloudnary_file
+     # s1 = cloudnary_file['public_id']
+     s2 = cloudnary_file['url']
+       # @employers_profile.cloud_key = s1
+       @employers_profile.company_logo = s2
+       @employers_profile.save
+end
 
     respond_to do |format|
       if @employers_profile.save
