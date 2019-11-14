@@ -1,6 +1,24 @@
-<h1>List of interested applicants</h1>
-<% @profiles.each do |applicant| %>
-  <p>Photo: <%= applicant.photo_url %></p>
-  <p>Name: <%= applicant.name %></p>
-  <p>Contact: <%= applicant.explorer.email%></p>
-<%end%>
+
+
+
+	<div class="container ">
+<h4 class="pt-5">List of interested applicants</h4>
+
+  <% @profiles.each_slice(3) do |applicant| %>
+    <div class="card-row d-flex justify-content-around my-5">
+      <% applicant.each do |card| %>
+     <div class="card float-left justify-content-around" style="width: 22rem;">
+          <div class="row my-4 px-4">
+          <img class="applicant-photo" src =" <%= card.photo_url %>"/>
+          </div>
+          <div class="card-body">
+
+            <h5 class="applicant-name" ><%= card.name %></h5>
+            <p><span class="mail-icon mr-1"><img width="30px" src="<%= image_url 'mail.png' %>" /></span> <%= card.explorer.email%></p>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
