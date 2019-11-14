@@ -2,7 +2,9 @@ class SearchesController < ApplicationController
 
   def new
     @search = Search.new
-    @durations = Listing.all.uniq.pluck(:duration)
+    @durations = Listing.all.map{|list| list.duration}.uniq
+    @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
+
 end
 
   def create
