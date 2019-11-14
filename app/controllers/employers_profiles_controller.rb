@@ -27,6 +27,7 @@ class EmployersProfilesController < ApplicationController
 
   # GET /employers_profiles/1/edit
   def edit
+    @employers_profile = EmployersProfile.find(params[:id])
   end
 
   # POST /employers_profiles
@@ -50,6 +51,8 @@ class EmployersProfilesController < ApplicationController
   # PATCH/PUT /employers_profiles/1
   # PATCH/PUT /employers_profiles/1.json
   def update
+
+     @employers_profile = EmployersProfile.find(params[:id])
     respond_to do |format|
       if @employers_profile.update(employers_profile_params)
         format.html { redirect_to @employers_profile, notice: "Employers profile was successfully updated." }
