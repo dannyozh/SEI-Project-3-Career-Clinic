@@ -81,7 +81,6 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
 
-
   end
 
   # POST /listings
@@ -119,8 +118,9 @@ class ListingsController < ApplicationController
     @listing.duration = e
 
     @listing.update(listing_params)
+    @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
 
-    redirect_to @listing
+    redirect_to @employers_profile
   end
 
   # DELETE /listings/1
@@ -128,8 +128,8 @@ class ListingsController < ApplicationController
   def destroy
     @listing = Listing.find(params[:id])
     @listing.destroy
-
-    redirect_to @listing
+    @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
+    redirect_to @employers_profile
   end
 end
 
