@@ -12,7 +12,7 @@
 		<%= @listing.location %>
 	</h6>
 	<p>
-		<strong>What you’ll be doing</strong><br/>
+		<strong class="bold-description">What you’ll be doing</strong><br/>
 		<%= @listing.description %>
 	</p>
 		<%= link_to 'Back To Dashboard', listings_path %> |
@@ -21,18 +21,20 @@
 		<%= link_to 'Remove Listing', listing_path,
 				method: :delete,
 				data: { confirm: 'Are you sure?' } %>
+
 		<% end %>
+
 		<% if current_employer%>
-			<% @profiles.each_slice(3) do |applicant| %>
+			<% @profiles.each_slice(4) do |applicant| %>
 				<div class="card-row d-flex justify-content-around py-5">
 					<% applicant.each do |card| %>
-					<div class="card float-left justify-content-around" style="width: 22rem;">
+					<div class="card float-left justify-content-around" style="width: 16rem;">
 						<div class="row my-4 px-4">
-						<img class="applicant-photo" src =" <%= card.photo_url %>"/>
+						<img class="applicant-photo-sm" src =" <%= card.photo_url %>"/>
 						</div>
-							<div class="card-body">
+							<div class="card-body mini-card">
 							<h5 class="applicant-name text-center" ><%= card.name %></h5>
-							<p class="text-center"><span class="mail-icon mr-1"><img width="30px" src="<%= image_url 'mail.png' %>" /></span> <%= card.explorer.email%></p>
+							<p class=" appl-mail text-center"><span class="mail-icon mr-1"><img width="30px" src="<%= image_url 'mail.png' %>" /></span> <%= card.explorer.email%></p>
 							</div>
 						</div>
 					<% end %>

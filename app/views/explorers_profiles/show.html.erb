@@ -17,6 +17,7 @@
   <% @somethingelse.each_slice(3) do |listing| %>
     <div class="card-row d-flex justify-content-around py-5">
       <% listing.each do |card| %>
+      <a href="/listings/<%= card.id%>">
      <div class="card float-left justify-content-around" style="width: 22rem;">
           <div class="row my-4 px-4">
             <div class="col-md-5  float-left">
@@ -36,17 +37,19 @@
             <a href="/listings/<%= card.id%>"><h5 class="card-title">
 										<%= card.job_title %>
 								</h5></a>
-            <p class="listing-small-description">
-              <%= card.description %>
-            </p>
+
+           	<p class="listing-small-description">
+									<strong class="bold-description">What you’ll be doing:</strong><br/>
+										<%= card.description %>
+								</p>
 
 
             <p class="listing-small-description"><%= @all_explorers_profiles_listings.where(:listing_id => card.id).length %> applicant(s) have applied</p>
 
-
           </div>
 
         </div>
+      </a>
       <% end %>
     </div>
   <% end %>
