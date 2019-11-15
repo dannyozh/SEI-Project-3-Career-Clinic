@@ -1,32 +1,46 @@
 <%= image_tag @listing.photo_url, class: "single_post_img"%>
 <div class="container single-p-container">
-		<h3 class="pb-3">
-				<%= @listing.job_title %>
-		</h3>
-		<h6>
-				<span class="icon-duration mr-2"><img width="15px" src="<%= image_url 'duration-icon.png' %>" /></span><strong>Duration:</strong>
-				<%= @listing.duration %>
-		</h6>
-		<h6  class="pb-3">
-				<span class="icon-duration mr-2 "><img width="15px" src="<%= image_url 'location-icon.png' %>" /></span><strong>Location:</strong>
-				<%= @listing.location %>
-		</h6>
-		<p>
-				<strong>What you’ll be doing</strong><br/>
-				<%= @listing.description %>
-		</p>
+	<h3 class="pb-3">
+		<%= @listing.job_title %>
+	</h3>
+	<h6>
+		<span class="icon-duration mr-2"><img width="15px" src="<%= image_url 'duration-icon.png' %>" /></span><strong>Duration:</strong>
+		<%= @listing.duration %>
+	</h6>
+	<h6  class="pb-3">
+		<span class="icon-duration mr-2 "><img width="15px" src="<%= image_url 'location-icon.png' %>" /></span><strong>Location:</strong>
+		<%= @listing.location %>
+	</h6>
+	<p>
+		<strong>What you’ll be doing</strong><br/>
+		<%= @listing.description %>
+	</p>
 		<%= link_to 'Back To Dashboard', listings_path %> |
-		 <%= link_to 'Edit Listing', edit_listing_path %> |
-		   <%= link_to 'Remove Listing', listing_path,
+		<%= link_to 'Edit Listing', edit_listing_path %> |
+		<%= link_to 'Remove Listing', listing_path,
 				method: :delete,
-				data: { confirm: 'Are you sure?' } %> |
+				data: { confirm: 'Are you sure?' } %>
+		
 		<% if current_employer%>
-		<%= link_to 'See Applicants', "/connect/#{current_employer.id}" %>
-		<% end %>
-
-
+			<% @profiles.each_slice(3) do |applicant| %>
+				<div class="card-row d-flex justify-content-around py-5">
+					<% applicant.each do |card| %>
+					<div class="card float-left justify-content-around" style="width: 22rem;">
+						<div class="row my-4 px-4">
+						<img class="applicant-photo" src =" <%= card.photo_url %>"/>
+						</div>
+							<div class="card-body">
+							<h5 class="applicant-name text-center" ><%= card.name %></h5>
+							<p class="text-center"><span class="mail-icon mr-1"><img width="30px" src="<%= image_url 'mail.png' %>" /></span> <%= card.explorer.email%></p>
+							</div>
+						</div>
+					<% end %>
+					</div>
+				<% end %>
+				</div>
+			<% end %>
 		<br/>
 		<% if current_explorer %>
-		<a href="/interest/<%=@listing.id%>/<%=@explorers_profile.id%>">Register Interest</a>
+			<a href="/interest/<%=@listing.id%>/<%=@explorers_profile.id%>">Register Interest</a>
 		<% end %>
 </div>
