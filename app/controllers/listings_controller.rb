@@ -159,8 +159,6 @@ class ListingsController < ApplicationController
     if @alllistings
       redirect_to @listing, danger: "You've already registered interest"
     else @interestListing.save!
-      
- # flash[:success] = "Interest registered!"
       redirect_to @listing, success: "Interest registered!"     
     end
   end

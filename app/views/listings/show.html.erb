@@ -43,9 +43,16 @@
 		<% if current_explorer %>
 			<a href="/interest/<%=@listing.id%>/<%=@explorers_profile.id%>">Register Interest</a>
 			<% flash.each do |name, msg| %>
-				<div class="alert alert-<%= name %>">
+				<div class="alert alert-<%= name %>" id="notice">
 					<%= msg %>
 				</div>
 			<% end %>
 		<% end %>
 </div>
+
+<script>
+	// console.log("HIIIIII")
+	setTimeout(function() {
+		$( "#notice" ).fadeOut( "slow" );
+	}, 2000);  
+</script>
