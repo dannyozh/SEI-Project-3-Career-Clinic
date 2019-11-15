@@ -149,10 +149,9 @@ class ListingsController < ApplicationController
     p "@@@@@@@@@@@", @explorers_profile.id
     @interestListing = ExplorersProfilesListing.new(:explorers_profile_id => @explorers_profile.id, :listing_id => @listing.id)
     p "$$$$$$$$$", @interestListing
-    respond_to do |format|
-      if @interestListing.save!
-        format.html { redirect_to @listing, notice: "Interest successfully registered" }
-      end
+    if @interestListing.save!
+      # flash[:success] = "Interest registered!"
+      redirect_to @listing, success: "Interest registered!"
     end
   end
 

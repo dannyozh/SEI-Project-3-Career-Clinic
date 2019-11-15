@@ -19,7 +19,7 @@
 		<%= link_to 'Edit Listing', edit_listing_path %> |
 		<%= link_to 'Remove Listing', listing_path,
 				method: :delete,
-				data: { confirm: 'Are you sure?' } %>
+				data: { confirm: 'Are you sure?' } %> |
 		
 		<% if current_employer%>
 			<% @profiles.each_slice(3) do |applicant| %>
@@ -42,5 +42,10 @@
 		<br/>
 		<% if current_explorer %>
 			<a href="/interest/<%=@listing.id%>/<%=@explorers_profile.id%>">Register Interest</a>
+			<% flash.each do |name, msg| %>
+				<div class="alert alert-<%= name %>">
+					<%= msg %>
+				</div>
+			<% end %>
 		<% end %>
 </div>
