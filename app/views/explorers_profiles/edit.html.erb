@@ -1,22 +1,26 @@
-<h1>Editing Explorers Profile</h1>
-
-<%= form_with scope: :explorers_profile, model: @explorers_profile, local: true do |form| %>
-
-	<p>
-		<%= form.label :name %><br>
-		<%= form.text_field :name %>
-	</p>
-
-	<p>
-		<%= form.label :photo %><br>
-		<%= form.text_field :photo_url %>
-	</p>
-
-
-	<p>
-		<%= form.submit %>
-	</p>
-<% end %>
-
-<%= link_to 'Show', @explorers_profile %> |
-<%= link_to 'Back', explorers_profiles_path %>
+<main class="form-main vh">
+		<div class="container listing-form-container ">
+				<div class="explorers-edit col-md-8 ">
+						<div class="col-md-7 float-left">
+								<h3>Edit your profile</h3>
+								<%= form_with scope: :explorers_profile, model: @explorers_profile, local: true do |form| %>
+								<p>
+										<%= form.label :name %><br>
+										<%= form.text_field :name %>
+								</p>
+								<p>
+										<%= form.label :photo %><br>
+										<%= form.text_field :photo_url %>
+								</p>
+								<p>
+										<%= form.submit %>
+								</p>
+								<% end %>
+								<%= link_to 'Show', @explorers_profile %> |
+								<%= link_to 'Back', explorers_profiles_path %>
+						</div>
+						<div class="col-md-4 float-left">
+								<img class="applicant-photo mt-5" src=" <%= @explorers_profile.photo_url %>" />
+						</div>
+				</div>
+</main>

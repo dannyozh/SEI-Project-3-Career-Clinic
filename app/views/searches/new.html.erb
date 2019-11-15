@@ -1,19 +1,23 @@
-<h1> Advanced Search </h1>
-
-<%= form_for @search, html: {class: "pure-form"} do |s| %>
-
-	<div class="field">
-		<%= s.label :keywords %><br />
-		<%= s.text_field :keywords %>
-	</div>
-
-	<div class="field">
-		<%= s.label :duration %><br />
-		<%= s.select :duration, options_for_select(@durations), :include_blank => true %>
-	</div>
-
-	<div class="actions"><%= s.submit "Search", class: "pure-button pure-button-primary" %></div>
-
-	<% end %>
-
-	<p><%= link_to 'Back', listings_path %></p>
+<main class="form-main vh">
+		<div class="container listing-form-container ">
+				<div class="explorers-edit col-md-5 ">
+						<h3 class="mb-4 col-md-10">Advanced Search </h3>
+						<%= form_for @search, html: {class: "pure-form"} do |s| %>
+						<div class="field col-md-10">
+								<%= s.label :keywords %><br />
+								<%= s.text_field :keywords %>
+						</div>
+						<div class="field col-md-10">
+								<%= s.label :duration %><br />
+								<%= s.select :duration, options_for_select(@durations), :include_blank => true %>
+						</div>
+						<div class="actions col-md-10 mt-4">
+								<%= s.submit "Search", class: "pure-button pure-button-primary" %>
+						</div>
+						<% end %>
+						<p class="col-md-10">
+								<%= link_to 'Back', listings_path %>
+						</p>
+				</div>
+		</div>
+</main>
