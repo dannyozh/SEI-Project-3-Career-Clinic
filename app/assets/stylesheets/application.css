@@ -303,9 +303,15 @@ body {
 
 #explorer_email::-webkit-input-placeholder,
 #explorer_password::-webkit-input-placeholder,
-#explorer_password_confirmation::-webkit-input-placeholder {
+#explorer_password_confirmation::-webkit-input-placeholder,
+#explorers_profile_photo_url::-webkit-input-placeholder,
+#explorers_profile_age::-webkit-input-placeholder,
+#explorers_profile_name::-webkit-input-placeholder {
 		color: #CC46E0
 }
+
+
+
 
 .job-title {
 		display: block;
