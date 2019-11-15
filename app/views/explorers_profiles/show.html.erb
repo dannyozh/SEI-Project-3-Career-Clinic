@@ -13,7 +13,7 @@
 	<div class="container ">
   <% if current_explorer%>
 
-  <% @somethingelse.each_slice(3) do |listing| %>
+  <% @requiredlisting.each_slice(3) do |listing| %>
     <div class="card-row d-flex justify-content-around py-5">
       <% listing.each do |card| %>
       <a href="/listings/<%= card.id%>">
@@ -52,3 +52,4 @@
     </div>
   <% end %>
 </main>
+<% end %>
