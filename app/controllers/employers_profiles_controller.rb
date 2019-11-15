@@ -30,6 +30,7 @@ class EmployersProfilesController < ApplicationController
   # GET /employers_profiles/1/edit
   def edit
     @employers_profile = EmployersProfile.find(params[:id])
+
   end
 
   # POST /employers_profiles
