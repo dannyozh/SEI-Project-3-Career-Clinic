@@ -20,11 +20,8 @@
 		<%= link_to 'Edit Listing', edit_listing_path %> |
 		<%= link_to 'Remove Listing', listing_path,
 				method: :delete,
-				data: { confirm: 'Are you sure?' } %>
-
-		<% end %>
-
-		<% if current_employer%>
+				data: { confirm: 'Are you sure?' } %> |
+				<br/>
 			<% @profiles.each_slice(4) do |applicant| %>
 				<div class="card-row d-flex justify-content-around py-5">
 					<% applicant.each do |card| %>
@@ -45,5 +42,17 @@
 		<br/>
 		<% if current_explorer %>
 			<a href="/interest/<%=@listing.id%>/<%=@explorers_profile.id%>">Register Interest</a>
+			<% flash.each do |name, msg| %>
+				<div class="alert alert-<%= name %>" id="notice">
+					<%= msg %>
+				</div>
+			<% end %>
 		<% end %>
 </div>
+
+<script>
+	// console.log("HIIIIII")
+	setTimeout(function() {
+		$( "#notice" ).fadeOut( "slow" );
+	}, 2000);  
+</script>

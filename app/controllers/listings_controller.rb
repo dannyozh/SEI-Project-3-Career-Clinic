@@ -125,7 +125,7 @@ class ListingsController < ApplicationController
   # PATCH/PUT /listings/1.json
   def update
     @listing = Listing.find(params[:id])
-     @traits = Trait.all
+    @traits = Trait.all
     @industries = Industry.all
     @environments = Environment.all
 
@@ -153,13 +153,17 @@ class ListingsController < ApplicationController
 
   def interest
     @listing = Listing.find(params[:listid])
-    p "%%%%%%%%%%%%", @listing.id
+    # p "%%%%%%%%%%%%", @listing.id
     @explorers_profile = ExplorersProfile.find(params[:exid])
-    p "@@@@@@@@@@@", @explorers_profile.id
+    # p "@@@@@@@@@@@", @explorers_profile.id
     @interestListing = ExplorersProfilesListing.new(:explorers_profile_id => @explorers_profile.id, :listing_id => @listing.id)
-    p "$$$$$$$$$", @interestListing
-    @interestListing.save!
-    redirect_to @explorers_profile
+    # p "$$$$$$$$$", @interestListing
+    @alllistings = ExplorersProfilesListing.where(:explorers_profile_id => @explorers_profile.id, :listing_id => @listing.id)
+    if @alllistings
+      redirect_to @listing, danger: "You've already registered interest"
+    else @interestListing.save!
+      redirect_to @listing, success: "Interest registered!"     
+    end
   end
 
   def connect

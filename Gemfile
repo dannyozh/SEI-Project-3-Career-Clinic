@@ -18,6 +18,8 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 gem 'devise'
 
+gem 'jquery-rails'
+
 gem 'htmlbeautifier'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

@@ -1,5 +1,4 @@
-
-	<div class="header border-bottom employers-dashboard">
+<div class="header border-bottom employers-dashboard">
 
 		<h5 class="py-5 d-inline blue-text"><span><img class="small-profile-photo" size="width: 60px" src =" <%= @explorers_profile.photo_url %>"/></span> Welcome back <%= @explorers_profile.name %>! Here's the archive of roles you have applied to!</h5>
 		<h6 class="blue-text d-inline float-right"><%= link_to 'Edit Profile', edit_explorers_profile_path(@explorers_profile) %></h6>
@@ -47,12 +46,9 @@
             <p class="listing-small-description"><%= @all_explorers_profiles_listings.where(:listing_id => card.id).length %> applicant(s) have applied</p>
 
           </div>
-
         </div>
       </a>
       <% end %>
     </div>
   <% end %>
-</div>
-<% end %>
 </main>
