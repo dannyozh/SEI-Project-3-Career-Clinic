@@ -79,10 +79,11 @@
 <main class="applicants-main">
 	<div class="container">
 		<% @listings.each_slice(3) do |listing| %>
+
 		<div class="card-row d-flex justify-content-around py-5">
 				<% listing.each do |card| %>
 				<div class="card float-left justify-content-around"  style="width: 22rem;">
-
+	<a href="/listings/<%= card.id%>">
 					<%#---	<%= link_to 'Show',listing_path(card) %>
 						<div class="row my-4 px-4">
 								<div class="col-md-5  float-left">
@@ -102,12 +103,13 @@
 										<%= card.job_title %>
 								</h5></a>
 								<p class="listing-small-description">
-									<strong>What you’ll be doing</strong><br/>
+									<strong class="bold-description">What you’ll be doing:</strong><br/>
 										<%= card.description %>
 								</p>
 						</div>
 
 				</div>
+			</a>
 				<% end %>
 		</div>
 		<% end %>
