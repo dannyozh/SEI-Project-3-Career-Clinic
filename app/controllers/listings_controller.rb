@@ -53,6 +53,9 @@ class ListingsController < ApplicationController
     elsif current_explorer
       @explorers_profile = ExplorersProfile.find_by(:explorer_id => current_explorer.id)
     end
+
+  @all_explorers_profiles_listings = ExplorersProfilesListing.all
+
   end
 
   # GET /listings/1
@@ -175,6 +178,7 @@ class ListingsController < ApplicationController
     end
   end
 end
+
 
 private
 

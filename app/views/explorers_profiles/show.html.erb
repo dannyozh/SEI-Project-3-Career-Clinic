@@ -1,41 +1,53 @@
 <div class="header border-bottom employers-dashboard">
-  <h5 class="py-5 d-inline blue-text"><span><img class="small-profile-photo" size="width: 60px" src =" <%= @explorers_profile.photo_url %>"/></span> Welcome back <%= @explorers_profile.name %>! Here's the archive of roles you have applied to!</h5>
-  <h6 class="blue-text d-inline float-right"><%= link_to 'Edit Profile', edit_explorers_profile_path(@explorers_profile) %></h6>
-  <!-- <p id="notice"><%#<%= notice %></p> -->
-</div>
-<main class="applicants-main">
-  <div class="container ">
-    <% if current_explorer%>
-      <% @somethingelse.each_slice(3) do |listing| %>
-        <div class="card-row d-flex justify-content-around py-5">
-          <% listing.each do |card| %>
-            <div class="card float-left justify-content-around" style="width: 22rem;">
-              <div class="row my-4 px-4">
-                <div class="col-md-5  float-left">
-                  <img src="<%= card.photo_url %>" class="card-img-top listing-small-img" style="width: 120px; height:100px;" alt="..." />
-                </div>
-                <div class="col-md-7 py-2 float-right">
-                  <p class="card-text com-md-7 listing-small-duration px-3"><span class="icon-duration mr-2"><img width="15px" src="<%= image_url 'duration-icon.png' %>" /></span>
-                    <%= card.duration %>
-                  </p>
-                  <p class="card-text com-md-7 listing-small-location px-3"><span class="icon-duration mr-2 "><img width="15px" src="<%= image_url 'location-icon.png' %>" /></span>
-                    <%= card.location%>
-                  </p>
-                </div>
-              </div>
-              <div class="card-body">
-                <a href="/listings/<%= card.id%>">
-                  <h5 class="card-title">
-                    <%= card.job_title %>
-                  </h5>
-                </a>
-                <p class="listing-small-description">
-                  <%= card.description %>
-                </p>
-              </div>
+
+		<h5 class="py-5 d-inline blue-text"><span><img class="small-profile-photo" size="width: 60px" src =" <%= @explorers_profile.photo_url %>"/></span> Welcome back <%= @explorers_profile.name %>! Here's the archive of roles you have applied to!</h5>
+		<h6 class="blue-text d-inline float-right"><%= link_to 'Edit Profile', edit_explorers_profile_path(@explorers_profile) %></h6>
+
+
+			<!-- <p id="notice"><%#<%= notice %></p> -->
+
+	</div>
+	<main class="applicants-main">
+
+
+	<div class="container ">
+  <% if current_explorer%>
+
+  <% @somethingelse.each_slice(3) do |listing| %>
+    <div class="card-row d-flex justify-content-around py-5">
+      <% listing.each do |card| %>
+      <a href="/listings/<%= card.id%>">
+     <div class="card float-left justify-content-around" style="width: 22rem;">
+          <div class="row my-4 px-4">
+            <div class="col-md-5  float-left">
+              <img src="<%= card.photo_url %>" class="card-img-top listing-small-img" style="width: 120px; height:100px;" alt="..." />
             </div>
-          <% end %>
+            <div class="col-md-7 py-2 float-right">
+              <p class="card-text com-md-7 listing-small-duration px-3"><span class="icon-duration mr-2"><img width="15px" src="<%= image_url 'duration-icon.png' %>" /></span>
+                <%= card.duration %>
+              </p>
+              <p class="card-text com-md-7 listing-small-location px-3"><span class="icon-duration mr-2 "><img width="15px" src="<%= image_url 'location-icon.png' %>" /></span>
+                <%= card.location%>
+              </p>
+            </div>
+          </div>
+          <div class="card-body">
+
+            <a href="/listings/<%= card.id%>"><h5 class="card-title">
+										<%= card.job_title %>
+								</h5></a>
+
+           	<p class="listing-small-description">
+									<strong class="bold-description">What you’ll be doing:</strong><br/>
+										<%= card.description %>
+								</p>
+
+
+            <p class="listing-small-description"><%= @all_explorers_profiles_listings.where(:listing_id => card.id).length %> applicant(s) have applied</p>
+
+          </div>
         </div>
+      </a>
       <% end %>
     </div>
   <% end %>

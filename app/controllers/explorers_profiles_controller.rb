@@ -17,6 +17,7 @@ class ExplorersProfilesController < ApplicationController
   def show
     @something = ExplorersProfilesListing.where(:explorers_profile_id => params[:id]).map { |x| x.listing_id }
     @somethingelse = Listing.where(:id => @something)
+    @all_explorers_profiles_listings = ExplorersProfilesListing.all
     if current_employer
       @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
       # p "@@@@@@@", @explorer.name
@@ -50,14 +51,14 @@ class ExplorersProfilesController < ApplicationController
       p Cloudinary.config.api_key
       p "@@@@@@@"
 
-      uploaded_file = params[:explorers_profile][:photo_url_cloud].path
-      auth = {
-        cloud_name: "dqauki0af",
-        api_key: "159256751141427",
-        api_secret: "dOTllEBLPTArwbYTvr0D55t6xsE",
-      }
+    uploaded_file = params[:employers_profile][:company_logo_cloud].path
+    auth = Rails.application.credentials.cloudinary
 
+    if defined? CLOUDINARY_URL
+      cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, CLOUDINARY_URL)
+    else
       cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, auth)
+    end
       #store this public_id value to the database
       #cloudnary_file[‘public_id’]
       # render json: cloudnary_file
@@ -68,7 +69,7 @@ class ExplorersProfilesController < ApplicationController
       @explorers_profile.photo_url = s2
     else
       @explorers_profile.photo_url = params[:explorers_profile][:photo_url]
-    end
+  end
     respond_to do |format|
       if @explorers_profile.save
         format.html { redirect_to "/welcome", notice: "Explorers profile was successfully created." }

@@ -12,16 +12,16 @@
 		<%= @listing.location %>
 	</h6>
 	<p>
-		<strong>What you’ll be doing</strong><br/>
+		<strong class="bold-description">What you’ll be doing</strong><br/>
 		<%= @listing.description %>
 	</p>
 		<%= link_to 'Back To Dashboard', listings_path %> |
+		<% if current_employer%>
 		<%= link_to 'Edit Listing', edit_listing_path %> |
 		<%= link_to 'Remove Listing', listing_path,
 				method: :delete,
 				data: { confirm: 'Are you sure?' } %> |
-	
-		<% if current_employer%>
+				<br/>
 			<% @profiles.each_slice(4) do |applicant| %>
 				<div class="card-row d-flex justify-content-around py-5">
 					<% applicant.each do |card| %>
