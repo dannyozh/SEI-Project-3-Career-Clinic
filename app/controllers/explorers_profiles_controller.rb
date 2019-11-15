@@ -15,8 +15,8 @@ class ExplorersProfilesController < ApplicationController
   # GET /explorers_profiles/1
   # GET /explorers_profiles/1.json
   def show
-    @something = ExplorersProfilesListing.where(:explorers_profile_id => params[:id]).map { |x| x.listing_id }
-    @somethingelse = Listing.where(:id => @something)
+    @locateinnerjoin = ExplorersProfilesListing.where(:explorers_profile_id => params[:id]).map { |x| x.listing_id }
+    @requiredlisting = Listing.where(:id => @locateinnerjoin)
     @all_explorers_profiles_listings = ExplorersProfilesListing.all
     if current_employer
       @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
@@ -51,14 +51,14 @@ class ExplorersProfilesController < ApplicationController
       p Cloudinary.config.api_key
       p "@@@@@@@"
 
-    uploaded_file = params[:employers_profile][:company_logo_cloud].path
-    auth = Rails.application.credentials.cloudinary
+      uploaded_file = params[:employers_profile][:company_logo_cloud].path
+      auth = Rails.application.credentials.cloudinary
 
-    if defined? CLOUDINARY_URL
-      cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, CLOUDINARY_URL)
-    else
-      cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, auth)
-    end
+      if defined? CLOUDINARY_URL
+        cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, CLOUDINARY_URL)
+      else
+        cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, auth)
+      end
       #store this public_id value to the database
       #cloudnary_file[‘public_id’]
       # render json: cloudnary_file
@@ -69,7 +69,7 @@ class ExplorersProfilesController < ApplicationController
       @explorers_profile.photo_url = s2
     else
       @explorers_profile.photo_url = params[:explorers_profile][:photo_url]
-  end
+    end
     respond_to do |format|
       if @explorers_profile.save
         format.html { redirect_to "/welcome", notice: "Explorers profile was successfully created." }
