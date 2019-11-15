@@ -8,7 +8,10 @@ class ApplicationController < ActionController::Base
       employers_profile_path(id: input)
     end
   end
+
   def after_sign_out_path_for(resource)
     root_path
   end
+
+  add_flash_types :success, :warning, :danger, :info
 end
