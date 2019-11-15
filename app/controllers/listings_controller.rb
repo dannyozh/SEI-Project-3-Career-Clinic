@@ -86,6 +86,9 @@ class ListingsController < ApplicationController
 
   # GET /listings/1/edit
   def edit
+    @traits = Trait.all
+    @industries = Industry.all
+    @environments = Environment.all
     @listing = Listing.find(params[:id])
     if current_employer
       @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
@@ -119,6 +122,9 @@ class ListingsController < ApplicationController
   # PATCH/PUT /listings/1.json
   def update
     @listing = Listing.find(params[:id])
+     @traits = Trait.all
+    @industries = Industry.all
+    @environments = Environment.all
 
     # format duration string before placing into column
     d1 = params[:listing][:duration] # number eg.5

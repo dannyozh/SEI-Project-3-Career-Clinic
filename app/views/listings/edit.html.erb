@@ -1,37 +1,82 @@
-<h1>Editing Listing</h1>
+<main class="form-main">
+		<div class="container listing-form-container ">
+	<div class="col-md-10 listing-form-outer mx-auto">
+<h3 class="col-md-10 pb-3">Edit Listing:</h3>
 
 <%= form_with scope: :listing, model: @listing, local: true do |form| %>
 
-	<p>
-		<%= form.label :job_title %><br>
+	<p class="col-md-10 pb-1">
+		<%= form.label :job_title, class: "job-title" %><br>
 		<%= form.text_field :job_title %>
 	</p>
-
-	<p>
-		<%= form.label :duration %><br>
+<div class="columns pb-3">
+	<div class="col-md-3 d-inline-block float-left ">
+			<%= form.label :duration, class: "duration" %><br>
 		<%= form.number_field :duration, max:31, min:1, placeholder: "No." %>
 		<%= form.select :select_attribute, options_for_select(([['Day(s)'],['Week(s)'],['Month(s)'],['Year(s)']])) %>
+	</div>
+
+	<div class="col-md-7 d-inline-block">
+		<%= form.label :location, class: "location" %>
+		<%= form.text_field :location %>
+	</div>
+</div>
+	<p class="col-md-10 pt-1 pb-2">
+		<%= form.label :image_upload, class: "listing-image-upload" %>
+		<%= form.text_field :photo_url %>
 	</p>
 
-	<p>
-		<%= form.label :location %><br>
-		<%= form.text_area :location %>
-	</p>
+	<p class="col-md-10 font-weight-bold"> What industry are you in? </p>
+	<div class="col-md-10 pb-3">
+  <%= form.collection_check_boxes :industry_ids, @industries, :id, :name do |cb| %>
+    <label class="checkbox-inline">
+      <%= cb.check_box %>
+      <%= cb.label %>
+    </label>
+  <% end %>
+</div>
 
-	<p>
+	<p class="col-md-10 font-weight-bold"> Work Type and Environment </p>
+	<div class="col-md-10 pb-3">
+		<%= form.collection_check_boxes :environment_ids, @environments, :id, :choice do |cb| %>
+    <label class="checkbox-inline">
+        <%= cb.check_box %>
+        <%= cb.label %>
+    </label>
+<% end %>
+</div>
+
+	<p class="col-md-10 font-weight-bold">
 		<%= form.label :description %><br>
 		<%= form.text_area :description %>
 	</p>
 
-	<p>
-		<%= form.label :photo_url %><br>
-		<%= form.text_area :photo_url %>
-	</p>
+	<p class="col-md-10 pt-2 font-weight-bold"> Which personality type candidate you prefer to find for this role? </p>
+	<div class="col-md-10">
+		<%= form.collection_check_boxes :trait_ids, @traits, :id, :personality do |cb| %>
+    <label class="checkbox-inline">
+        <%= cb.check_box %>
+        <%= cb.label %>
+    </label>
+<% end %>
+</div>
 
+<div class="col-md-10">
 	<p>
 		<%= form.submit %>
 	</p>
-<% end %>
+</div>
 
-<%= link_to 'Show', @listing %> |
-<%= link_to 'Back', listings_path %>
+<% end %>
+<div class="col-md-10">
+	<p>
+	<%= link_to 'Back', listings_path %>
+	</p>
+</div>
+
+</div>
+
+
+
+</div>
+</main>
