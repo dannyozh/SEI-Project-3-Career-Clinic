@@ -151,6 +151,7 @@ class ListingsController < ApplicationController
   end
 
   def connect
+
     @explorer_profile_ids = Listing.find_by(:employer_profile_id => current_employer.id).explorers_profiles_listing.map { |x| x.explorers_profile_id }
     #go to listing table and find listing which belongs to this employer and find the explorer that has interest in this listing in the inner join table
     @profiles = ExplorersProfile.where("id IN (?)", @explorer_profile_ids)
