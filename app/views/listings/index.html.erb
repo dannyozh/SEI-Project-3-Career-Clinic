@@ -106,6 +106,15 @@
 									<strong class="bold-description">What you’ll be doing:</strong><br/>
 										<%= card.description %>
 								</p>
+
+								 <% if @all_explorers_profiles_listings.where(:listing_id => card.id).length <= 5 %>
+
+					<p class="listing-small-description"> Be the First 5 to apply! </p>
+            <% else %>
+            <p class="listing-small-description"><%= @all_explorers_profiles_listings.where(:listing_id => card.id).length %> applicant(s) have applied</p>
+
+           <% end %>
+
 						</div>
 
 				</div>

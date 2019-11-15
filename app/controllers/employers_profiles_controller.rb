@@ -45,14 +45,16 @@ class EmployersProfilesController < ApplicationController
       p "@@@@@@@"
 
     uploaded_file = params[:employers_profile][:company_logo_cloud].path
-    auth = {
-        cloud_name: "dqauki0af",
-        api_key: "159256751141427",
-        api_secret: "dOTllEBLPTArwbYTvr0D55t6xsE"
-    }
+    auth = Rails.application.credentials.cloudinary
 
+    if defined? CLOUDINARY_URL
+      cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, CLOUDINARY_URL)
+    else
+      cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, auth)
+    end
+    # Use this when uploading to heroku and paste in the environment variable in settings:
+    # cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, CLOUDINARY_URL)
 
-    cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, auth)
      #store this public_id value to the database
      #cloudnary_file[‘public_id’]
      # render json: cloudnary_file
