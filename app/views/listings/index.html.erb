@@ -105,6 +105,7 @@
 									<strong>What you’ll be doing</strong><br/>
 										<%= card.description %>
 								</p>
+								 <p><%= @all_explorers_profiles_listings.where(:listing_id => card.id).length %> applicant(s) have applied</p>
 						</div>
 
 				</div>
