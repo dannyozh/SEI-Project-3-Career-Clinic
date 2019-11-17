@@ -32,6 +32,7 @@
 							<div class="card-body mini-card">
 							<h5 class="applicant-name text-center" ><%= card.name %></h5>
 							<p class=" appl-mail text-center"><span class="mail-icon mr-1"><img width="30px" src="<%= image_url 'mail.png' %>" /></span> <%= card.explorer.email%></p>
+							<button><a href="/link/<%=@listing.id%>/<%=card.id%>">Connect</a></button>
 							</div>
 						</div>
 					<% end %>
@@ -47,6 +48,11 @@
 					<%= msg %>
 				</div>
 			<% end %>
+			<% if @queryStatus.exists?%>
+            	<p> EMPLOYER HAS CONNETED</p>
+			<% else %>
+				<p> EMPLOYER HAS NOT CONNECTED </p>
+            <%end%>
 		<% end %>
 </div>
 
