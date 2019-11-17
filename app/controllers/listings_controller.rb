@@ -54,8 +54,7 @@ class ListingsController < ApplicationController
       @explorers_profile = ExplorersProfile.find_by(:explorer_id => current_explorer.id)
     end
 
-  @all_explorers_profiles_listings = ExplorersProfilesListing.all
-
+    @all_explorers_profiles_listings = ExplorersProfilesListing.all
   end
 
   # GET /listings/1
@@ -65,10 +64,13 @@ class ListingsController < ApplicationController
     if current_employer
       @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
       @employersListing = ExplorersProfilesListing.where(:listing_id => params[:id]).map { |x| x.listing_id }
-      @somethingelse = ExplorersProfile.where(:id => @something)
       @explorer_profile_ids = Listing.find_by(:employer_profile_id => current_employer.id).explorers_profiles_listing.map { |x| x.explorers_profile_id }
       #go to listing table and find listing which belongs to this employer and find the explorer that has interest in this listing in the inner join table
       @profiles = ExplorersProfile.where("id IN (?)", @explorer_profile_ids)
+      @profiles.each do |applicant|
+        applicant.id
+        p "@@@@@@@@@@@@@ id", applicant.id
+      end
     elsif current_explorer
       @explorers_profile = ExplorersProfile.find_by(:explorer_id => current_explorer.id)
     end
@@ -153,16 +155,18 @@ class ListingsController < ApplicationController
 
   def interest
     @listing = Listing.find(params[:listid])
-    # p "%%%%%%%%%%%%", @listing.id
+    p "%%%%%%%%%%%%", @listing.id
     @explorers_profile = ExplorersProfile.find(params[:exid])
-    # p "@@@@@@@@@@@", @explorers_profile.id
+    p "@@@@@@@@@@@", @explorers_profile.id
     @interestListing = ExplorersProfilesListing.new(:explorers_profile_id => @explorers_profile.id, :listing_id => @listing.id)
-    # p "$$$$$$$$$", @interestListing
-    @alllistings = ExplorersProfilesListing.where(:explorers_profile_id => @explorers_profile.id, :listing_id => @listing.id)
-    if @alllistings
+    p "$$$$$$$$$", @interestListing
+    @findListing = ExplorersProfilesListing.where(:explorers_profile_id => @explorers_profile.id, :listing_id => @listing.id)
+    p "&&&&&&&&&&&&*&*&*", @findListing
+    if @findListing.exists?
       redirect_to @listing, danger: "You've already registered interest"
-    else @interestListing.save!
-      redirect_to @listing, success: "Interest registered!"     
+    else
+      @interestListing.save
+      redirect_to @listing, success: "Interest registered!"
     end
   end
 
@@ -178,7 +182,6 @@ class ListingsController < ApplicationController
     end
   end
 end
-
 
 private
 
