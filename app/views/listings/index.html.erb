@@ -2,7 +2,7 @@
 <div class=" header border-bottom listing-search-dashboard">
 <div class="container-fluid">
 <div class="dropdown pt-4 pl-5">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Search By
   </button>
 
@@ -24,7 +24,7 @@
 
 
 <div class="container-fluid ">
-<div class="col-md-10 detailed-forms ml-7">
+<div class="col-md-10 detailed-forms text-white d-flex flex-column ml-7">
 
 <% if @form === "industry-search" %>
 	<%= form_with scope: :listing, url: listings_path, method: "get", :html => {:id => "industry-search"}, local: true do |form| %>
