@@ -114,6 +114,9 @@
             <p class="listing-small-description"><%= @all_explorers_profiles_listings.where(:listing_id => card.id).length %> applicant(s) have applied</p>
 
            <% end %>
+						<% time = card.created_at.localtime(utc_offset = nil) %>
+            <p class ="listing-small-description">Posted on <cite title="Source Title"><%= time.strftime("%e %B %Y") %></cite><p>
+
 						</div>
 
 				</div>
