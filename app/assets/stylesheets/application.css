@@ -54,6 +54,10 @@ body {
 		margin-bottom: 60px;
 
 }
+.navbar-brand {
+	font-family: 'Playfair Display', serif;
+
+}
 
 .landingpage-paragraph {
 		display: block;
@@ -65,6 +69,10 @@ body {
 		clear: both;
 		line-height: 1;
 		padding: 10px 0 20px 0;
+
+		font-family: 'Montserrat', sans-serif;
+		/*color: linear-gradient(225deg, rgba(84,136,201,1) 23%, rgba(51,147,187,1) 100%);;*/
+
 
 }
 
@@ -504,6 +512,7 @@ body {
 		object-fit: cover;
 }
 
+
 .applicant-name {
 		text-transform: capitalize;
 		font-size: 1rem;
@@ -593,8 +602,35 @@ body {
     margin: 0 auto;
 }
 .vh {
-	height: 100vh;
+
+		height: 100vh;
 }
-.checkbox-inline {
+.logo {
+	height: 55px;
+	width: auto;
+}
+#industry-search > .checkbox-inline {
+		padding-right: 20px;
+		width: 220px;
+}
+#environment-search > .checkbox-inline {
+		padding-right: 50px;
+	/*	width: 15%;*/
+
+}
+/*.checkbox-inline {
 	padding-right: 20px;
+
+		width: 220px;
+}*/
+input[type=checkbox]:checked {
+		color: red;
+}
+
+input[type=radio] {
+		color: red;
+}
+.form-gradient {
+	background: linear-gradient(225deg, rgba(84, 136, 201, 1) 23%, rgba(51, 147, 187, 1) 100%);
+
 }

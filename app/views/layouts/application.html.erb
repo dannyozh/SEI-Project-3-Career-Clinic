@@ -10,6 +10,10 @@
       console.log("I'm only run once on the initial page load");
     </script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700&display=swap" rel="stylesheet">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -18,7 +22,7 @@
   <body style="margin: 0;">
     <% if current_employer %>
       <nav class="navbar navbar-expand-lg navbar-white border-bottom">
-        <a class="navbar-brand blue-text" href="/"><strong>Career Clinic</strong></a>
+        <a id= "branding" class="navbar-brand  blue-text" href="/"><strong>Career Clinic</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -35,7 +39,7 @@
       </nav>
     <% elsif current_explorer %>
       <nav class="navbar navbar-expand-lg navbar-white border-bottom">
-        <a class="navbar-brand blue-text" href="/"><strong>Career Clinic</strong></a>
+        <a class="navbar-brand blue-text" href="/"><strong>Career Clinic</strong><!-- <img class="brand logo" src="<%= image_url 'logo.png' %>" /> --></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
