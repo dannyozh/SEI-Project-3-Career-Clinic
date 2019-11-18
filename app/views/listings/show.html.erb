@@ -1,3 +1,8 @@
+<% flash.each do |name, msg| %>
+				<div class="alert alert-<%= name %>" id="notice">
+					<%= msg %>
+				</div>
+			<% end %>
 <%= image_tag @listing.photo_url, class: "single_post_img"%>
 <div class="container single-p-container">
 	<h3 class="pb-3">
@@ -17,11 +22,13 @@
 	</p>
 		<%= link_to 'Back To Dashboard', listings_path %> |
 		<% if current_employer%>
+		<% if current_employer.id == @matchListing %>
 		<%= link_to 'Edit Listing', edit_listing_path %> |
 		<%= link_to 'Remove Listing', listing_path,
 				method: :delete,
 				data: { confirm: 'Are you sure?' } %> |
 				<br/>
+		<%end%>
 	<% if @checkListing.exists?%>
 			<% @profiles.each_slice(4) do |applicant| %>
 				<div class="card-row d-flex justify-content-around py-5">
@@ -32,7 +39,7 @@
 						</div>
 							<div class="card-body mini-card">
 							<h5 class="applicant-name text-center" ><%= card.name %></h5>
-							<p class=" appl-mail text-center"><span class="mail-icon mr-1"><img width="30px" src="<%= image_url 'mail.png' %>" /></span> <%= card.explorer.email%></p>
+							<p class=" appl-mail text-center"><span class="mail-icon mr-1"><img width="30px" src="<%= image_url 'mail.png' %>" /></span> <%= auto_link(card.explorer.email)%></p>
 							<button><a href="/link/<%=@listing.id%>/<%=card.id%>">Connect</a></button>
 							</div>
 						</div>
@@ -43,17 +50,14 @@
 			<% end %>
 		<br/>
 		<%end%>
+		
 		<% if current_explorer %>
-			<a href="/interest/<%=@listing.id%>/<%=@explorers_profile.id%>">Register Interest</a>
-			<% flash.each do |name, msg| %>
-				<div class="alert alert-<%= name %>" id="notice">
-					<%= msg %>
-				</div>
-			<% end %>
 			<% if @queryStatus.exists?%>
-            	<p> EMPLOYER HAS CONNETED</p>
+				<div class="status d-block connection float-right gradient-background">
+            		<p> Employer has indicated interest!</p>
+				</div>
 			<% else %>
-				<p> EMPLOYER HAS NOT CONNECTED </p>
+				<a href="/interest/<%=@listing.id%>/<%=@explorers_profile.id%>">Register Interest</a>
             <%end%>
 		<% end %>
 </div>
