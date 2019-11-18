@@ -48,6 +48,8 @@ class ListingsController < ApplicationController
     @environments = Environment.all
     @industries = Industry.all
     @form = params[:q]
+   @search = Search.new
+    @durations = Listing.all.map { |list| list.duration }.uniq
     if current_employer
       @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
     elsif current_explorer
@@ -71,6 +73,9 @@ class ListingsController < ApplicationController
   # GET /listings/1.json
   def show
     @listing = Listing.find(params[:id])
+    @search = Search.find(params[:id])
+
+
     if current_employer
       @matchListing = Listing.find(@listing.id).employer_profile_id
       # @matchEmployer = @matchListing.employer_profile_id
@@ -211,10 +216,13 @@ class ListingsController < ApplicationController
   #     @explorers_profile = ExplorersProfile.find_by(:explorer_id => current_explorer.id)
   #   end
   # end
-end
+
 
 private
 
 def listing_params
   params.require(:listing).permit(:job_title, :contact, :industry, :location, :photo_url, :description, :personality, :choice, :trait_ids => [], :environment_ids => [], :industry_ids => [])
+
+end
+
 end

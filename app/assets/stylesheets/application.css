@@ -55,8 +55,9 @@ body {
 		margin-bottom: 60px;
 
 }
+
 .navbar-brand {
-	font-family: 'Playfair Display', serif;
+		font-family: 'Playfair Display', serif;
 
 }
 
@@ -538,7 +539,7 @@ body {
 }
 
 .mini-card {
-		padding: 0 0.5rem 0.7rem 0.5rem;
+		padding: 0 0.5rem 1.5rem 0.5rem;
 }
 
 .applicants-main {
@@ -643,19 +644,23 @@ mark {
 
 		height: 100vh;
 }
+
 .logo {
-	height: 55px;
-	width: auto;
+		height: 55px;
+		width: auto;
 }
-#industry-search > .checkbox-inline {
+
+#industry-search>.checkbox-inline {
 		padding-right: 20px;
 		width: 220px;
 }
-#environment-search > .checkbox-inline {
+
+#environment-search>.checkbox-inline {
 		padding-right: 50px;
-	/*	width: 15%;*/
+		/*	width: 15%;*/
 
 }
+
 /*.checkbox-inline {
 	padding-right: 20px;
 
@@ -671,19 +676,26 @@ mark {
 #environment-search > .checkbox-inline {
 		padding-right: 50px;
 	/*	width: 15%;*/
-}
-#personality-search > .checkbox-inline {
+/*} */
+#personality-search>.checkbox-inline {
 		padding-right: 50px;
 		/*width: 150px;*/
 }
 
-.form-check > .checkbox-inline {
-	padding-right: 20px;
+.form-check>.checkbox-inline {
+		padding-right: 20px;
 		width: 220px;
 }
 
 
 .form-gradient {
-	background: linear-gradient(225deg, rgba(84, 136, 201, 1) 23%, rgba(51, 147, 187, 1) 100%);
+		background: linear-gradient(225deg, rgba(84, 136, 201, 1) 23%, rgba(51, 147, 187, 1) 100%);
 
+}
+
+.posted-on {
+		background: linear-gradient(225deg, rgba(84, 136, 201, 1) 23%, rgba(51, 147, 187, 1) 100%);
+		color: white;
+		padding-left: 5px;
+		font-style: italic;
 }

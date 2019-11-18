@@ -1,15 +1,23 @@
 
  <%#---<%= link_to "Advanced Search", new_search_path %>
-<div class="container ">
-	<h3>Search Results</h3>
-<p>
-		<%= link_to 'Back', new_search_path %>
-</p>
+
+	<div class=" header border-bottom pt-5 employers-dashboard listing-search-dashboard">
+
+	<h5 class="py-1 d-inline">Advanced Search Results:</h5>
+<h6 class="py-1 d-inline float-right">
+		<%= link_to 'Back', listings_path, class: 'text-white' %>
+<h6>
 <% if @search.search_listings.empty? %>
 <p>No Records Found</p>
 <% else %>
+</div>
+
+
+
+<main class="applicants-main vh pt-5">
+		<div class="container">
 		<% @search.search_listings.each_slice(3) do |outer| %>
-		<div class="card-row d-flex justify-content-around my-5">
+		<div class="card-row d-flex justify-content-around py-5">
 				<% outer.each do |inner| %>
 				<div class="card float-left justify-content-around" style="width: 22rem;">
 						<%#---	<%= link_to 'Show',listing_path(card) %>
@@ -42,3 +50,4 @@
 		<% end %>
 </div>
 <% end %>
+</main>
