@@ -30,6 +30,7 @@ class EmployersProfilesController < ApplicationController
   # GET /employers_profiles/1/edit
   def edit
     @employers_profile = EmployersProfile.find(params[:id])
+
   end
 
   # POST /employers_profiles
@@ -44,14 +45,16 @@ class EmployersProfilesController < ApplicationController
       p "@@@@@@@"
 
     uploaded_file = params[:employers_profile][:company_logo_cloud].path
-    auth = {
-        cloud_name: "dqauki0af",
-        api_key: "159256751141427",
-        api_secret: "dOTllEBLPTArwbYTvr0D55t6xsE"
-    }
+    auth = Rails.application.credentials.cloudinary
 
+    if defined? CLOUDINARY_URL
+      cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, CLOUDINARY_URL)
+    else
+      cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, auth)
+    end
+    # Use this when uploading to heroku and paste in the environment variable in settings:
+    # cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, CLOUDINARY_URL)
 
-    cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, auth)
      #store this public_id value to the database
      #cloudnary_file[‘public_id’]
      # render json: cloudnary_file
@@ -66,7 +69,7 @@ end
 
     respond_to do |format|
       if @employers_profile.save
-        format.html { redirect_to "/listings/new", notice: "Employers profile was successfully created." }
+        format.html { redirect_to @employers_profile, notice: "Employers profile was successfully created." }
         format.json { render :show, status: :created, location: @employers_profile }
       else
         format.html { render :new }

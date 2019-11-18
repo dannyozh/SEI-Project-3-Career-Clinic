@@ -1,22 +1,28 @@
-<h1>Editing Employers Profile</h1>
+<main class="form-main vh">
+		<div class="container listing-form-container ">
+				<div class="explorers-edit col-md-8 ">
+						<div class="col-md-7 float-left">
+								<h3>Edit your company profile</h3>
+								<%= form_with scope: :employers_profile, model: @employers_profile, local: true do |form| %>
+								<p>
+										<%= form.label :company_name %><br>
+										<%= form.text_field :company_name %>
+								</p>
+								<p>
+										<%= form.label :company_logo %><br>
+										<%= form.text_field :company_logo %>
+								</p>
+								<p>
+										<%= form.submit %>
+								</p>
+								<% end %>
+								<%= link_to 'Show', @employers_profile %> |
+								<%= link_to 'Back',  @employers_profile %>
+						</div>
+						<div class="col-md-4 float-left">
+								<img class="applicant-photo mt-5" src=" <%= @employers_profile.company_logo %>" />
+						</div>
+				</div>
+		</div>
 
-<%= form_with scope: :employers_profile, model: @employers_profile, local: true do |form| %>
-
-	<p>
-		<%= form.label :company_name %><br>
-		<%= form.text_field :company_name %>
-	</p>
-
-	<p>
-		<%= form.label :company_logo %><br>
-		<%= form.text_field :company_logo %>
-	</p>
-
-
-	<p>
-		<%= form.submit %>
-	</p>
-<% end %>
-
-<%= link_to 'Show', @employers_profile %> |
-<%= link_to 'Back', employers_profiles_path %>
+</main>

@@ -15,8 +15,9 @@ class ExplorersProfilesController < ApplicationController
   # GET /explorers_profiles/1
   # GET /explorers_profiles/1.json
   def show
-    @something = ExplorersProfilesListing.where(:explorers_profile_id => params[:id]).map { |x| x.listing_id }
-    @somethingelse = Listing.where(:id => @something)
+    @locateinnerjoin = ExplorersProfilesListing.where(:explorers_profile_id => params[:id]).map { |x| x.listing_id }
+    @requiredlisting = Listing.where(:id => @locateinnerjoin)
+    @all_explorers_profiles_listings = ExplorersProfilesListing.all
     if current_employer
       @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
       # p "@@@@@@@", @explorer.name
@@ -44,6 +45,31 @@ class ExplorersProfilesController < ApplicationController
   def create
     @explorers_profile = ExplorersProfile.new(explorers_profile_params)
     @explorers_profile.explorer_id = current_explorer.id
+
+    if (params[:explorers_profile][:photo_url_cloud])
+      p "@@@@@@@"
+      p Cloudinary.config.api_key
+      p "@@@@@@@"
+
+      uploaded_file = params[:employers_profile][:company_logo_cloud].path
+      auth = Rails.application.credentials.cloudinary
+
+      if defined? CLOUDINARY_URL
+        cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, CLOUDINARY_URL)
+      else
+        cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, auth)
+      end
+      #store this public_id value to the database
+      #cloudnary_file[‘public_id’]
+      # render json: cloudnary_file
+      # p cloudnary_file
+      # s1 = cloudnary_file['public_id']
+      s2 = cloudnary_file["url"]
+      # @employers_profile.cloud_key = s1
+      @explorers_profile.photo_url = s2
+    else
+      @explorers_profile.photo_url = params[:explorers_profile][:photo_url]
+    end
     respond_to do |format|
       if @explorers_profile.save
         format.html { redirect_to "/welcome", notice: "Explorers profile was successfully created." }
@@ -88,6 +114,6 @@ class ExplorersProfilesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def explorers_profile_params
-    params.require(:explorers_profile).permit(:name, :age, :photo_url)
+    params.require(:explorers_profile).permit(:name, :age)
   end
 end

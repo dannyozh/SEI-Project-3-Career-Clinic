@@ -1,14 +1,12 @@
 
+<div class=" header border-bottom listing-search-dashboard">
 <div class="container-fluid">
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<div class="dropdown pt-4 pl-5">
+  <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Search By
   </button>
 
-  <%= form_tag listings_path, :method => 'get' do %>
-	<%= text_field_tag :search, params[:search] %>
-	<%= submit_tag "Search" %>
-	<% end %>
+
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
   	<!-- <form>
@@ -19,21 +17,32 @@
     <a class="dropdown-item" href="?q=industry-search">Industry</a>
     <a class="dropdown-item" href="?q=personality-search">Career Personality Type</a>
     <a class="dropdown-item" href="?q=environment-search">Working Environment</a>
+    <a class="dropdown-item" href="<%= new_search_path %>">Advanced Search</a>
   </div>
 </div>
 </div>
-<div class="container ">
+
+
+<div class="container-fluid ">
+<div class="col-md-10 detailed-forms text-white d-flex flex-column ml-7">
+
 <% if @form === "industry-search" %>
-	<%= form_with scope: :listing, url: listings_path, method: "get", :html => {:id => "industry-search"}, local: true do |form| %>
-	  <%= form.collection_check_boxes :industry_ids, @industries, :id, :name do |cb| %>
-	    <label class="checkbox-inline">
+	<%= form_with scope: :listing, url: listings_path, method: "get", :html => {:id => "industry-search"},  local: true do |form| %>
+	  <%= form.collection_check_boxes :industry_ids,  @industries, :id, :name do |cb| %>
+	<!--   <div class="d-flex flex-column"> -->
+
+	    <label class="checkbox-inline ">
 	      <%= cb.check_box %>
 	      <%= cb.label %>
 	    </label>
+
+	   <!--  </div> -->
 	  <% end %>
-	  <p>
-	    <%= form.submit "Submit" %>
-	  </p>
+	  <br/>
+	  <button class="btn float-right d-block btn-light">
+	    <%= form.submit "Submit", class: "rounded, btn-light" %>
+	  </button>
+	  <br/>
 	<% end %>
 
 
@@ -45,9 +54,10 @@
 	      <%= cb.label %>
 	    </label>
 	  <% end %>
-	  <p>
-	    <%= form.submit "Submit" %>
-	  </p>
+	 <button class="btn float-right d-block btn-light">
+	    <%= form.submit "Submit", class: "rounded, btn-light" %>
+	  </button>
+	   <br/>
 	<% end %>
 
 
@@ -59,24 +69,29 @@
 	      <%= cb.label %>
 	    </label>
 	  <% end %>
-	  <p>
-	    <%= form.submit "Submit" %>
-	  </p>
+	 <button class="btn float-right d-block btn-light">
+	    <%= form.submit "Submit", class: "rounded, btn-light" %>
+	  </button>
+	   <br/>
 	<% end %>
 
 	<% else %>
 
 
 <% end %>
+</div>
 
+</div>
+</div>
 
-	<%= link_to "Advanced Search", new_search_path %>
-
+<main class="applicants-main">
+	<div class="container">
 		<% @listings.each_slice(3) do |listing| %>
-		<div class="card-row d-flex justify-content-around my-5">
+
+		<div class="card-row d-flex justify-content-around py-5">
 				<% listing.each do |card| %>
 				<div class="card float-left justify-content-around"  style="width: 22rem;">
-
+	<a href="/listings/<%= card.id%>">
 					<%#---	<%= link_to 'Show',listing_path(card) %>
 						<div class="row my-4 px-4">
 								<div class="col-md-5  float-left">
@@ -96,13 +111,27 @@
 										<%= card.job_title %>
 								</h5></a>
 								<p class="listing-small-description">
-									<strong>What you’ll be doing</strong><br/>
+									<strong class="bold-description">What you’ll be doing:</strong><br/>
 										<%= card.description %>
 								</p>
+
+								 <% if @all_explorers_profiles_listings.where(:listing_id => card.id).length <= 5 %>
+
+					<p class="listing-small-description"> Be the First 5 to apply! </p>
+            <% else %>
+            <p class="listing-small-description"><%= @all_explorers_profiles_listings.where(:listing_id => card.id).length %> applicant(s) have applied</p>
+
+           <% end %>
+						<% time = card.created_at.localtime(utc_offset = nil) %>
+            <p class ="listing-small-description">Posted on <cite title="Source Title"><%= time.strftime("%e %B %Y") %></cite><p>
+
 						</div>
 
 				</div>
+			</a>
 				<% end %>
 		</div>
 		<% end %>
 </div>
+
+</main>

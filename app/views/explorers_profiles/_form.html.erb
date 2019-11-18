@@ -1,3 +1,6 @@
+
+<main class="form-main">
+<div class="container listing-form-container ">
 <%= form_with(model: explorers_profile, local: true) do |form| %>
   <% if explorers_profile.errors.any? %>
     <div id="error_explanation">
@@ -15,3 +18,5 @@
     <%= form.submit %>
   </div>
 <% end %>
+</div>
+</main>
