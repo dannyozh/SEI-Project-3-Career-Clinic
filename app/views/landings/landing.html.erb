@@ -1,35 +1,43 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <div class="row-fluid">
-      <div class="float-left landing-left">
+    <div class="row  mx-auto col-md-11">
+      <div class="float-left col-md-6  landing-left">
         <h1 class="display-4 landingpage-title">We build a future where the work has a meaning for everyone</h1>
+          <p class="landingpage-paragraph">We make dreams come true for those seeking a career they are passionate about, while giving companies valuable assets who would like to explore themselves in the industry.</p>
+          <!-- <h3 class="join-us">Join our network and find out more</h3> -->
       </div>
-      <div class="float-right landing-right">
+      <div class="float-right col-md-6  landing-right">
         <img class="future-work" src="<%= image_url 'jumbotron-img.png' %>" />
       </div>
-      <p class="landingpage-paragraph">We make dreams come true for those seeking a career they are passionate about, while giving companies valuable assets who would like to explore themselves in the industry.</p>
+      <!--  <p class="landingpage-paragraph">We make dreams come true for those seeking a career they are passionate about, while giving companies valuable assets who would like to explore themselves in the industry.</p> -->
+
     </div>
-    <div class="row-fluid">
+    <div class="row mx-auto col-md-11">
       <div class="float-left landing-left">
         <img class="register" src="<%= image_url 'register-user-img.jpg' %>" />
       </div>
       <div class="float-right register-right landing-right">
+      	<!--  <p class="landingpage-paragraph">We make dreams come true for those seeking a career they are passionate about, while giving companies valuable assets who would like to explore themselves in the industry.</p> -->
         <h3 class="join-us">Join our network and find out more</h3>
         <p class="account-type-par">Select your account type</p>
       </div>
     </div>
-    <div class="row-fluid reg-row">
-      <div class="float-left landing-left">
+    <div class="row col-md-12 mx-auto  reg-row">
+      <div class="float-left col-md-5 offset-md-1 landing-left">
+      	<a class="landing-btn" href ="/employers/sign_up">
         <div class="register-field reg-emp">
           <h3 class="reg-emp-title my-5 text-center">I'm an employer</h3>
           <a class="landing-btn" href ="/employers/sign_up"><button class="reg-btn blue d-block mx-auto">Find passionate talent</button></a>
         </div>
+      </a>
       </div>
-      <div class="float-right  landing-right">
-        <div class="register-field reg-exp">
+
+      <div class="float-right col-md-5 offset-md-1 landing-right">
+        <a href ="/explorers/sign_up"><div class="register-field reg-exp">
           <h3 class="reg-exp-title my-5 text-center">I'm an explorer</h3>
           <a class="landing-btn" href ="/explorers/sign_up"><button class="reg-btn purple d-block mx-auto">Find meaningful work</button></a>
-        </div>
+        </div></a>
       </div>
     </div>
   </div>
+</div>
