@@ -13,7 +13,7 @@
 
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -23,7 +23,7 @@
   <body style="margin: 0;">
     <% if current_employer %>
       <nav class="navbar navbar-expand-lg navbar-white border-bottom">
-        <a id= "branding" class="navbar-brand  blue-text" href="/"><strong>Career Clinic</strong></a>
+        <a id= "branding" class="navbar-brand  blue-text" href="/"><span><img class="logo" src="<%= image_url 'logo-cc2.png' %>"></span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -46,7 +46,7 @@
       </nav>
     <% elsif current_explorer %>
       <nav class="navbar navbar-expand-lg navbar-white border-bottom">
-        <a class="navbar-brand blue-text" href="/"><strong>Career Clinic</strong><!-- <img class="brand logo" src="<%= image_url 'logo.png' %>" /> --></a>
+        <a id= "branding" class="navbar-brand  blue-text" href="/"><span><img class="logo" src="<%= image_url 'logo-cc2.png' %>"></span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -68,7 +68,7 @@
       </nav>
     <% else %>
       <nav class="navbar navbar-expand-lg navbar-white border-bottom">
-        <a class="navbar-brand blue-text" href="/"><strong>Career Clinic</strong></a>
+        <a id= "branding" class="navbar-brand  blue-text" href="/"><span><img class="logo" src="<%= image_url 'logo-cc2.png' %>"></span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
