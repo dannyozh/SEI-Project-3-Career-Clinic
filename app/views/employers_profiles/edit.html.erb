@@ -12,17 +12,19 @@
 										<%= form.label :company_logo %><br>
 										<%= form.text_field :company_logo %>
 								</p>
-								<p>
-										<%= form.submit %>
-								</p>
+								<button class=" clearfix d-block float-left  py-2 text-white rounded form-gradient mx-auto">
+										<%= form.submit 'Edit Profile', class: 'btn-gradient'  %>
+								</button>
 								<% end %>
-								<%= link_to 'Show', @employers_profile %> |
-								<%= link_to 'Back',  @employers_profile %>
+								<br />
+								<div class="row mt-5 d-block clearfix col-md-12">
+										<%= link_to 'Show', @employers_profile %> |
+										<%= link_to 'Back',  @employers_profile %>
+								</div>
 						</div>
 						<div class="col-md-4 float-left">
 								<img class="applicant-photo mt-5" src=" <%= @employers_profile.company_logo %>" />
 						</div>
 				</div>
 		</div>
-
 </main>
