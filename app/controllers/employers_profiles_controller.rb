@@ -42,11 +42,11 @@ class EmployersProfilesController < ApplicationController
       uploaded_file = params[:employers_profile][:company_logo_cloud].path
       auth = Rails.application.credentials.cloudinary
 
-      if defined? CLOUDINARY_URL
+      if ENV.key? ("CLOUDINARY_URL")
         p "//////////////////////////"
-        p CLOUDINARY_URL
+        p ENV["CLOUDINARY_URL"]
 
-        cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, CLOUDINARY_URL)
+        cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, ENV["CLOUDINARY_URL"])
       else
         p "FAILLLLLLLLLLLLLLLLL"
         cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, auth)
