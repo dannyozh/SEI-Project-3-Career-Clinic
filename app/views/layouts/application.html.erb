@@ -32,6 +32,12 @@
             <% if @employers_profile.employer_id %>
               <a class="nav-item nav-link" href="/listings">Homepage</a>
               <a class="nav-item nav-link" href="/listings/new">Post a job</a>
+              <span class="float-right ">
+                <%= form_tag listings_path, :method => 'get' do %>
+                  <%= text_field_tag :search,  params[:search], placeholder: "Search" %>
+                  <!-- 	<%= submit_tag "Search" %> -->
+                <% end %>
+              </span>
               <a class="nav-item nav-link purple-text nav-profile active" href="<%= employers_profile_path(@employers_profile)%>"><%= @employers_profile.company_name%></a>
             <% end %>
             <a class="nav-item  nav-link"><%= link_to 'Sign out', destroy_employer_session_path, method: :delete, class: "sign-out" %></a>
