@@ -646,6 +646,10 @@ mark {
 		/*width: 150px;*/
 }
 
+.form-check > .checkbox-inline {
+	padding-right: 20px;
+		width: 220px;
+}
 input[type=checkbox]:checked {
 		color: red;
 }
