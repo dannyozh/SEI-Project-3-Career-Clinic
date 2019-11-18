@@ -163,6 +163,7 @@ body {
 		border: 1px solid #007AFF;
 		background-color: #EDF3FF;
 		color: #007AFF;
+
 }
 
 .deep-blue {
@@ -183,6 +184,7 @@ body {
 
 .blue-text {
 		color: #007AFF;
+		/*color: #4A8DC4;*/
 }
 
 .welcome-personas {
@@ -691,6 +693,13 @@ mark {
 .form-gradient {
 		background: linear-gradient(225deg, rgba(84, 136, 201, 1) 23%, rgba(51, 147, 187, 1) 100%);
 
+		border: none;
+}
+
+.btn-gradient {
+		background: linear-gradient(225deg, rgba(84, 136, 201, 1) 23%, rgba(51, 147, 187, 1) 100%);
+		color: white;
+		border: none;
 }
 
 .posted-on {
@@ -698,4 +707,20 @@ mark {
 		color: white;
 		padding-left: 5px;
 		font-style: italic;
+}
+
+.connection-2 {
+		margin: 0;
+		position: absolute;
+		top: 564px;
+		right: 160px;
+		background-color: #39B78F;
+		color: white;
+		padding: 11px;
+		border-radius: 8px;
+}
+
+.connection-2 > p {
+	margin: 0;
+		padding: 0;
 }

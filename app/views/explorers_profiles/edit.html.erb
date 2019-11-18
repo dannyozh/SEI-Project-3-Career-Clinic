@@ -12,16 +12,30 @@
 										<%= form.label :photo %><br>
 										<%= form.text_field :photo_url %>
 								</p>
-								<p>
-										<%= form.submit %>
-								</p>
+
+									<button class=" clearfix d-block float-left  py-2 text-white rounded form-gradient mx-auto">
+<%= form.submit 'Edit Profile', class: 'btn-gradient'  %>
+
+	</button>
+
 								<% end %>
+								<br/>
+								<div class="row mt-5 d-block clearfix col-md-12">
+
 								<%= link_to 'Show', @explorers_profile %> |
 								<%= link_to 'Back', @explorers_profile %>
+
+							</div>
 						</div>
 						<div class="col-md-4 float-left">
 								<img class="applicant-photo mt-5" src=" <%= @explorers_profile.photo_url %>" />
 						</div>
+
+						<div class="col-md-10 pt-3">
+
+
+
+</div>
 				</div>
 			</div>
 </main>
