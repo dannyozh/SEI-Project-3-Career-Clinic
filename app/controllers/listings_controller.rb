@@ -55,7 +55,17 @@ class ListingsController < ApplicationController
     end
 
     @all_explorers_profiles_listings = ExplorersProfilesListing.all
+
+    # Sort by latest and earliest
+   if request.query_parameters[:sort] == "date" && request.query_parameters[:order] == "asc"
+      @listings = Listing.all().order("created_at ASC")
+    elsif request.query_parameters[:sort] == "date" && request.query_parameters[:order] == "desc"
+      @listings = Listing.all().order("created_at DESC")
+    end
+
+
   end
+
 
   # GET /listings/1
   # GET /listings/1.json
