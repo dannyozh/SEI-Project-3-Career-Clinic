@@ -46,7 +46,8 @@ class EmployersProfilesController < ApplicationController
         p "//////////////////////////"
         p ENV["CLOUDINARY_URL"]
         p ENV["CLOUDINARY_URL"].class
-        cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, ENV["CLOUDINARY_URL"].to_s)
+        @envVariable = ENV["CLOUDINARY_URL"]
+        cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, @envVariable)
         p "FAIL HERE??????"
       else
         p "FAILLLLLLLLLLLLLLLLL"
