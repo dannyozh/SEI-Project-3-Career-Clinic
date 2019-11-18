@@ -51,7 +51,7 @@ class ExplorersProfilesController < ApplicationController
       p Cloudinary.config.api_key
       p "@@@@@@@"
 
-      uploaded_file = params[:employers_profile][:company_logo_cloud].path
+      uploaded_file = params[:explorers_profile][:photo_url_cloud].path
       auth = Rails.application.credentials.cloudinary
 
       if defined? CLOUDINARY_URL
