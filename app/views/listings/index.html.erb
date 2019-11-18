@@ -27,16 +27,22 @@
 <div class="col-md-10 detailed-forms text-white d-flex flex-column ml-7">
 
 <% if @form === "industry-search" %>
-	<%= form_with scope: :listing, url: listings_path, method: "get", :html => {:id => "industry-search"}, local: true do |form| %>
-	  <%= form.collection_check_boxes :industry_ids, @industries, :id, :name do |cb| %>
-	    <label class="checkbox-inline">
+	<%= form_with scope: :listing, url: listings_path, method: "get", :html => {:id => "industry-search"},  local: true do |form| %>
+	  <%= form.collection_check_boxes :industry_ids,  @industries, :id, :name do |cb| %>
+	<!--   <div class="d-flex flex-column"> -->
+
+	    <label class="checkbox-inline ">
 	      <%= cb.check_box %>
 	      <%= cb.label %>
 	    </label>
+
+	   <!--  </div> -->
 	  <% end %>
-	  <p>
-	    <%= form.submit "Submit" %>
-	  </p>
+	  <br/>
+	  <button class="btn float-right d-block btn-light">
+	    <%= form.submit "Submit", class: "rounded, btn-light" %>
+	  </button>
+	  <br/>
 	<% end %>
 
 
@@ -48,9 +54,10 @@
 	      <%= cb.label %>
 	    </label>
 	  <% end %>
-	  <p>
-	    <%= form.submit "Submit" %>
-	  </p>
+	 <button class="btn float-right d-block btn-light">
+	    <%= form.submit "Submit", class: "rounded, btn-light" %>
+	  </button>
+	   <br/>
 	<% end %>
 
 
@@ -62,9 +69,10 @@
 	      <%= cb.label %>
 	    </label>
 	  <% end %>
-	  <p>
-	    <%= form.submit "Submit" %>
-	  </p>
+	 <button class="btn float-right d-block btn-light">
+	    <%= form.submit "Submit", class: "rounded, btn-light" %>
+	  </button>
+	   <br/>
 	<% end %>
 
 	<% else %>

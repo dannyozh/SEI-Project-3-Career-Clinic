@@ -13,6 +13,7 @@
 	<div class="container ">
   <% if current_explorer%>
 
+
   <% @requiredlisting.each_slice(3) do |listing| %>
     <div class="card-row d-flex justify-content-around py-5">
       <% listing.each do |card| %>
@@ -51,5 +52,7 @@
       <% end %>
     </div>
   <% end %>
+
+
 </main>
 <% end %>

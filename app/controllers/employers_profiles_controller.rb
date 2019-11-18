@@ -69,7 +69,7 @@ end
 
     respond_to do |format|
       if @employers_profile.save
-        format.html { redirect_to "/listings/new", notice: "Employers profile was successfully created." }
+        format.html { redirect_to @employers_profile, notice: "Employers profile was successfully created." }
         format.json { render :show, status: :created, location: @employers_profile }
       else
         format.html { render :new }
