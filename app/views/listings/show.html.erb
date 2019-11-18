@@ -22,6 +22,7 @@
 				method: :delete,
 				data: { confirm: 'Are you sure?' } %> |
 				<br/>
+	<% if @checkListing.exists?%>
 			<% @profiles.each_slice(4) do |applicant| %>
 				<div class="card-row d-flex justify-content-around py-5">
 					<% applicant.each do |card| %>
@@ -32,6 +33,7 @@
 							<div class="card-body mini-card">
 							<h5 class="applicant-name text-center" ><%= card.name %></h5>
 							<p class=" appl-mail text-center"><span class="mail-icon mr-1"><img width="30px" src="<%= image_url 'mail.png' %>" /></span> <%= card.explorer.email%></p>
+							<button><a href="/link/<%=@listing.id%>/<%=card.id%>">Connect</a></button>
 							</div>
 						</div>
 					<% end %>
@@ -40,6 +42,7 @@
 				</div>
 			<% end %>
 		<br/>
+		<%end%>
 		<% if current_explorer %>
 			<a href="/interest/<%=@listing.id%>/<%=@explorers_profile.id%>">Register Interest</a>
 			<% flash.each do |name, msg| %>
@@ -47,6 +50,11 @@
 					<%= msg %>
 				</div>
 			<% end %>
+			<% if @queryStatus.exists?%>
+            	<p> EMPLOYER HAS CONNETED</p>
+			<% else %>
+				<p> EMPLOYER HAS NOT CONNECTED </p>
+            <%end%>
 		<% end %>
 </div>
 

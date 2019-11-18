@@ -31,20 +31,21 @@ body {
 }
 
 .landing-left {
-		width: 50%;
+		/*	width: 50%;*/
 }
 
 .landing-right {
-		width: 50%;
+		/*	width: 50%;*/
 }
 
 .landingpage-title {
-		padding-top: 100px;
+		padding-top: 80px;
 		color: #CC46E0;
-		font-size: 52px;
+		font-size: 62px;
 		font-weight: 900;
 		letter-spacing: -2px;
 		line-height: 1;
+		font-family: 'Roboto', sans-serif;
 }
 
 .jumbotron {
@@ -63,12 +64,14 @@ body {
 		display: block;
 		width: 100%;
 		color: #007AFF;
-		color: #333;
+		/*color: #333;*/
 		font-size: 18px;
 		font-weight: regular !important;
 		clear: both;
-		line-height: 1;
+		/*line-height: 1;*/
 		padding: 10px 0 20px 0;
+		font-family: 'Roboto', sans-serif;
+		/*color: linear-gradient(225deg, rgba(84,136,201,1) 23%, rgba(51,147,187,1) 100%);;*/
 
 		font-family: 'Montserrat', sans-serif;
 		/*color: linear-gradient(225deg, rgba(84,136,201,1) 23%, rgba(51,147,187,1) 100%);;*/
@@ -84,6 +87,7 @@ body {
 		font-size: 32px;
 		font-size: 28px;
 		font-weight: 600;
+		font-family: 'Roboto', sans-serif;
 
 		/*line-height: 1;
 		padding: 40px 0 20px 0;*/
@@ -93,8 +97,8 @@ body {
 .future-work {
 		width: auto;
 		height: 400px;
-		margin-top: 85px;
-		margin-left: 15px;
+		margin-top: 65px;
+		/*	margin-left: 35px;*/
 }
 
 .register-right {
@@ -113,7 +117,7 @@ body {
 		width: 450px;
 		height: 250px;
 		border-radius: 35px;
-		margin-left: 60px;
+		/*	margin-left: 60px;*/
 
 
 }
@@ -399,16 +403,18 @@ body {
 .listing-form-outer {
 
 		padding: 60px 0 60px 60px;
-    border: 1px solid #E3E3E1;
-    border-radius: 15px;
-    background-color: white;
+		border: 1px solid #E3E3E1;
+		border-radius: 15px;
+		background-color: white;
 }
+
 .listing-form-container {
-	padding: 60px 0;
-	height: 100%;
+		padding: 60px 0;
+		height: 100%;
 }
+
 .bold-description {
-	font-size: medium;
+		font-size: medium;
 }
 
 .single_post_img {
@@ -474,7 +480,9 @@ body {
 		width: 100%;
 		height: 100px;
 		background-color: white;
-
+		background: rgb(84, 136, 201);
+		background: linear-gradient(225deg, rgba(84, 136, 201, 1) 23%, rgba(51, 147, 187, 1) 100%);
+		color: white;
 }
 
 .sign-out {
@@ -503,6 +511,7 @@ body {
 		height: 150px;
 		object-fit: cover;
 }
+
 .applicant-photo-sm {
 		border: 1px solid grey;
 		border-radius: 50%;
@@ -518,16 +527,20 @@ body {
 		font-size: 1rem;
 
 }
+
 .appl-mail {
-	font-size: small;
-	white-space:nowrap;
+		font-size: small;
+		white-space: nowrap;
 }
+
 .mail-icon {
 		width: 20px;
 }
+
 .mini-card {
-	padding: 0 0.5rem 0.7rem 0.5rem;
+		padding: 0 0.5rem 0.7rem 0.5rem;
 }
+
 .applicants-main {
 		width: 100%;
 		height: 100vh;
@@ -539,13 +552,13 @@ body {
 
 .form-main {
 		width: 100%;
-	/*	height: 100vh;*/
+		/*	height: 100vh;*/
 		margin: 0;
 		padding: 0;
 		background-color: #f3f3f3;
 }
 
-.nav-login-exp  {
+.nav-login-exp {
 		position: absolute;
 		right: 240px;
 		padding: 10px;
@@ -563,45 +576,70 @@ body {
 		padding: 5px 15px;
 
 }
+
 .small-profile-photo {
-	width: 60px;
-	height: 60px;
+		width: 60px;
+		height: 60px;
 		object-fit: cover;
 		border-radius: 50%;
 		border: 1px solid grey;
 		margin-top: -10px;
 		margin-right: 15px;
 }
+
 #search {
-	border-radius: 5px;
+		border-radius: 5px;
 		padding: 5px;
 		border: none;
-    margin-left: 10px;
+		margin-left: 10px;
 		border: 1px solid #007AFF;
 }
+
 #search::-webkit-input-placeholder {
 		color: #007AFF;
 }
+
 .listing-search-dashboard {
-	min-height: 100px;
+		min-height: 100px;
+		background: rgb(84, 136, 201);
+		background: linear-gradient(225deg, rgba(84, 136, 201, 1) 23%, rgba(51, 147, 187, 1) 100%);
 }
+
 #industry-search {
-/*	width: 80%;
+		padding-bottom: 30px;
+		/*	width: 80%;
 	float: right;*/
 }
 
-.detailed-forms {
-	margin-left: 12%;
+#environment-search {
+		padding-bottom: 30px;
 }
+
+#personality-search {
+		padding-bottom: 30px;
+}
+
+.detailed-forms {
+		margin-left: 15%;
+}
+
 .explorers-edit {
 		padding: 60px 0 60px 60px;
-    border: 1px solid #E3E3E1;
-    border-radius: 15px;
-    background-color: white;
-    height: 400px;
-    margin: 0 auto;
+		border: 1px solid #E3E3E1;
+		border-radius: 15px;
+		background-color: white;
+		height: 400px;
+		margin: 0 auto;
 }
+
+mark {
+		/*background: rgb(84,136,201);*/
+		/*background: linear-gradient(225deg, rgba(84,136,201,1) 23%, rgba(51,147,187,1) 100%);*/
+		background-color: #EDF3FF;
+}
+
 .vh {
+
 
 		height: 100vh;
 }
@@ -622,14 +660,29 @@ body {
 	padding-right: 20px;
 
 		width: 220px;
-}*/
-input[type=checkbox]:checked {
-		color: red;
 }
 
-input[type=radio] {
-		color: red;
+
+
+#industry-search > .checkbox-inline {
+		padding-right: 20px;
+		width: 220px;
 }
+#environment-search > .checkbox-inline {
+		padding-right: 50px;
+	/*	width: 15%;*/
+}
+#personality-search > .checkbox-inline {
+		padding-right: 50px;
+		/*width: 150px;*/
+}
+
+.form-check > .checkbox-inline {
+	padding-right: 20px;
+		width: 220px;
+}
+
+
 .form-gradient {
 	background: linear-gradient(225deg, rgba(84, 136, 201, 1) 23%, rgba(51, 147, 187, 1) 100%);
 
