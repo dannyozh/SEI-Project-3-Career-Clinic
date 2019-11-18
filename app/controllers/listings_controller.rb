@@ -62,6 +62,10 @@ class ListingsController < ApplicationController
   def show
     @listing = Listing.find(params[:id])
     if current_employer
+      @matchListing = Listing.find(@listing.id).employer_profile_id
+      # @matchEmployer = @matchListing.employer_profile_id
+      p "2222222222", @matchListing
+      p "33333333", current_employer.id
       @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
       @checkListing = Listing.where(:employer_profile_id => current_employer.id)
       if @checkListing.exists?

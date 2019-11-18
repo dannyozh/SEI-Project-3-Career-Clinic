@@ -17,11 +17,13 @@
 	</p>
 		<%= link_to 'Back To Dashboard', listings_path %> |
 		<% if current_employer%>
+		<% if current_employer.id == @matchListing %>
 		<%= link_to 'Edit Listing', edit_listing_path %> |
 		<%= link_to 'Remove Listing', listing_path,
 				method: :delete,
 				data: { confirm: 'Are you sure?' } %> |
 				<br/>
+		<%end%>
 	<% if @checkListing.exists?%>
 			<% @profiles.each_slice(4) do |applicant| %>
 				<div class="card-row d-flex justify-content-around py-5">
