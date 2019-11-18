@@ -13,7 +13,10 @@
  *= require_tree .
  *= require_self
  */
- * {-webkit-font-smoothing: antialiased;}
+* {
+		-webkit-font-smoothing: antialiased;
+}
+
 * {
 		outline: none;
 }
@@ -431,6 +434,15 @@ body {
 
 .single-p-container {
 		padding-top: 60px;
+
+}
+
+.single-p-container > h3 {
+		color:  #68685B;
+}
+
+.single-p-container > h6 {
+		color:  #68685B;
 }
 
 .sign-up-title {
@@ -723,19 +735,21 @@ mark {
 		border-radius: 8px;
 }
 
-.connection-2 > p {
-	margin: 0;
+.connection-2>p {
+		margin: 0;
 		padding: 0;
 }
 
 .most-recent:active {
-	color: #5488C9 ;
+		color: #5488C9;
 		text-decoration: underline;
 }
-.earliest:active{
-		color: #5488C9 ;
+
+.earliest:active {
+		color: #5488C9;
 		text-decoration: underline;
 }
+
 /*.nav-item:active {
 	color: #fff;
     background-color: #007bff;
