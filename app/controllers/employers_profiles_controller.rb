@@ -1,4 +1,5 @@
-require 'yaml'
+require "yaml"
+
 class EmployersProfilesController < ApplicationController
   # before_action :set_employers_profile, only: [:show, :edit, :update, :destroy]
 
@@ -7,8 +8,6 @@ class EmployersProfilesController < ApplicationController
   def index
     @employers_profiles = EmployersProfile.all
     @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
-
-
   end
 
   # GET /employers_profiles/1
@@ -23,14 +22,11 @@ class EmployersProfilesController < ApplicationController
   # GET /employers_profiles/new
   def new
     @employers_profile = EmployersProfile.new
-
-
   end
 
   # GET /employers_profiles/1/edit
   def edit
     @employers_profile = EmployersProfile.find(params[:id])
-
   end
 
   # POST /employers_profiles
@@ -39,33 +35,38 @@ class EmployersProfilesController < ApplicationController
     @employers_profile = EmployersProfile.new(employers_profile_params)
     @employers_profile.employer_id = current_employer.id
     if (params[:employers_profile][:company_logo_cloud])
-
       p "@@@@@@@"
       p Cloudinary.config.api_key
       p "@@@@@@@"
 
-    uploaded_file = params[:employers_profile][:company_logo_cloud].path
-    auth = Rails.application.credentials.cloudinary
+      uploaded_file = params[:employers_profile][:company_logo_cloud].path
+      auth = Rails.application.credentials.cloudinary
 
-    if defined? CLOUDINARY_URL
-      cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, CLOUDINARY_URL)
+      if defined? CLOUDINARY_URL
+        p "//////////////////////////"
+        p CLOUDINARY_URL
+
+        cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, CLOUDINARY_URL)
+      else
+        p "FAILLLLLLLLLLLLLLLLL"
+        cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, auth)
+      end
+
+      p "passssssssssssssss"
+      # Use this when uploading to heroku and paste in the environment variable in settings:
+      # cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, CLOUDINARY_URL)
+
+      #store this public_id value to the database
+      #cloudnary_file[‘public_id’]
+      # render json: cloudnary_file
+      # p cloudnary_file
+      # s1 = cloudnary_file['public_id']
+      s2 = cloudnary_file["url"]
+      # @employers_profile.cloud_key = s1
+      @employers_profile.company_logo = s2
     else
-      cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, auth)
+      @employers_profile.company_logo = params[:employers_profile][:company_logo]
     end
-    # Use this when uploading to heroku and paste in the environment variable in settings:
-    # cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, CLOUDINARY_URL)
-
-     #store this public_id value to the database
-     #cloudnary_file[‘public_id’]
-     # render json: cloudnary_file
-     # p cloudnary_file
-     # s1 = cloudnary_file['public_id']
-     s2 = cloudnary_file['url']
-       # @employers_profile.cloud_key = s1
-       @employers_profile.company_logo = s2
-else
-  @employers_profile.company_logo = params[:employers_profile][:company_logo]
-end
 
     respond_to do |format|
       if @employers_profile.save
@@ -82,8 +83,7 @@ end
   # PATCH/PUT /employers_profiles/1
   # PATCH/PUT /employers_profiles/1.json
   def update
-
-     @employers_profile = EmployersProfile.find(params[:id])
+    @employers_profile = EmployersProfile.find(params[:id])
     respond_to do |format|
       if @employers_profile.update(employers_profile_params)
         format.html { redirect_to @employers_profile, notice: "Employers profile was successfully updated." }
