@@ -52,12 +52,13 @@
 		<%end%>
 		
 		<% if current_explorer %>
-			<a href="/interest/<%=@listing.id%>/<%=@explorers_profile.id%>">Register Interest</a>
-			<div class="status d-block connection float-right gradient-background">
 			<% if @queryStatus.exists?%>
-            	<p> Employer has indicated interest!</p>
+				<div class="status d-block connection float-right gradient-background">
+            		<p> Employer has indicated interest!</p>
+				</div>
+			<% else %>
+				<a href="/interest/<%=@listing.id%>/<%=@explorers_profile.id%>">Register Interest</a>
             <%end%>
-			</div>
 		<% end %>
 </div>
 
