@@ -31,20 +31,21 @@ body {
 }
 
 .landing-left {
-		width: 50%;
+	/*	width: 50%;*/
 }
 
 .landing-right {
-		width: 50%;
+	/*	width: 50%;*/
 }
 
 .landingpage-title {
-		padding-top: 100px;
+		padding-top: 80px;
 		color: #CC46E0;
-		font-size: 52px;
+		font-size: 62px;
 		font-weight: 900;
 		letter-spacing: -2px;
 		line-height: 1;
+		font-family: 'Roboto', sans-serif;
 }
 
 .jumbotron {
@@ -59,12 +60,14 @@ body {
 		display: block;
 		width: 100%;
 		color: #007AFF;
-		color: #333;
+		/*color: #333;*/
 		font-size: 18px;
 		font-weight: regular !important;
 		clear: both;
-		line-height: 1;
+		/*line-height: 1;*/
 		padding: 10px 0 20px 0;
+		font-family: 'Roboto', sans-serif;
+		/*color: linear-gradient(225deg, rgba(84,136,201,1) 23%, rgba(51,147,187,1) 100%);;*/
 
 }
 
@@ -76,6 +79,7 @@ body {
 		font-size: 32px;
 		font-size: 28px;
 		font-weight: 600;
+		font-family: 'Roboto', sans-serif;
 
 		/*line-height: 1;
 		padding: 40px 0 20px 0;*/
@@ -85,8 +89,8 @@ body {
 .future-work {
 		width: auto;
 		height: 400px;
-		margin-top: 85px;
-		margin-left: 15px;
+		margin-top: 65px;
+	/*	margin-left: 35px;*/
 }
 
 .register-right {
@@ -105,7 +109,7 @@ body {
 		width: 450px;
 		height: 250px;
 		border-radius: 35px;
-		margin-left: 60px;
+	/*	margin-left: 60px;*/
 
 
 }
@@ -466,7 +470,9 @@ body {
 		width: 100%;
 		height: 100px;
 		background-color: white;
-
+		background: rgb(84,136,201);
+background: linear-gradient(225deg, rgba(84,136,201,1) 23%, rgba(51,147,187,1) 100%);
+    color: white;
 }
 
 .sign-out {
@@ -575,6 +581,8 @@ body {
 }
 .listing-search-dashboard {
 	min-height: 100px;
+	background: rgb(84,136,201);
+background: linear-gradient(225deg, rgba(84,136,201,1) 23%, rgba(51,147,187,1) 100%);
 }
 #industry-search {
 /*	width: 80%;
@@ -591,6 +599,11 @@ body {
     background-color: white;
     height: 400px;
     margin: 0 auto;
+}
+mark {
+	/*background: rgb(84,136,201);*/
+/*background: linear-gradient(225deg, rgba(84,136,201,1) 23%, rgba(51,147,187,1) 100%);*/
+background-color: #EDF3FF;
 }
 .vh {
 	height: 100vh;
