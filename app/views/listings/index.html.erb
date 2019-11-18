@@ -103,6 +103,24 @@
 </div>
 
 <main class="applicants-main">
+	<div class="container-fluid">
+	<div class="dropdown pt-4 pl-5">
+  <button class="btn form-gradient text-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sort By
+  </button>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  	<!-- <form>
+	  	<input type="textarea"/>
+	  	<input type="textarea"/>
+	  	<input type="submit"/>
+	  </form> -->
+    <a class="dropdown-item" href="listings?sort=date&order=desc">Latest posts</a>
+    <a class="dropdown-item" href="listings?sort=date&order=asc">Earliest posts</a>
+
+  </div>
+</div>
+</div>
 	<div class="container">
 		<% @listings.each_slice(3) do |listing| %>
 
@@ -152,7 +170,6 @@
 		<% end %>
 </div>
 
-<%= link_to 'Latest posts', "#{listings_path}?sort=date&order=desc"%>
-<%= link_to 'Earliest posts', "#{listings_path}?sort=date&order=asc"%>
+
 
 </main>
