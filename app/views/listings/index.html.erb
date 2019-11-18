@@ -133,5 +133,6 @@
 		</div>
 		<% end %>
 </div>
-
+<%= link_to 'Latest posts', "#{listings_path}?sort=date&order=desc"%>
+<%= link_to 'Earliest posts', "#{listings_path}?sort=date&order=asc"%>
 </main>
