@@ -32,7 +32,7 @@
 						</div>
 							<div class="card-body mini-card">
 							<h5 class="applicant-name text-center" ><%= card.name %></h5>
-							<p class=" appl-mail text-center"><span class="mail-icon mr-1"><img width="30px" src="<%= image_url 'mail.png' %>" /></span> <%= card.explorer.email%></p>
+							<p class=" appl-mail text-center"><span class="mail-icon mr-1"><img width="30px" src="<%= image_url 'mail.png' %>" /></span> <%= auto_link(card.explorer.email)%></p>
 							<button><a href="/link/<%=@listing.id%>/<%=card.id%>">Connect</a></button>
 							</div>
 						</div>
@@ -42,6 +42,11 @@
 				</div>
 			<% end %>
 		<br/>
+		<% flash.each do |name, msg| %>
+				<div class="alert alert-<%= name %>" id="notice">
+					<%= msg %>
+				</div>
+			<% end %>
 		<%end%>
 		<% if current_explorer %>
 			<a href="/interest/<%=@listing.id%>/<%=@explorers_profile.id%>">Register Interest</a>
