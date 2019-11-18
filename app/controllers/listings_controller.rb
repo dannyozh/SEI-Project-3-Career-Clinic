@@ -73,7 +73,7 @@ class ListingsController < ApplicationController
   # GET /listings/1.json
   def show
     @listing = Listing.find(params[:id])
-    @search = Search.find(params[:id])
+    # @search = Search.find(params[:id])
 
 
     if current_employer
