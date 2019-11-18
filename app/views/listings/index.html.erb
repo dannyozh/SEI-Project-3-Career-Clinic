@@ -130,7 +130,7 @@
 								</h5></a>
 								<p class="listing-small-description">
 									<strong class="bold-description">What you’ll be doing:</strong><br/>
-										<%= card.description %>
+										<%= card.description.first(80) %><span>...</span>
 								</p>
 
 								 <% if @all_explorers_profiles_listings.where(:listing_id => card.id).length <= 5 %>
@@ -141,7 +141,7 @@
 
 								<% end %>
 										<% time = card.created_at.localtime(utc_offset = nil) %>
-								<p class ="listing-small-description">Posted on <cite title="Source Title"><%= time.strftime("%e %B %Y") %></cite><p>
+								<p class ="listing-small-description posted-on">Posted on <cite title="Source Title"><%= time.strftime("%e %B %Y") %></cite><p>
 
 						</div>
 
