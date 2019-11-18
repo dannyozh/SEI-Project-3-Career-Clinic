@@ -48,7 +48,7 @@ class ListingsController < ApplicationController
     @environments = Environment.all
     @industries = Industry.all
     @form = params[:q]
-   @search = Search.new
+    @search = Search.new
     @durations = Listing.all.map { |list| list.duration }.uniq
     if current_employer
       @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
@@ -59,22 +59,18 @@ class ListingsController < ApplicationController
     @all_explorers_profiles_listings = ExplorersProfilesListing.all
 
     # Sort by latest and earliest
-   if request.query_parameters[:sort] == "date" && request.query_parameters[:order] == "asc"
+    if request.query_parameters[:sort] == "date" && request.query_parameters[:order] == "asc"
       @listings = Listing.all().order("created_at ASC")
     elsif request.query_parameters[:sort] == "date" && request.query_parameters[:order] == "desc"
       @listings = Listing.all().order("created_at DESC")
     end
-
-
   end
-
 
   # GET /listings/1
   # GET /listings/1.json
   def show
     @listing = Listing.find(params[:id])
     # @search = Search.find(params[:id])
-
 
     if current_employer
       @matchListing = Listing.find(@listing.id).employer_profile_id
@@ -217,12 +213,9 @@ class ListingsController < ApplicationController
   #   end
   # end
 
+  private
 
-private
-
-def listing_params
-  params.require(:listing).permit(:job_title, :contact, :industry, :location, :photo_url, :description, :personality, :choice, :trait_ids => [], :environment_ids => [], :industry_ids => [])
-
-end
-
+  def listing_params
+    params.require(:listing).permit(:job_title, :contact, :industry, :location, :photo_url, :description, :personality, :choice, :trait_ids => [], :environment_ids => [], :industry_ids => [])
+  end
 end

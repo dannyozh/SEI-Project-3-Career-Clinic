@@ -54,8 +54,8 @@ class ExplorersProfilesController < ApplicationController
       uploaded_file = params[:explorers_profile][:photo_url_cloud].path
       auth = Rails.application.credentials.cloudinary
 
-      if defined? CLOUDINARY_URL
-        cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, CLOUDINARY_URL)
+      if ENV.key? ("CLOUDINARY_URL")
+        cloudnary_file = Cloudinary::Uploader.upload(uploaded_file)
       else
         cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, auth)
       end
