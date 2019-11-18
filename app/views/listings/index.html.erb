@@ -1,67 +1,81 @@
+
 <div class=" header border-bottom listing-search-dashboard">
-		<div class="container-fluid">
-				<div class="dropdown pt-4 pl-5">
-						<button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Search By
-						</button>
-						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<!-- <form>
+<div class="container-fluid">
+<div class="dropdown pt-4 pl-5">
+  <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Search By
+  </button>
+
+
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  	<!-- <form>
 	  	<input type="textarea"/>
 	  	<input type="textarea"/>
 	  	<input type="submit"/>
 	  </form> -->
-								<a class="dropdown-item" href="?q=industry-search">Industry</a>
-								<a class="dropdown-item" href="?q=personality-search">Career Personality Type</a>
-								<a class="dropdown-item" href="?q=environment-search">Working Environment</a>
-								<a class="dropdown-item" href="?q=advanced-search">Advanced Search</a>
-						</div>
-				</div>
-		</div>
-		<div class="container-fluid ">
-				<div class="col-md-10 detailed-forms text-white d-flex flex-column ml-7">
-						<% if @form === "industry-search" %>
-						<%= form_with scope: :listing, url: listings_path, method: "get", :html => {:id => "industry-search"},  local: true do |form| %>
-						<%= form.collection_check_boxes :industry_ids,  @industries, :id, :name do |cb| %>
-						<!--   <div class="d-flex flex-column"> -->
-						<label class="checkbox-inline ">
-								<%= cb.check_box %>
-								<%= cb.label %>
-						</label>
-						<!--  </div> -->
-						<% end %>
-						<br />
-						<button class="rounded float-right d-block btn-light">
-								<%= form.submit "Submit", class: "rounded, btn-light" %>
-						</button>
-						<br />
-						<% end %>
-						<% elsif @form === "personality-search" %>
-						<%= form_with scope: :listing, url: listings_path, method: "get", :html => {:id => "personality-search"}, local: true do |form| %>
-						<%= form.collection_check_boxes :trait_ids, @traits, :id, :personality do |cb| %>
-						<label class="checkbox-inline">
-								<%= cb.check_box %>
-								<%= cb.label %>
-						</label>
-						<% end %>
-						<button class="rounded float-right d-block btn-light">
-								<%= form.submit "Submit", class: "rounded, btn-light" %>
-						</button>
-						<br />
-						<% end %>
-						<% elsif @form === "environment-search" %>
-						<%= form_with scope: :listing, url: listings_path, method: "get", :html => {:id => "environment-search"}, local: true do |form| %>
-						<%= form.collection_check_boxes :environment_ids, @environments, :id, :choice do |cb| %>
-						<label class="checkbox-inline">
-								<%= cb.check_box %>
-								<%= cb.label %>
-						</label>
-						<% end %>
-						<button class="roiunded float-right d-block btn-light">
-								<%= form.submit "Submit", class: "rounded, btn-light" %>
-						</button>
-						<br />
-						<% end %>
-						<% elsif @form === "advanced-search" %>
+    <a class="dropdown-item" href="?q=industry-search">Industry</a>
+    <a class="dropdown-item" href="?q=personality-search">Career Personality Type</a>
+    <a class="dropdown-item" href="?q=environment-search">Working Environment</a>
+    <a class="dropdown-item" href="?q=advanced-search">Advanced Search</a>
+  </div>
+</div>
+</div>
+
+
+<div class="container-fluid ">
+<div class="col-md-10 detailed-forms text-white d-flex flex-column ml-7">
+
+<% if @form === "industry-search" %>
+	<%= form_with scope: :listing, url: listings_path, method: "get", :html => {:id => "industry-search"},  local: true do |form| %>
+	  <%= form.collection_check_boxes :industry_ids,  @industries, :id, :name do |cb| %>
+	<!--   <div class="d-flex flex-column"> -->
+
+	    <label class="checkbox-inline ">
+	      <%= cb.check_box %>
+	      <%= cb.label %>
+	    </label>
+
+	   <!--  </div> -->
+	  <% end %>
+	  <br/>
+	  <button class="btn float-right d-block btn-light">
+	    <%= form.submit "Submit", class: "rounded, btn-light" %>
+	  </button>
+	  <br/>
+	<% end %>
+
+
+<% elsif @form === "personality-search" %>
+	<%= form_with scope: :listing, url: listings_path, method: "get", :html => {:id => "personality-search"}, local: true do |form| %>
+	  <%= form.collection_check_boxes :trait_ids, @traits, :id, :personality do |cb| %>
+	    <label class="checkbox-inline">
+	      <%= cb.check_box %>
+	      <%= cb.label %>
+	    </label>
+	  <% end %>
+	 <button class="btn float-right d-block btn-light">
+	    <%= form.submit "Submit", class: "rounded, btn-light" %>
+	  </button>
+	   <br/>
+	<% end %>
+
+
+<% elsif @form === "environment-search" %>
+	<%= form_with scope: :listing, url: listings_path, method: "get", :html => {:id => "environment-search"}, local: true do |form| %>
+	  <%= form.collection_check_boxes :environment_ids, @environments, :id, :choice do |cb| %>
+	    <label class="checkbox-inline">
+	      <%= cb.check_box %>
+	      <%= cb.label %>
+	    </label>
+	  <% end %>
+	 <button class="btn float-right d-block btn-light">
+	    <%= form.submit "Submit", class: "rounded, btn-light" %>
+	  </button>
+	   <br/>
+	<% end %>
+
+			<% elsif @form === "advanced-search" %>
 						<%= form_with scope: :search, url:  searches_path, :html => {:id => "advanced-search"}, local: true do |form| %>
 						<%= form_for @search, html: {class: "pure-form"} do |s| %>
 						<div class="field d-inline col-md-5">
@@ -78,57 +92,67 @@
 						<% end %>
 						<br />
 						<% end %>
-						<% else %>
-						<% end %>
-				</div>
-		</div>
+
+	<% else %>
+
+
+<% end %>
 </div>
+
+</div>
+</div>
+
 <main class="applicants-main">
-		<div class="container">
-				<% @listings.each_slice(3) do |listing| %>
-				<div class="card-row d-flex justify-content-around py-5">
-						<% listing.each do |card| %>
-						<div class="card float-left justify-content-around" style="width: 22rem;">
-								<a href="/listings/<%= card.id%>">
-										<%#---	<%= link_to 'Show',listing_path(card) %>
-										<div class="row my-4 px-4">
-												<div class="col-md-5  float-left">
-														<img src="<%= card.photo_url %>" class="card-img-top listing-small-img" style="width: 120px; height:100px;" alt="..." />
-												</div>
-												<div class="col-md-7 py-2 float-right">
-														<p class="card-text com-md-7 listing-small-duration px-3"><span class="icon-duration mr-2"><img width="15px" src="<%= image_url 'duration-icon.png' %>" /></span>
-																<%= card.duration %>
-														</p>
-														<p class="card-text com-md-7 listing-small-location px-3"><span class="icon-duration mr-2 "><img width="15px" src="<%= image_url 'location-icon.png' %>" /></span>
-																<%= card.location%>
-														</p>
-												</div>
-										</div>
-										<div class="card-body">
-												<a href="/listings/<%= card.id%>">
-														<h5 class="card-title">
-																<%= card.job_title %>
-														</h5>
-												</a>
-												<p class="listing-small-description">
-														<strong class="bold-description">What you’ll be doing:</strong><br />
-														<%= card.description.first(100)%><span>....</s>
-												</p>
-												<% if @all_explorers_profiles_listings.where(:listing_id => card.id).length <= 5 %>
-												<p class="listing-small-description"> Be the First 5 to apply! </p>
-												<% else %>
-												<p class="listing-small-description">
-														<%= @all_explorers_profiles_listings.where(:listing_id => card.id).length %> applicant(s) have applied</p>
-												<% end %>
-												<% time = card.created_at.localtime(utc_offset = nil) %>
-												<p class="posted-on">Posted on <cite title="Source Title">
-																<%= time.strftime("%e %B %Y") %></cite>
-														<p>
-										</div>
+	<div class="container">
+		<% @listings.each_slice(3) do |listing| %>
+
+		<div class="card-row d-flex justify-content-around py-5">
+				<% listing.each do |card| %>
+				<div class="card float-left justify-content-around"  style="width: 22rem;">
+					<a href="/listings/<%= card.id%>">
+					<%#---	<%= link_to 'Show',listing_path(card) %>
+						<div class="row my-4 px-4">
+								<div class="col-md-5  float-left">
+										<img src="<%= card.photo_url %>" class="card-img-top listing-small-img" style="width: 120px; height:100px;" alt="..." />
+								</div>
+								<div class="col-md-7 py-2 float-right">
+										<p class="card-text com-md-7 listing-small-duration px-3"><span class="icon-duration mr-2"><img width="15px" src="<%= image_url 'duration-icon.png' %>" /></span>
+												<%= card.duration %>
+										</p>
+										<p class="card-text com-md-7 listing-small-location px-3"><span class="icon-duration mr-2 "><img width="15px" src="<%= image_url 'location-icon.png' %>" /></span>
+												<%= card.location%>
+										</p>
+								</div>
 						</div>
-						</a>
-						<% end %>
+						<div class="card-body">
+								<a href="/listings/<%= card.id%>"><h5 class="card-title">
+										<%= card.job_title %>
+								</h5></a>
+								<p class="listing-small-description">
+									<strong class="bold-description">What you’ll be doing:</strong><br/>
+										<%= card.description %>
+								</p>
+
+								 <% if @all_explorers_profiles_listings.where(:listing_id => card.id).length <= 5 %>
+
+										<p class="listing-small-description"> Be the First 5 to apply! </p>
+								<% else %>
+								<p class="listing-small-description"><%= @all_explorers_profiles_listings.where(:listing_id => card.id).length %> applicant(s) have applied</p>
+
+								<% end %>
+										<% time = card.created_at.localtime(utc_offset = nil) %>
+								<p class ="listing-small-description">Posted on <cite title="Source Title"><%= time.strftime("%e %B %Y") %></cite><p>
+
+						</div>
+
 				</div>
+			</a>
 				<% end %>
 		</div>
+		<% end %>
+</div>
+
+<%= link_to 'Latest posts', "#{listings_path}?sort=date&order=desc"%>
+<%= link_to 'Earliest posts', "#{listings_path}?sort=date&order=asc"%>
+
 </main>

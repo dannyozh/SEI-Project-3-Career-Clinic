@@ -57,7 +57,17 @@ class ListingsController < ApplicationController
     end
 
     @all_explorers_profiles_listings = ExplorersProfilesListing.all
+
+    # Sort by latest and earliest
+   if request.query_parameters[:sort] == "date" && request.query_parameters[:order] == "asc"
+      @listings = Listing.all().order("created_at ASC")
+    elsif request.query_parameters[:sort] == "date" && request.query_parameters[:order] == "desc"
+      @listings = Listing.all().order("created_at DESC")
+    end
+
+
   end
+
 
   # GET /listings/1
   # GET /listings/1.json
@@ -67,6 +77,10 @@ class ListingsController < ApplicationController
 
 
     if current_employer
+      @matchListing = Listing.find(@listing.id).employer_profile_id
+      # @matchEmployer = @matchListing.employer_profile_id
+      p "2222222222", @matchListing
+      p "33333333", current_employer.id
       @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
       @checkListing = Listing.where(:employer_profile_id => current_employer.id)
       if @checkListing.exists?
@@ -202,14 +216,13 @@ class ListingsController < ApplicationController
   #     @explorers_profile = ExplorersProfile.find_by(:explorer_id => current_explorer.id)
   #   end
   # end
-end
+
 
 private
 
 def listing_params
   params.require(:listing).permit(:job_title, :contact, :industry, :location, :photo_url, :description, :personality, :choice, :trait_ids => [], :environment_ids => [], :industry_ids => [])
+
 end
 
-def search_params
-    params.require(:search).permit(:keywords, :duration)
-  end
+end
