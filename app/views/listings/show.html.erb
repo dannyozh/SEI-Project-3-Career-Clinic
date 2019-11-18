@@ -42,6 +42,11 @@
 				</div>
 			<% end %>
 		<br/>
+		<% flash.each do |name, msg| %>
+				<div class="alert alert-<%= name %>" id="notice">
+					<%= msg %>
+				</div>
+			<% end %>
 		<%end%>
 		<% if current_explorer %>
 			<a href="/interest/<%=@listing.id%>/<%=@explorers_profile.id%>">Register Interest</a>
