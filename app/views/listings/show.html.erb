@@ -20,12 +20,28 @@
 		   <%= link_to 'Remove Listing', listing_path,
 				method: :delete,
 				data: { confirm: 'Are you sure?' } %> |
-		<% if current_employer%>
-		<%= link_to 'See Applicants', "/connect/#{current_employer.id}" %>
-		<% end %>
-
-
+				<br/>
+	<% if @checkListing.exists?%>
+			<% @profiles.each_slice(4) do |applicant| %>
+				<div class="card-row d-flex justify-content-around py-5">
+					<% applicant.each do |card| %>
+					<div class="card float-left justify-content-around" style="width: 16rem;">
+						<div class="row my-4 px-4">
+						<img class="applicant-photo-sm" src =" <%= card.photo_url %>"/>
+						</div>
+							<div class="card-body mini-card">
+							<h5 class="applicant-name text-center" ><%= card.name %></h5>
+							<p class=" appl-mail text-center"><span class="mail-icon mr-1"><img width="30px" src="<%= image_url 'mail.png' %>" /></span> <%= card.explorer.email%></p>
+							<button><a href="/link/<%=@listing.id%>/<%=card.id%>">Connect</a></button>
+							</div>
+						</div>
+					<% end %>
+					</div>
+				<% end %>
+				</div>
+			<% end %>
 		<br/>
+		<%end%>
 		<% if current_explorer %>
 		<a href="/interest/<%=@listing.id%>/<%=@explorers_profile.id%>">Register Interest</a>
 		<% end %>
