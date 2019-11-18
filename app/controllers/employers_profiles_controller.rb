@@ -41,20 +41,13 @@ class EmployersProfilesController < ApplicationController
 
       uploaded_file = params[:employers_profile][:company_logo_cloud].path
       auth = Rails.application.credentials.cloudinary
-
       if ENV.key? ("CLOUDINARY_URL")
-        p "//////////////////////////"
-        p ENV["CLOUDINARY_URL"]
-        p ENV["CLOUDINARY_URL"].class
         @envVariable = ENV["CLOUDINARY_URL"]
         cloudnary_file = Cloudinary::Uploader.upload(uploaded_file)
-        p "FAIL HERE??????"
       else
-        p "FAILLLLLLLLLLLLLLLLL"
         cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, auth)
       end
 
-      p "passssssssssssssss"
       # Use this when uploading to heroku and paste in the environment variable in settings:
       # cloudnary_file = Cloudinary::Uploader.upload(uploaded_file, CLOUDINARY_URL)
 
