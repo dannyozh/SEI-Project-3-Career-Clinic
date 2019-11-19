@@ -17,6 +17,7 @@ class EmployersProfilesController < ApplicationController
     employerid = @employers_profile.id
     # p "@@@@@@@@@", employerid
     @listing = Listing.where(employer_profile_id: employerid)
+    p "$$$$$$$$$$$$", @listing
   end
 
   # GET /employers_profiles/new
