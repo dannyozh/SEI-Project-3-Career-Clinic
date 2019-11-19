@@ -30,21 +30,22 @@ Firstly, we drew our ERD diagram as well as our Wireframes to have a sketch on h
 ## Installation Instructions
 
 1. Install all the ruby gems of the project is using
-`
+```
 bundle install
-`
+```
 
 2. Create the Postgres db for running on local
-`
+```
 rails db:create
-`
+```
 3. Create the tables neccessary to run this project
-`
+```
 rails db:migrate
-`
+```
 4. Seed dummy data
-`rails db:seed
-`
+```
+rails db:seed
+```
 
 ## Functions of the App
 
