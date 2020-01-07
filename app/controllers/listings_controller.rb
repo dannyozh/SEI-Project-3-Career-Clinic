@@ -79,14 +79,15 @@ class ListingsController < ApplicationController
       p "33333333", current_employer.id
       @employers_profile = EmployersProfile.find_by(:employer_id => current_employer.id)
       @checkListing = Listing.where(:employer_profile_id => current_employer.id)
-      p "CHECKLISTING ISISIS", @checkListing
+      # p "CHECKLISTING ISISIS", @checkListing
       if @checkListing.exists?
         #retrieves listing id
-        @employersListing = ExplorersProfilesListing.where(:listing_id => params[:id]).map { |x| x.listing_id }
-        p "00000000000000", @employersListing
+        # @employersListing = ExplorersProfilesListing.where(:listing_id => params[:id]).map { |x| x.listing_id }
+        # p "00000000000000", @employersListing
 
         #finds the explorer's id
-        @explorer_profile_ids = Listing.find_by(:employer_profile_id => current_employer.id).explorers_profiles_listing.map { |x| x.explorers_profile_id }
+        # @explorer_profile_ids = Listing.find_by(:employer_profile_id => current_employer.id).explorers_profiles_listing.map { |x| x.explorers_profile_id }
+        @explorer_profile_ids = ExplorersProfilesListing.where(:listing_id => params[:id]).map { |x| x.explorers_profile_id }
         p "@*@*@*@**@*@*@@**@*@*@*@*", @explorer_profile_ids
 
         #finds the explorer profile by his id
