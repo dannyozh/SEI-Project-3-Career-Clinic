@@ -14,6 +14,7 @@ class ListingsController < ApplicationController
         x = x.map { |s| s.to_i }
         #convert element from string to integer
         x.shift()
+        p "this is xxxxxxxxxxxx", x
         #pop out empty first element
         @listings_ids = ListingsTrait.where("trait_id IN (?)", x).map { |x| x.listing_id }
         #look inside inner table. find trait id
@@ -40,7 +41,7 @@ class ListingsController < ApplicationController
       end
     else
       # @traits = Trait.all
-      @listings = Listing.all
+      # @listings = Listing.all
       @listings = Listing.search(params[:search])
     end
     p "@@@@@@@@@@"
